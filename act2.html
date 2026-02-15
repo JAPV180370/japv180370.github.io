@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #2 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+						<article id="content">
+							<header>
+								<h2>ACTIVIDAD #2</h2>
+							</header>
+							
+							<h3>Escenario 01: Ransomware con exfiltración previa</h3>
+
+							<p>
+							Este escenario corresponde a un ataque de ransomware avanzado, en el cual los atacantes obtienen
+							acceso inicial no autorizado y ejecutan acciones deliberadas antes de cifrar los sistemas. Se ven
+							comprometidos simultáneamente los servicios de confidencialidad, integridad y disponibilidad.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Confidencialidad, Integridad, Disponibilidad.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Multi-stage attack; Data breach; Availability attack.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa (grupo criminal organizado).</li>
+								<li><strong>Vector de ataque:</strong> Acceso inicial no autorizado, exfiltración y cifrado masivo.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Indisponibilidad total, extorsión y daño legal.</li>
+								<li><strong>Medida de control recomendada:</strong> Backups inmutables, EDR, segmentación y plan de respuesta.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 02: Exposición de datos por mala configuración en la nube</h3>
+
+							<p>
+							La afectación principal recae en la confidencialidad debido a errores de configuración en servicios
+							cloud. No existe intrusión activa, pero se materializa una violación grave de seguridad.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Confidencialidad.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Misconfiguration; Exposure.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa pasiva.</li>
+								<li><strong>Vector de ataque:</strong> Error en controles de acceso cloud.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Fuga de información y sanciones regulatorias.</li>
+								<li><strong>Medida de control recomendada:</strong> Auditorías cloud, mínimo privilegio, CSPM.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 03: Ataque a la cadena de suministro de software</h3>
+
+							<p>
+							Un proveedor legítimo distribuye una actualización comprometida. Se afecta principalmente la
+							integridad, y potencialmente la confidencialidad.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Integridad, Confidencialidad.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Supply chain attack; Integrity violation.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa.</li>
+								<li><strong>Vector de ataque:</strong> Actualización con código malicioso firmado.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Compromiso masivo y pérdida de confianza.</li>
+								<li><strong>Medida de control recomendada:</strong> Validación de integridad, SBOM y control de proveedores.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 04: Compromiso de credenciales por phishing</h3>
+
+							<p>
+							Los atacantes obtienen credenciales válidas mediante ingeniería social, afectando autenticación y
+							control de acceso.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Autenticación, Control de acceso.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Credential compromise; Authentication failure.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa (ingeniería social).</li>
+								<li><strong>Vector de ataque:</strong> Phishing.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Acceso prolongado no detectado.</li>
+								<li><strong>Medida de control recomendada:</strong> MFA y monitoreo de comportamiento.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 05: Destrucción de respaldos en ransomware</h3>
+
+							<p>
+							Se comprometen disponibilidad e integridad al destruir respaldos antes del cifrado principal.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Disponibilidad, Integridad.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Data destruction; Availability attack.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa dirigida.</li>
+								<li><strong>Vector de ataque:</strong> Sabotaje de respaldos.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Recuperación imposible.</li>
+								<li><strong>Medida de control recomendada:</strong> Backups offline e inmutables.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 06: Amenaza interna</h3>
+
+							<p>
+							Un empleado extrae información usando accesos legítimos. Se afecta confidencialidad y control de acceso.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Confidencialidad, Control de acceso.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Insider threat; Privilege abuse.</li>
+								<li><strong>Tipo de amenaza:</strong> Interna.</li>
+								<li><strong>Vector de ataque:</strong> Extracción con credenciales legítimas.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Fuga masiva de información.</li>
+								<li><strong>Medida de control recomendada:</strong> DLP y mínimo privilegio.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 07: Compromiso de registros y evidencia</h3>
+
+							<p>
+							Se afectan integridad y no repudio al alterarse registros del sistema.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Integridad, No repudio.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Evidentiary integrity; Audit trail compromise.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa (post-explotación).</li>
+								<li><strong>Vector de ataque:</strong> Manipulación o borrado de logs.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Imposibilidad de análisis forense.</li>
+								<li><strong>Medida de control recomendada:</strong> Logs inmutables y SIEM.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 08: Falla operativa por actualización defectuosa</h3>
+
+							<p>
+							Se afecta la disponibilidad por error interno sin intervención maliciosa.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Disponibilidad.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Operational failure.</li>
+								<li><strong>Tipo de amenaza:</strong> Accidental / interna.</li>
+								<li><strong>Vector de ataque:</strong> Actualización sin pruebas.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Caída global de servicios.</li>
+								<li><strong>Medida de control recomendada:</strong> Gestión formal de cambios y rollback.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 09: Suplantación de identidad y phishing institucional</h3>
+
+							<p>
+							Se comprometen autenticación y confidencialidad mediante sitios y comunicaciones falsificadas.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Autenticación, Confidencialidad.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Masquerade; Phishing.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa.</li>
+								<li><strong>Vector de ataque:</strong> Sitios y correos falsificados.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Fraude y daño reputacional.</li>
+								<li><strong>Medida de control recomendada:</strong> SPF, DKIM, DMARC y concientización.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Escenario 10: Ataque destructivo con borrado total</h3>
+
+							<p>
+							Compromiso total de confidencialidad, integridad y disponibilidad mediante exfiltración y destrucción.
+							</p>
+
+							<h4>Elementos del escenario</h4>
+							<ul>
+								<li><strong>Servicios X.800 comprometidos:</strong> Confidencialidad, Integridad, Disponibilidad.</li>
+								<li><strong>Definiciones RFC 4949:</strong> Destructive attack.</li>
+								<li><strong>Tipo de amenaza:</strong> Externa sofisticada.</li>
+								<li><strong>Vector de ataque:</strong> Exfiltración y destrucción deliberada.</li>
+								<li><strong>Impacto técnico / operativo:</strong> Pérdida total de información.</li>
+								<li><strong>Medida de control recomendada:</strong> Segmentación y backups inmutables.</li>
+							</ul>
+
+							<hr>
+
+							<h3>Conclusión</h3>
+
+							<p>
+							Los escenarios demuestran que la seguridad de la información requiere un enfoque integral que
+							combine procesos, personas y tecnología. El uso conjunto del modelo X.800 y el RFC 4949 permite
+							estructurar el análisis identificando servicios comprometidos y clasificando amenazas.
+							</p>
+
+							<p>
+							En el contexto latinoamericano, persiste una brecha entre adopción tecnológica y madurez en
+							seguridad. La falta de controles básicos como MFA, respaldos inmutables y gestión formal de cambios
+							amplifica el impacto de incidentes.
+							</p>
+
+							<p>
+							Adoptar un enfoque preventivo, estructurado y contextualizado es clave para fortalecer la resiliencia
+							organizacional frente a amenazas cada vez más complejas.
+							</p>
+
+							<ul class="actions">
+								<li>
+									<a href="docs/180370-act02.pdf" class="button" download>
+										Descargar actividad
+									</a>
+								</li>
+							</ul>
+
+						</article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

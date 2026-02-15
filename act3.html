@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #3 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+						<article id="content">
+							<header>
+								<h2>ACTIVIDAD #3</h2>
+							</header>
+							
+							<h3>1. Flujo del paquete</h3>
+							<p>
+							  Cuando un paquete llega al sistema, primero pasa por una <b>tabla</b>, después por una <b>cadena</b> y finalmente se ejecuta una <b>acción</b>.
+							</p>
+
+							<hr>
+
+							<h3>2. Tablas de iptables y su propósito</h3>
+							<ul>
+							  <li><b>FILTER</b> – Permitir o bloquear tráfico – Ejemplo: Bloquear conexiones SSH</li>
+							  <li><b>NAT</b> – Traducción de direcciones y puertos – Ejemplo: Compartir internet</li>
+							  <li><b>MANGLE</b> – Modificar paquetes avanzados – Ejemplo: Cambiar marcas de paquetes</li>
+							  <li><b>RAW</b> – Excepciones de seguimiento – Ejemplo: Desactivar conntrack</li>
+							  <li><b>SECURITY</b> – Aplicar etiquetas de seguridad – Ejemplo: Contextos de seguridad</li>
+							</ul>
+
+							<hr>
+
+							<h3>3. Anatomía de un comando iptables</h3>
+							<p><b>iptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT</b></p>
+
+							<hr>
+
+							<h3>4. ¿Qué permite este comando?</h3>
+							<p><b>Permite el tráfico TCP entrante a los puertos 80 y 443 (HTTP y HTTPS).</b></p>
+
+							<hr>
+
+							<h3>5. Variables y opciones comunes</h3>
+
+							<h4>a) Limitar intentos por minuto</h4>
+							<ul>
+							  <li><b>--limit</b></li>
+							</ul>
+
+							<h4>b) Filtrar por IP de origen</h4>
+							<ul>
+							  <li><b>-s</b></li>
+							</ul>
+
+							<h4>c) Ver solo números, sin DNS</h4>
+							<ul>
+							  <li><b>-n</b></li>
+							</ul>
+
+							<h4>d) Ver reglas con contadores</h4>
+							<ul>
+							  <li><b>-v</b></li>
+							</ul>
+
+							<hr>
+
+							<h3>6. ¿Qué hace esta regla?</h3>
+							<p>iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT</p>
+							<p><b>Permite tráfico TCP entrante por la interfaz eth0 en los puertos 22, 80 y 443, solo si la conexión es nueva o ya está establecida.</b></p>
+
+							<hr>
+
+							<h3>7. Permitir tráfico HTTP entrante</h3>
+							<p><b>iptables -A INPUT -p tcp --dport 80 -j ACCEPT</b></p>
+
+							<hr>
+
+							<h3>8. Permitir todo el tráfico saliente</h3>
+							<p><b>iptables -A OUTPUT -j ACCEPT</b></p>
+
+							<hr>
+
+							<h3>9. Permitir SSH solo desde la IP 192.168.1.50</h3>
+							<p><b>iptables -A INPUT -p tcp --dport 22 -s 192.168.1.50 -j ACCEPT</b></p>
+
+							<hr>
+
+							<h3>10. Permitir tráfico TCP entrante a 80 y 443 solo si es conexión establecida o relacionada</h3>
+							<p><b>iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</b></p>
+
+							<hr>
+
+							<h3>11. Registrar y permitir tráfico TCP por eth0 (22, 80 y 443)</h3>
+
+							<h4>Registrar intentos</h4>
+							<p><b>iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m conntrack --ctstate NEW -j LOG --log-prefix "Firewall: "</b></p>
+
+							<h4>Permitir conexiones</h4>
+							<p><b>iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT</b></p>
+
+							<h4>Permitir respuestas</h4>
+							<p><b>iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</b></p>
+
+
+							
+							<ul class="actions">
+								<li>
+									<a href="docs/180370-act03.pdf" class="button" download>
+										Descargar actividad
+									</a>
+								</li>
+							</ul>
+
+						</article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

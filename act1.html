@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #1 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+						<article id="content">
+							<header>
+								<h2>ACTIVIDAD #1</h2>
+							</header>
+							
+							<h3>1. Introducción</h3>
+							<p>
+							El ciberataque sufrido por Equifax en 2017 constituye uno de los incidentes de seguridad
+							de la información más relevantes de la última década debido a su magnitud, impacto
+							económico y consecuencias regulatorias. La brecha expuso datos personales altamente
+							sensibles de aproximadamente 147.9 millones de personas, evidenciando fallas
+							estructurales en la gestión de vulnerabilidades, el monitoreo de seguridad y el gobierno
+							corporativo de la información.
+							</p>
+							<p>
+							El análisis de este caso resulta especialmente pertinente, ya que el ataque no fue
+							producto de técnicas avanzadas o vulnerabilidades de día cero, sino de la omisión en la
+							aplicación de un parche de seguridad crítico previamente disponible. Este hecho
+							evidencia que, en contextos donde los recursos técnicos y financieros son limitados,
+							como ocurre en muchas organizaciones latinoamericanas, la falta de disciplina operativa,
+							supervisión y liderazgo en ciberseguridad puede generar impactos desproporcionados.
+							</p>
+							<p>
+							En este sentido, el caso Equifax ofrece una referencia directa sobre la necesidad de
+							priorizar controles preventivos básicos, gestión de vulnerabilidades y una cultura
+							organizacional orientada a la protección de la información como activo estratégico.
+							</p>
+							
+							<hr>
+
+							<h3>2. Contexto general del ataque</h3>
+							<p>
+							El incidente ocurrió en 2017 en Estados Unidos y afectó a Equifax, una de las principales
+							agencias de informes crediticios a nivel mundial. El ataque tuvo como origen la
+							explotación de una vulnerabilidad crítica en el framework Apache Struts, utilizada en una
+							aplicación web expuesta al público.
+							</p>
+							<p>
+							Previo al ataque, Equifax contaba con políticas de seguridad documentadas, pero carecía
+							de una implementación efectiva. La infraestructura presentaba una arquitectura de red
+							poco segmentada, un inventario de activos incompleto y deficiencias en los procesos de
+							gestión de parches. Estas condiciones facilitaron que una vulnerabilidad conocida
+							permaneciera sin corregirse y fuera explotada durante un periodo prolongado sin
+							detección.
+							</p>
+							
+							<hr>
+
+							<h3>3. Análisis técnico del caso</h3>
+
+							<h4>3.1 Vector de ataque y vulnerabilidad explotada</h4>
+							<p>
+							El vector de ataque inicial fue la explotación de la vulnerabilidad CVE-2017-5638 en el
+							framework Apache Struts 2, utilizada en el portal web de disputas de consumidores de
+							Equifax (ACIS). Esta vulnerabilidad, clasificada con una severidad CVSS 10.0 (crítica),
+							permitía la ejecución remota de código (RCE) sin autenticación mediante la manipulación
+							del encabezado HTTP Content-Type durante el procesamiento de solicitudes multipart.
+							</p>
+							<p>
+							Aunque el parche de seguridad fue publicado en marzo de 2017 por la Apache Software
+							Foundation y comunicado internamente dentro de la organización, el sistema vulnerable
+							no fue actualizado ni verificado. Esta omisión permitió a los atacantes explotar una
+							vulnerabilidad conocida y documentada, evidenciando una falla crítica en la gestión de
+							parches y validación de correcciones.
+							</p>
+							<p>
+							La explotación exitosa otorgó a los atacantes acceso no autorizado al servidor web
+							comprometido, desde el cual pudieron ejecutar comandos arbitrarios y establecer control
+							inicial del sistema afectado.
+							</p>
+
+							<h4>3.2 Desarrollo del ataque</h4>
+							<p>
+							El ataque siguió un patrón clásico de intrusión avanzada, alineado con las fases del
+							marco MITRE ATT&amp;CK, como se describe a continuación:
+							</p>
+
+							<ul>
+							  <li>
+								<strong>Acceso inicial:</strong> Explotación de una aplicación pública vulnerable
+								(MITRE T1190) mediante CVE-2017-5638.
+							  </li>
+							  <li>
+								<strong>Ejecución:</strong> Ejecución remota de comandos en el servidor comprometido,
+								permitiendo la instalación de herramientas adicionales.
+							  </li>
+							  <li>
+								<strong>Persistencia:</strong> Implementación de mecanismos como web shells
+								(MITRE T1505.003) para mantener acceso continuo.
+							  </li>
+							  <li>
+								<strong>Escalamiento de privilegios y movimiento lateral:</strong> Uso de credenciales
+								almacenadas en texto plano y una arquitectura de red sin segmentación efectiva,
+								facilitando el acceso a múltiples bases de datos internas (MITRE T1078, T1021).
+							  </li>
+							  <li>
+								<strong>Acceso y exfiltración de información:</strong> Realización de consultas
+								masivas a bases de datos con información personal sensible (PII) y exfiltración
+								progresiva de datos a través de canales cifrados (MITRE T1041 / T1048).
+							  </li>
+							  <li>
+								<strong>Encubrimiento:</strong> Intentos de borrar o modificar registros del sistema
+								para retrasar la detección del incidente (MITRE T1070).
+							  </li>
+							</ul>
+
+							<p>
+							La exfiltración de datos se mantuvo activa durante aproximadamente 76 días. La
+							caducidad de certificados utilizados para el monitoreo de tráfico cifrado impidió la
+							inspección adecuada de las comunicaciones, lo que permitió que la actividad maliciosa
+							pasara desapercibida durante un periodo prolongado.
+							</p>
+							
+							<hr>
+							
+							<h3>4. Análisis técnico del caso</h3>
+		
+							<a class="image featured"><img src="images/act1_t1.PNG" alt="" /></a>
+							
+							<hr>
+							
+							<h3>5. Evaluación del impacto (Modelo CIA)</h3>
+
+							<h4>Confidencialidad</h4>
+							<p>
+							La confidencialidad fue el principio más afectado. El acceso no autorizado permitió la
+							exfiltración de información personal altamente sensible de aproximadamente 147.9
+							millones de personas, incluyendo números de Seguro Social, fechas de nacimiento,
+							direcciones y datos financieros.
+							</p>
+							<p>
+							Este impacto fue consecuencia directa de la explotación de una vulnerabilidad crítica sin
+							parchear, una arquitectura sin segmentación y mecanismos de detección ineficientes, lo
+							que permitió la exposición prolongada de datos durante 76 días. A nivel empresarial, la
+							pérdida de confidencialidad derivó en sanciones regulatorias, litigios masivos y un daño
+							reputacional significativo.
+							</p>
+
+							<h4>Integridad</h4>
+							<p>
+							Aunque no se confirmó la modificación masiva de registros, el riesgo a la integridad fue
+							elevado. Los atacantes obtuvieron acceso a sistemas internos mediante credenciales
+							válidas almacenadas sin protección, lo que les permitió consultar información sensible
+							sin restricciones adecuadas.
+							</p>
+							<p>
+							La ausencia de controles de acceso y la violación del principio de mínimo privilegio
+							comprometieron la confiabilidad de los datos y evidenciaron una debilidad estructural en
+							la protección de la información crítica.
+							</p>
+
+							<h4>Disponibilidad</h4>
+							<p>
+							La disponibilidad se vio afectada de forma indirecta tras la detección del incidente, cuando
+							Equifax deshabilitó servicios críticos como el portal de disputas de consumidores.
+							Posteriormente, los sistemas de atención colapsaron debido al alto volumen de consultas
+							de usuarios afectados.
+							</p>
+							<p>
+							Este impacto demuestra que la disponibilidad depende no solo de la protección contra
+							ataques directos, sino también de la capacidad organizacional para responder
+							eficazmente a incidentes de gran escala.
+							</p>
+
+							<h4>Conclusión del análisis CIA</h4>
+							<p>
+							El análisis CIA confirma que, aunque el ataque se enfocó principalmente en la
+							confidencialidad, las deficiencias en controles básicos amplificaron el impacto sobre la
+							integridad y la disponibilidad, evidenciando la necesidad de una protección integral de la
+							información.
+							</p>
+							
+							<hr>
+							
+							<h3>6. Cálculo del Costo Total del Ciberataque (MXN)</h3>
+							
+							<a class="image featured"><img src="images/act1_t2.PNG" alt="" /></a>
+							
+							<hr>
+							
+							<h3>7. Relación con Marcos Normativos</h3>
+
+							<p>
+							El caso Equifax evidencia incumplimientos críticos en la aplicación de controles establecidos
+							por marcos normativos internacionales. Desde la perspectiva de ISO/IEC 27001, el control A.8
+							(Gestión de activos) no fue aplicado de forma efectiva, ya que la organización carecía de un
+							inventario completo de sistemas que utilizaban Apache Struts y de una clasificación adecuada
+							de la información sensible. Esta deficiencia impidió identificar y priorizar la protección de
+							activos críticos expuestos a Internet.
+							</p>
+
+							<p>
+							Asimismo, el control A.12.6 (Gestión de vulnerabilidades técnicas) fue incumplido al no
+							aplicarse ni verificarse oportunamente el parche correspondiente a la vulnerabilidad CVE-
+							2017-5638, pese a estar disponible y documentado. La correcta ejecución de este control
+							habría prevenido el vector de ataque inicial y bloqueado el acceso no autorizado. De igual
+							forma, el control A.9 (Control de accesos) no fue aplicado bajo el principio de mínimo privilegio,
+							permitiendo a los atacantes utilizar credenciales internas para acceder a múltiples bases de
+							datos sensibles, lo que amplificó el impacto del incidente.
+							</p>
+
+							<p>
+							En cuanto al monitoreo, el incumplimiento del control A.12.4 (Registro y monitoreo de eventos),
+							evidenciado por certificados caducados y falta de supervisión, impidió detectar la exfiltración
+							de datos durante semanas. Finalmente, la ausencia de procedimientos claros alineados al
+							control A.16 (Gestión de incidentes) provocó una detección y respuesta tardías, incrementando
+							el impacto operativo, regulatorio y reputacional.
+							</p>
+
+							<p>
+							Desde el enfoque del NIST Cybersecurity Framework, el incidente refleja fallas en todas sus
+							funciones principales. En Identify, Equifax no identificó correctamente el riesgo crítico asociado
+							al sistema vulnerable; en Protect, falló la aplicación de parches y controles de acceso básicos;
+							en Detect, la falta de monitoreo permitió que el ataque permaneciera activo aproximadamente
+							76 días; en Respond, la reacción fue tardía y desorganizada; y en Recover, la recuperación
+							resultó prolongada y costosa, evidenciando una preparación insuficiente.
+							</p>
+
+							<p>
+							Respecto al GDPR, el caso demuestra incumplimientos a los principios de seguridad del
+							tratamiento establecidos en los artículos 5 y 32, al no implementarse medidas técnicas y
+							organizativas proporcionales al nivel de sensibilidad de los datos personales tratados.
+							</p>
+							
+							<hr>
+
+							<h3>8. Conclusiones y Lecciones Aprendidas</h3>
+
+							<p>
+							El caso Equifax evidencia que los incidentes de ciberseguridad de alto impacto rara vez
+							se originan por una única falla técnica, sino por una combinación de debilidades
+							organizacionales, operativas y de gobierno corporativo. La explotación de una
+							vulnerabilidad conocida, que contaba con corrección disponible, reflejó deficiencias
+							críticas en la gestión de parches, la supervisión técnica y la priorización del riesgo.
+							</p>
+
+							<p>
+							Asimismo, la ausencia de una gobernanza sólida en seguridad de la información permitió
+							que la intrusión permaneciera activa durante un periodo prolongado sin detección. La
+							limitada coordinación entre áreas técnicas, legales y directivas demostró que la
+							ciberseguridad no estaba integrada como un elemento estratégico en la toma de
+							decisiones, lo que amplificó el impacto financiero, regulatorio y reputacional del incidente.
+							</p>
+
+							<p>
+							En el contexto latinoamericano, donde muchas organizaciones gestionan grandes
+							volúmenes de datos sensibles en entornos de creciente digitalización y recursos
+							limitados, este caso deja lecciones claras y aplicables. Resulta fundamental priorizar
+							controles preventivos básicos como la gestión verificable de vulnerabilidades, la
+							segmentación de redes y el monitoreo continuo, antes de invertir en soluciones complejas
+							o reactivas. Asimismo, es indispensable fortalecer el liderazgo ejecutivo en materia de
+							ciberseguridad, integrando la gestión de riesgos tecnológicos al gobierno corporativo y a
+							la estrategia del negocio.
+							</p>
+
+							<p>
+							Ignorar estas prácticas no solo incrementa la probabilidad de incidentes similares, sino
+							que compromete la continuidad operativa, la confianza de clientes y reguladores, y la
+							sostenibilidad institucional a largo plazo. El caso Equifax demuestra que, para las
+							organizaciones latinoamericanas, la prevención, la disciplina operativa y el liderazgo en
+							seguridad representan una ventaja competitiva y no un costo adicional.
+							</p>
+							
+							<ul class="actions">
+								<li>
+									<a href="docs/180370-act01.pdf" class="button" download>
+										Descargar actividad
+									</a>
+								</li>
+							</ul>
+
+						</article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

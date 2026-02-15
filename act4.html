@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #4 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+						<article id="content">
+							<header>
+								<h2>ACTIVIDAD #4</h2>
+							</header>
+							
+							<h3>Reglas de Firewall (iptables)</h3>
+
+							<a class="image featured"><img src="images/act4_t1.PNG" alt="Diagrama de reglas de firewall" /></a>
+
+							<hr>
+
+							<h4>Regla 1</h4>
+							<p><strong>Comando:</strong> iptables -P INPUT DROP && iptables -P OUTPUT DROP && iptables -P FORWARD DROP</p>
+							<ul>
+							  <li>Establece política por defecto DROP para INPUT, OUTPUT y FORWARD.</li>
+							  <li>Bloquea todo el tráfico que no esté explícitamente permitido.</li>
+							</ul>
+
+							<hr>
+
+							<h4>Regla 2</h4>
+							<p><strong>Comando:</strong> iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</p>
+							<ul>
+							  <li>Permite tráfico entrante de conexiones ya establecidas o relacionadas.</li>
+							  <li>Evita bloquear respuestas a conexiones legítimas.</li>
+							</ul>
+
+							<hr>
+
+							<h4>Regla 3</h4>
+							<p><strong>Comando:</strong> iptables -A OUTPUT -p tcp -s 192.1.2.0/24 -j ACCEPT</p>
+							<ul>
+							  <li>Permite tráfico TCP saliente desde la red 192.1.2.0/24.</li>
+							  <li>Habilita comunicación externa para esa subred.</li>
+							</ul>
+
+							<hr>
+
+							<h4>Regla 4</h4>
+							<p><strong>Comando:</strong> iptables -A INPUT -p tcp -d 192.1.2.10 --dport 25 -m state --state NEW -j ACCEPT</p>
+							<ul>
+							  <li>Permite nuevas conexiones TCP entrantes al puerto 25 (SMTP).</li>
+							  <li>Destino específico: 192.1.2.10 (servidor de correo).</li>
+							</ul>
+
+							<hr>
+
+							<h4>Regla 5</h4>
+							<p><strong>Comando:</strong> iptables -A OUTPUT -p tcp -s 192.1.2.10 --sport 25 -j ACCEPT</p>
+							<ul>
+							  <li>Permite tráfico saliente desde el puerto 25 del servidor 192.1.2.10.</li>
+							  <li>Autoriza respuestas del servicio SMTP.</li>
+							</ul>
+
+							<hr>
+
+							<h4>Regla 6</h4>
+							<p><strong>Comando:</strong> iptables -A INPUT -p tcp -d 192.1.2.11 --dport 80 -m state --state NEW -j ACCEPT</p>
+							<ul>
+							  <li>Permite nuevas conexiones TCP entrantes al puerto 80 (HTTP).</li>
+							  <li>Destino específico: 192.1.2.11 (servidor web).</li>
+							</ul>
+
+							<hr>
+
+							<h4>Regla 7</h4>
+							<p><strong>Comando:</strong> iptables -A OUTPUT -p tcp -s 192.1.2.0/24 --dport 80 -j ACCEPT</p>
+							<ul>
+							  <li>Permite tráfico TCP saliente hacia el puerto 80.</li>
+							  <li>Habilita navegación web desde la red 192.1.2.0/24.</li>
+							</ul>
+
+							<ul class="actions">
+								<li>
+									<a href="docs/180370-act04.pdf" class="button" download>
+										Descargar actividad
+									</a>
+								</li>
+							</ul>
+
+						</article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
