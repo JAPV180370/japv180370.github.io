@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #6 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+						<article id="content">
+							<header>
+								<h2>ACTIVIDAD #6</h2>
+							</header>
+							
+							<h3>1. Objetivo</h3>
+							<li>Configurar una VPN Site-to-Site con IPSec.</li>
+							<li>Permitir comunicación segura entre dos redes.</li>
+							<li>Proteger la información mediante cifrado.</li>
+
+							<hr>
+
+							<h3>2. Descripción de la Topología</h3>
+							<li>La red está conformada por R1, ISP y R3.</li>
+							<li>El router ISP simula Internet.</li>
+							<li>Las redes son 192.168.1.0/24 y 192.168.3.0/24.</li>
+							
+							<a class="image featured"><img src="images/act6_t1.PNG"/></a>
+
+							<hr>
+
+							<h3>3. Habilitación del Módulo de Seguridad</h3>
+							<li>Se activó el paquete securityk9.</li>
+							<li>Se habilitaron funciones de seguridad.</li>
+							<li>Se reinició el router.</li>
+							
+							<a class="image featured"><img src="images/act6_t2.PNG"/></a>
+
+							<hr>
+
+							<h3>4. Configuración Básica de Red</h3>
+							<li>Se configuraron interfaces LAN y WAN.</li>
+							<li>Se asignaron direcciones IP.</li>
+							<li>Se configuraron rutas.</li>
+							<li>Se probó conectividad.</li>
+							
+							<a class="image featured"><img src="images/act6_t3.PNG"/></a>
+							<a class="image featured"><img src="images/act6_t4.PNG"/></a>
+							<a class="image featured"><img src="images/act6_t5.PNG"/></a>
+							<a class="image featured"><img src="images/act6_t6.PNG"/></a>
+
+							<hr>
+
+							<h3>5. Configuración de IPSec en R1</h3>
+							<li>Se creó política ISAKMP.</li>
+							<li>Se configuró clave precompartida.</li>
+							<li>Se creó transform-set.</li>
+							<li>Se configuró crypto map.</li>
+							<li>Se aplicó en interfaz WAN.</li>
+							<li>Se creó ACL.</li>
+							
+							<a class="image featured"><img src="images/act6_t7.PNG"/></a>
+
+							<hr>
+
+							<h3>6. Configuración de IPSec en R3</h3>
+							<li>Configuración espejo de R1.</li>
+							<li>Ajuste de direcciones IP.</li>
+							<li>Verificación de parámetros.</li>
+							<li>Aplicación en interfaz WAN.</li>
+
+							<hr>
+
+							<h3>7. Verificación del Túnel VPN</h3>
+							<li>Uso de show crypto isakmp sa.</li>
+							<li>Uso de show crypto ipsec sa.</li>
+							<li>Revisión de estado QM_IDLE.</li>
+							<li>Pruebas con ping.</li>
+
+							<hr>
+
+							<h3>8. Resultados Obtenidos</h3>
+							<li>Comunicación establecida.</li>
+							<li>Tráfico cifrado.</li>
+							<li>Túnel funcional.</li>
+							<li>Sin pérdida de datos.</li>
+
+							<a class="image featured"><img src="images/act6_t8.PNG"/></a>
+							
+							<hr>
+
+							<h3>9. Conclusiones</h3>
+							<li>Comprensión del VPN Site-to-Site.</li>
+							<li>Aplicación de IPSec.</li>
+							<li>Refuerzo en seguridad.</li>
+							<li>Objetivo cumplido.</li>
+							
+							<a class="image featured"><img src="images/act6_t9.PNG"/></a>
+
+							<hr>
+
+							<h3>10. Recomendaciones</h3>
+							<li>Usar contraseñas seguras.</li>
+							<li>Implementar certificados.</li>
+							<li>Respaldar configuraciones.</li>
+							<li>Documentar cambios.</li>
+							<li>Hacer pruebas periódicas.</li>
+
+							<hr>
+
+							<ul class="actions">
+								<li>
+									<a href="docs/180370-act06.pdf" class="button" download>
+										Descargar actividad
+									</a>
+								</li>
+							</ul>
+
+						</article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
