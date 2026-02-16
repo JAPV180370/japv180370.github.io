@@ -32,97 +32,263 @@
 							<header>
 								<h2>ACTIVIDAD #3</h2>
 							</header>
-							
-							<h3>1. Flujo del paquete</h3>
+
 							<p>
-							  Cuando un paquete llega al sistema, primero pasa por una <b>tabla</b>, después por una <b>cadena</b> y finalmente se ejecuta una <b>acción</b>.
+							El presente cuestionario aborda conceptos fundamentales del filtrado de paquetes en sistemas 
+							GNU/Linux mediante <strong>iptables</strong>, herramienta basada en <strong>Netfilter</strong> que permite 
+							implementar controles de acceso a nivel de red. El dominio de estos comandos es clave dentro 
+							de la administración segura de servidores, ya que permite aplicar políticas de control de tráfico 
+							alineadas a principios como mínimo privilegio y defensa en profundidad.
+							</p>
+
+							<p>
+							La configuración correcta de un firewall host-based reduce significativamente la superficie de ataque, 
+							mitigando amenazas como escaneo de puertos, accesos no autorizados y explotación de servicios expuestos.
 							</p>
 
 							<hr>
 
-							<h3>2. Tablas de iptables y su propósito</h3>
+							<h3>1. Recorrido de un paquete dentro del firewall</h3>
+
+							<p>
+							Cuando un paquete entra o sale del sistema, el kernel lo procesa a través de una <strong>tabla</strong>, 
+							posteriormente pasa por una <strong>cadena</strong> (chain) y finalmente se ejecuta un <strong>objetivo</strong> 
+							(target) como ACCEPT, DROP o LOG.
+							</p>
+
+							<p>
+							Este flujo permite aplicar reglas organizadas por función (filtrado, traducción de direcciones, etc.), 
+							garantizando un control granular del tráfico.
+							</p>
+
+							<hr>
+
+							<h3>2. Tablas principales y su función operativa</h3>
+
 							<ul>
-							  <li><b>FILTER</b> – Permitir o bloquear tráfico – Ejemplo: Bloquear conexiones SSH</li>
-							  <li><b>NAT</b> – Traducción de direcciones y puertos – Ejemplo: Compartir internet</li>
-							  <li><b>MANGLE</b> – Modificar paquetes avanzados – Ejemplo: Cambiar marcas de paquetes</li>
-							  <li><b>RAW</b> – Excepciones de seguimiento – Ejemplo: Desactivar conntrack</li>
-							  <li><b>SECURITY</b> – Aplicar etiquetas de seguridad – Ejemplo: Contextos de seguridad</li>
+							<li><b>FILTER:</b> Tabla predeterminada para permitir o bloquear tráfico.<br>
+							Ejemplo: Bloquear conexiones SSH no autorizadas.</li>
+
+							<li><b>NAT:</b> Traducción de direcciones IP y puertos.<br>
+							Ejemplo: Compartir conexión a internet mediante enmascaramiento (MASQUERADE).</li>
+
+							<li><b>MANGLE:</b> Modificación avanzada de paquetes (marcado, QoS).</li>
+
+							<li><b>RAW:</b> Permite excepciones en el seguimiento de conexiones (conntrack).</li>
+
+							<li><b>SECURITY:</b> Integración con módulos de seguridad como SELinux.</li>
+							</ul>
+
+							<p>
+							Estas funciones están documentadas en recursos técnicos en español como:
+							</p>
+
+							<ul>
+							<li>Documentación oficial de Netfilter (traducciones comunitarias)</li>
+							<li>Guía de iptables en <i>Red Hat Enterprise Linux</i> (accesible en español)</li>
+							<li>Manual de administración de servidores Linux en <i>Ubuntu Server</i></li>
+							<li>Portal especializado en seguridad informática de INCIBE (España)</li>
 							</ul>
 
 							<hr>
 
-							<h3>3. Anatomía de un comando iptables</h3>
-							<p><b>iptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT</b></p>
+							<h3>3. Estructura de un comando típico</h3>
 
-							<hr>
+							<pre>
+							iptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT
+							</pre>
 
-							<h3>4. ¿Qué permite este comando?</h3>
-							<p><b>Permite el tráfico TCP entrante a los puertos 80 y 443 (HTTP y HTTPS).</b></p>
+							<p>
+							Desglose técnico:
+							</p>
 
-							<hr>
-
-							<h3>5. Variables y opciones comunes</h3>
-
-							<h4>a) Limitar intentos por minuto</h4>
 							<ul>
-							  <li><b>--limit</b></li>
-							</ul>
-
-							<h4>b) Filtrar por IP de origen</h4>
-							<ul>
-							  <li><b>-s</b></li>
-							</ul>
-
-							<h4>c) Ver solo números, sin DNS</h4>
-							<ul>
-							  <li><b>-n</b></li>
-							</ul>
-
-							<h4>d) Ver reglas con contadores</h4>
-							<ul>
-							  <li><b>-v</b></li>
+							<li><b>-A INPUT:</b> Agrega la regla a la cadena INPUT.</li>
+							<li><b>-p tcp:</b> Aplica únicamente a protocolo TCP.</li>
+							<li><b>-m multiport:</b> Permite evaluar múltiples puertos.</li>
+							<li><b>--dports 80,443:</b> Puertos destino HTTP y HTTPS.</li>
+							<li><b>-j ACCEPT:</b> Acción final: permitir tráfico.</li>
 							</ul>
 
 							<hr>
 
-							<h3>6. ¿Qué hace esta regla?</h3>
-							<p>iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT</p>
-							<p><b>Permite tráfico TCP entrante por la interfaz eth0 en los puertos 22, 80 y 443, solo si la conexión es nueva o ya está establecida.</b></p>
+							<h3>4. Interpretación funcional</h3>
+
+							<p>
+							La regla permite tráfico TCP entrante hacia los puertos 80 y 443, 
+							habilitando servicios web HTTP y HTTPS en el servidor.
+							</p>
 
 							<hr>
 
-							<h3>7. Permitir tráfico HTTP entrante</h3>
-							<p><b>iptables -A INPUT -p tcp --dport 80 -j ACCEPT</b></p>
+							<h3>5. Opciones frecuentes en reglas de seguridad</h3>
+
+							<h4>a) Control de tasa de intentos</h4>
+							<ul>
+							<li><b>--limit</b> → Útil para mitigar ataques de fuerza bruta o DoS básicos.</li>
+							</ul>
+
+							<h4>b) Filtrado por dirección IP origen</h4>
+							<ul>
+							<li><b>-s</b> → Restringe acceso a direcciones específicas.</li>
+							</ul>
+
+							<h4>c) Visualización sin resolución DNS</h4>
+							<ul>
+							<li><b>-n</b> → Muestra direcciones numéricas, agilizando consultas.</li>
+							</ul>
+
+							<h4>d) Mostrar estadísticas de tráfico</h4>
+							<ul>
+							<li><b>-v</b> → Incluye contadores de paquetes y bytes.</li>
+							</ul>
 
 							<hr>
 
-							<h3>8. Permitir todo el tráfico saliente</h3>
-							<p><b>iptables -A OUTPUT -j ACCEPT</b></p>
+							<h3>6. Análisis de regla con control de estado</h3>
+
+							<pre>
+							iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 
+							-m state --state NEW,ESTABLISHED -j ACCEPT
+							</pre>
+
+							<p>
+							Esta configuración permite tráfico TCP entrante por la interfaz <b>eth0</b> 
+							en los puertos 22 (SSH), 80 (HTTP) y 443 (HTTPS), 
+							únicamente si la conexión es nueva o ya está establecida.
+							</p>
+
+							<p>
+							El uso de <b>state</b> o <b>conntrack</b> implementa un firewall con inspección 
+							de estado (stateful firewall), aumentando el nivel de seguridad frente a paquetes inválidos.
+							</p>
 
 							<hr>
 
-							<h3>9. Permitir SSH solo desde la IP 192.168.1.50</h3>
-							<p><b>iptables -A INPUT -p tcp --dport 22 -s 192.168.1.50 -j ACCEPT</b></p>
+							<h3>7. Habilitar servicio web</h3>
+
+							<pre>
+							iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+							</pre>
+
+							<p>
+							Permite tráfico HTTP entrante hacia el servidor.
+							</p>
 
 							<hr>
 
-							<h3>10. Permitir tráfico TCP entrante a 80 y 443 solo si es conexión establecida o relacionada</h3>
-							<p><b>iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</b></p>
+							<h3>8. Política permisiva de salida</h3>
+
+							<pre>
+							iptables -A OUTPUT -j ACCEPT
+							</pre>
+
+							<p>
+							Autoriza todo el tráfico saliente. En entornos productivos se recomienda 
+							definir reglas más restrictivas según el principio de mínimo privilegio.
+							</p>
 
 							<hr>
 
-							<h3>11. Registrar y permitir tráfico TCP por eth0 (22, 80 y 443)</h3>
+							<h3>9. Restringir SSH a una IP específica</h3>
 
-							<h4>Registrar intentos</h4>
-							<p><b>iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m conntrack --ctstate NEW -j LOG --log-prefix "Firewall: "</b></p>
+							<pre>
+							iptables -A INPUT -p tcp --dport 22 -s 192.168.1.50 -j ACCEPT
+							</pre>
 
-							<h4>Permitir conexiones</h4>
-							<p><b>iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT</b></p>
+							<p>
+							Permite acceso SSH únicamente desde la IP indicada, reduciendo la exposición 
+							a ataques automatizados.
+							</p>
 
-							<h4>Permitir respuestas</h4>
-							<p><b>iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</b></p>
+							<hr>
 
+							<h3>10. Permitir únicamente conexiones establecidas o relacionadas</h3>
 
+							<pre>
+							iptables -A INPUT -p tcp -m multiport --dports 80,443 
+							-m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+							</pre>
+
+							<p>
+							Refuerza la seguridad permitiendo únicamente tráfico asociado a conexiones 
+							ya iniciadas o relacionadas con una sesión válida.
+							</p>
+
+							<hr>
+
+							<h3>11. Registro y autorización controlada</h3>
+
+							<h4>Registro de intentos nuevos</h4>
+							<pre>
+							iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 
+							-m conntrack --ctstate NEW -j LOG --log-prefix "Firewall: "
+							</pre>
+
+							<h4>Permitir conexiones válidas</h4>
+							<pre>
+							iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 
+							-m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+							</pre>
+
+							<h4>Permitir tráfico de respuesta</h4>
+							<pre>
+							iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+							</pre>
+
+							<p>
+							El registro previo permite auditoría y análisis forense, práctica alineada 
+							a buenas prácticas recomendadas por organismos como INCIBE y manuales 
+							de endurecimiento de servidores Linux.
+							</p>
+
+							<hr>
+
+							<h3>Aplicación en un entorno típico</h3>
+
+							<pre>
+											Internet
+												|
+											[Router]
+												|
+											[Firewall Linux]
+												|
+											[Servidor Web]
+							</pre>
+
+							<p>
+							En esta topología básica, el firewall host-based controla el tráfico antes 
+							de que llegue al servicio web, reduciendo riesgos de explotación remota.
+							</p>
+
+							<hr>
+
+							<h3>Conclusión</h3>
+
+							<p>
+							En entornos reales, especialmente en pequeñas y medianas empresas en México, 
+							es común encontrar servidores Linux expuestos sin reglas adecuadas de filtrado. 
+							Muchas veces se confía únicamente en el firewall perimetral, dejando desprotegidos 
+							los servicios internos.
+							</p>
+
+							<p>
+							La correcta implementación de iptables, combinada con monitoreo de logs y 
+							segmentación de red, fortalece significativamente la postura de seguridad. 
+							Sin embargo, su configuración debe realizarse con conocimiento técnico sólido, 
+							ya que una regla mal definida puede generar indisponibilidad o dejar brechas abiertas.
+							</p>
+
+							<hr>
+
+							<h3>Fuentes de consulta en español</h3>
+
+							<ul>
+							<li>Guía de iptables – Documentación oficial de Red Hat (versión en español).</li>
+							<li>Manual de administración de Ubuntu Server (sección de firewall).</li>
+							<li>Portal de ciberseguridad del INCIBE (Instituto Nacional de Ciberseguridad de España).</li>
+							<li>Comunidad Linux y manuales técnicos disponibles en documentación GNU.</li>
+							</ul>
 							
 							<ul class="actions">
 								<li>
