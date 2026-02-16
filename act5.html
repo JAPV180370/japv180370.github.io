@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Actividad #6 - 180370</title>
+		<title>Actividad #5 - 180370</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -30,216 +30,195 @@
 						<!-- Content -->
 						<article id="content">
 							<header>
-								<h2>ACTIVIDAD #6</h2>
+								<h2>ACTIVIDAD #5</h2>
 							</header>
 
 							<p>
-							Las redes privadas virtuales (VPN) Site-to-Site permiten interconectar dos redes 
-							geográficamente separadas a través de un medio no confiable como Internet, 
-							garantizando confidencialidad, integridad y autenticación mediante protocolos 
-							criptográficos como IPSec.
+							Las metodologías y marcos de referencia en ciberseguridad permiten estandarizar procesos 
+							de evaluación, detección y respuesta ante amenazas. Su correcta selección depende del 
+							objetivo del ejercicio (auditoría, pentesting, monitoreo o cumplimiento normativo) y del 
+							contexto organizacional.
 							</p>
 
 							<p>
-							En esta práctica se configuró un túnel IPSec entre dos routers, simulando un 
-							escenario empresarial donde dos sucursales requieren comunicación segura 
-							sobre infraestructura pública.
+							A continuación, se presenta un análisis comparativo con enfoque técnico y aplicado 
+							a escenarios reales de seguridad informática.
 							</p>
 
 							<hr>
 
-							<h3>Propósito de la práctica</h3>
+							<h3>MITRE ATT&amp;CK</h3>
 
 							<ul>
-							  <li>Configurar un túnel VPN Site-to-Site utilizando IPSec.</li>
-							  <li>Permitir comunicación segura entre dos redes remotas.</li>
-							  <li>Proteger la información mediante cifrado y autenticación.</li>
+							  <li><strong>Definición general:</strong> Marco de conocimiento que documenta tácticas, técnicas y procedimientos (TTPs) utilizados por atacantes reales en distintos entornos (Enterprise, Mobile y Cloud).</li>
+							  
+							  <li><strong>Estructura metodológica:</strong> Se organiza en tácticas (objetivos del atacante) y técnicas/subtécnicas, no en fases secuenciales tradicionales.</li>
+							  
+							  <li><strong>Propósito central:</strong> Mejorar la detección, la respuesta y el análisis de amenazas mediante mapeo de comportamientos adversarios.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Centros de Operaciones de Seguridad (SOC), equipos Blue Team, Red Team y análisis de inteligencia de amenazas.</li>
+							  
+							  <li><strong>Enfoque:</strong> Defensa estratégica y evaluación técnica.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> MITRE Corporation.</li>
+							  
+							  <li><strong>Certificaciones asociadas:</strong> No posee certificación oficial propia, pero es ampliamente usado en programas de formación avanzada.</li>
+							  
+							  <li><strong>Actualización:</strong> Versiones con mejoras continuas y ampliación de técnicas.</li>
 							</ul>
 
 							<hr>
 
-							<h3>Arquitectura de red implementada</h3>
+							<h3>OWASP WSTG (Web Security Testing Guide)</h3>
 
 							<ul>
-							  <li>Dispositivos involucrados: R1 – ISP – R3.</li>
-							  <li>El router ISP simula la red pública (Internet).</li>
-							  <li>Red LAN 1: 192.168.1.0/24.</li>
-							  <li>Red LAN 2: 192.168.3.0/24.</li>
+							  <li><strong>Definición general:</strong> Guía metodológica para la evaluación de vulnerabilidades en aplicaciones web.</li>
+							  
+							  <li><strong>Fases de trabajo:</strong> Recolección de información, análisis de configuración, pruebas de autenticación, autorización, validación de entradas, explotación controlada y reporte.</li>
+							  
+							  <li><strong>Propósito central:</strong> Identificar fallas como inyección SQL, XSS, fallas de autenticación o mala configuración.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Bancos, fintech, plataformas de comercio electrónico y cualquier sistema web expuesto a Internet.</li>
+							  
+							  <li><strong>Enfoque:</strong> Evaluación técnica y hacking ético.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> OWASP Foundation.</li>
+							  
+							  <li><strong>Certificaciones relacionadas:</strong> Base de conocimiento para certificaciones como eWPT y preparación para OSCP.</li>
+							  
+							  <li><strong>Versión vigente:</strong> Serie 4.x en uso activo.</li>
 							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t1.PNG" alt="Topología VPN Site-to-Site"/>
-							</a>
-
-							<p>
-							Representación lógica simplificada:
-							</p>
-
-							<pre>
-							  LAN 1 (192.168.1.0/24)
-									  |
-									[R1]
-									  |
-									(ISP)
-									  |
-									[R3]
-									  |
-							  LAN 2 (192.168.3.0/24)
-							</pre>
-
-							<p>
-							El tráfico entre ambas LAN viaja cifrado a través del túnel IPSec.
-							</p>
 
 							<hr>
 
-							<h3>Activación de capacidades criptográficas</h3>
+							<h3>NIST SP 800-115</h3>
 
 							<ul>
-							  <li>Se habilitó el paquete <strong>securityk9</strong>.</li>
-							  <li>Se activaron funciones criptográficas necesarias.</li>
-							  <li>Se reinició el equipo para aplicar cambios.</li>
+							  <li><strong>Definición general:</strong> Guía técnica para pruebas y evaluación de seguridad en sistemas de información.</li>
+							  
+							  <li><strong>Etapas metodológicas:</strong> Planeación, descubrimiento, pruebas técnicas (escaneo y explotación controlada) y elaboración de informe.</li>
+							  
+							  <li><strong>Propósito central:</strong> Gestionar riesgos y asegurar cumplimiento en entornos gubernamentales y corporativos.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Dependencias gubernamentales, empresas con requisitos regulatorios y auditorías formales.</li>
+							  
+							  <li><strong>Enfoque:</strong> Evaluación estructurada orientada a cumplimiento.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> National Institute of Standards and Technology (NIST).</li>
+							  
+							  <li><strong>Certificaciones relacionadas:</strong> Marco de referencia conceptual para CISSP y CISA.</li>
+							  
+							  <li><strong>Estado:</strong> Documento vigente como referencia técnica.</li>
 							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t2.PNG" alt="Habilitación de módulo de seguridad"/>
-							</a>
-
-							<p>
-							Este paso es indispensable en routers Cisco que requieren licencia para 
-							funciones de cifrado.
-							</p>
 
 							<hr>
 
-							<h3>Configuración inicial de conectividad</h3>
+							<h3>OSSTMM</h3>
 
 							<ul>
-							  <li>Configuración de interfaces LAN y WAN.</li>
-							  <li>Asignación de direcciones IP.</li>
-							  <li>Definición de rutas estáticas.</li>
+							  <li><strong>Definición general:</strong> Metodología integral que evalúa seguridad en redes, telecomunicaciones, procesos humanos y seguridad física.</li>
+							  
+							  <li><strong>Componentes metodológicos:</strong> Análisis de vectores operativos, medición mediante métricas cuantitativas (RAV), validación técnica y reporte.</li>
+							  
+							  <li><strong>Propósito central:</strong> Medir el nivel real de exposición y seguridad operativa.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Auditorías empresariales completas y evaluaciones de infraestructura crítica.</li>
+							  
+							  <li><strong>Enfoque:</strong> Auditoría técnica cuantificable.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> ISECOM (Institute for Security and Open Methodologies).</li>
+							  
+							  <li><strong>Certificaciones:</strong> No cuenta con certificación oficial ampliamente adoptada.</li>
+							  
+							  <li><strong>Versión vigente:</strong> Serie 3.x.</li>
 							</ul>
-
-							<a class="image featured"><img src="images/act6_t3.PNG" alt="Configuración interfaz"/></a>
-							<a class="image featured"><img src="images/act6_t4.PNG" alt="Configuración rutas"/></a>
-							<a class="image featured"><img src="images/act6_t5.PNG" alt="Prueba de conectividad"/></a>
-							<a class="image featured"><img src="images/act6_t6.PNG" alt="Verificación red"/></a>
-
-							<p>
-							Antes de implementar IPSec, es obligatorio confirmar conectividad entre extremos WAN.
-							</p>
 
 							<hr>
 
-							<h3>Configuración criptográfica en R1</h3>
+							<h3>PTES (Penetration Testing Execution Standard)</h3>
 
 							<ul>
-							  <li>Creación de política ISAKMP (Fase 1).</li>
-							  <li>Definición de clave precompartida.</li>
-							  <li>Configuración de transform-set (Fase 2).</li>
-							  <li>Creación y aplicación de crypto map.</li>
-							  <li>Definición de ACL para tráfico interesante.</li>
+							  <li><strong>Definición general:</strong> Estándar práctico que estructura pruebas de penetración profesionales.</li>
+							  
+							  <li><strong>Fases:</strong> Pre-engagement, recopilación de información, modelado de amenazas, explotación, post-explotación y reporte.</li>
+							  
+							  <li><strong>Propósito central:</strong> Ejecutar pruebas de intrusión completas y documentadas.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Consultoras de ciberseguridad y servicios de ethical hacking.</li>
+							  
+							  <li><strong>Enfoque:</strong> Ataque controlado y evaluación técnica.</li>
+							  
+							  <li><strong>Responsable:</strong> Comunidad abierta PTES.</li>
+							  
+							  <li><strong>Certificaciones relacionadas:</strong> Referencia conceptual para OSCP y CEH.</li>
+							  
+							  <li><strong>Estado:</strong> Estándar activo mantenido por comunidad.</li>
 							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t7.PNG" alt="Configuración IPSec R1"/>
-							</a>
-
-							<p>
-							La Fase 1 establece el canal seguro de negociación y la Fase 2 protege el tráfico de datos.
-							</p>
 
 							<hr>
 
-							<h3>Configuración espejo en R3</h3>
+							<h3>ISSAF (Information Systems Security Assessment Framework)</h3>
 
 							<ul>
-							  <li>Replicación de parámetros criptográficos.</li>
-							  <li>Ajuste de direcciones IP remotas.</li>
-							  <li>Validación de coincidencia de políticas.</li>
-							  <li>Aplicación del crypto map en interfaz WAN.</li>
+							  <li><strong>Definición general:</strong> Marco metodológico para evaluación técnica y organizacional de seguridad.</li>
+							  
+							  <li><strong>Fases:</strong> Recopilación de información, mapeo de infraestructura, explotación controlada y análisis de resultados.</li>
+							  
+							  <li><strong>Propósito central:</strong> Evaluar infraestructura tecnológica y controles administrativos.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Auditorías tradicionales de seguridad.</li>
+							  
+							  <li><strong>Enfoque:</strong> Evaluación técnica estructurada.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> Open Information Systems Security Group (OISSG).</li>
+							  
+							  <li><strong>Actualización:</strong> Marco con menor mantenimiento en la actualidad.</li>
 							</ul>
-
-							<p>
-							La correcta coincidencia de parámetros es crítica para el establecimiento del túnel.
-							</p>
-
-							<hr>
-
-							<h3>Validación del túnel IPSec</h3>
-
-							<ul>
-							  <li>Comando: <strong>show crypto isakmp sa</strong></li>
-							  <li>Comando: <strong>show crypto ipsec sa</strong></li>
-							  <li>Verificación de estado <strong>QM_IDLE</strong>.</li>
-							  <li>Pruebas de conectividad entre LANs.</li>
-							</ul>
-
-							<p>
-							El estado QM_IDLE indica que la negociación fue exitosa y el túnel está activo.
-							</p>
-
-							<hr>
-
-							<h3>Resultados observados</h3>
-
-							<ul>
-							  <li>Comunicación bidireccional establecida.</li>
-							  <li>Tráfico cifrado correctamente.</li>
-							  <li>Túnel IPSec operativo.</li>
-							  <li>Sin pérdida de paquetes en pruebas realizadas.</li>
-							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t8.PNG" alt="Verificación túnel activo"/>
-							</a>
 
 							<hr>
 
 							<h3>Conclusión</h3>
 
 							<p>
-							La implementación del túnel VPN Site-to-Site permitió comprender de forma práctica 
-							el funcionamiento de IPSec, incluyendo la negociación ISAKMP (Fase 1) y la protección 
-							de datos en Fase 2. Este tipo de configuración es ampliamente utilizado en empresas 
-							para conectar sucursales de manera segura sin depender de enlaces dedicados.
+							Cada metodología analizada responde a necesidades distintas dentro del ecosistema 
+							de la seguridad informática. Mientras que MITRE ATT&amp;CK fortalece la detección 
+							basada en comportamiento adversario, OWASP WSTG y PTES se enfocan en pruebas 
+							técnicas ofensivas, y NIST SP 800-115 proporciona una estructura formal alineada 
+							a gestión de riesgos y cumplimiento normativo.
 							</p>
 
 							<p>
-							En entornos reales, una mala configuración de parámetros criptográficos o ACL puede 
-							impedir el establecimiento del túnel o dejar expuesto tráfico sensible. Por ello, 
-							es fundamental validar cada etapa, documentar configuraciones y aplicar buenas 
-							prácticas como el uso de algoritmos robustos y autenticación fuerte.
+							En el contexto profesional en México y Latinoamérica, la selección adecuada 
+							de una metodología depende del nivel de madurez de la organización. Empresas 
+							con procesos formales suelen adoptar marcos como NIST, mientras que equipos 
+							técnicos de pentesting se apoyan en PTES u OWASP. Por su parte, los SOC modernos 
+							integran MITRE ATT&amp;CK para mapear eventos detectados y mejorar su capacidad 
+							de respuesta.
 							</p>
 
-							<a class="image featured">
-							  <img src="images/act6_t9.PNG" alt="Conclusión práctica"/>
-							</a>
-
-							<hr>
-
-							<h3>Buenas prácticas adicionales</h3>
-
-							<ul>
-							  <li>Utilizar contraseñas robustas o certificados digitales.</li>
-							  <li>Respaldar configuraciones periódicamente.</li>
-							  <li>Documentar cambios en bitácora técnica.</li>
-							  <li>Realizar pruebas de continuidad operativa.</li>
-							  <li>Actualizar firmware y parches de seguridad.</li>
-							</ul>
+							<p>
+							Comprender las diferencias conceptuales y operativas entre estos marcos permite 
+							aplicar el enfoque correcto según el objetivo: auditoría, evaluación ofensiva, 
+							cumplimiento o fortalecimiento de capacidades defensivas.
+							</p>
 
 							<hr>
 
 							<h3>Referencias</h3>
 
 							<ul>
-							  <li>Cómo configurar VPN IPsec Site-to-Site en Packet Tracer | Guía Paso a Paso: https://www.youtube.com/watch?v=RZ4RreDjhhk</li>
+							  <li>MITRE ATT&amp;CK – Sitio oficial: https://attack.mitre.org</li>
+							  <li>OWASP Web Security Testing Guide: https://owasp.org/www-project-web-security-testing-guide/</li>
+							  <li>NIST SP 800-115 (Guía técnica): https://csrc.nist.gov/publications/detail/sp/800-115/final</li>
+							  <li>OSSTMM – ISECOM: https://www.isecom.org/OSSTMM.3.pdf</li>
+							  <li>PTES – Penetration Testing Execution Standard: http://www.pentest-standard.org/</li>
+							  <li>ISSAF – Documentación académica: https://bibdigital.epn.edu.ec/handle/15000/16740</li>
 							</ul>
 
 
 							<ul class="actions">
 								<li>
-									<a href="docs/180370-act06.pdf" class="button" download>
+									<a href="docs/180370-act05.pdf" class="button" download>
 										Descargar actividad
 									</a>
 								</li>
