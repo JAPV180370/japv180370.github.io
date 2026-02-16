@@ -32,89 +32,189 @@
 							<header>
 								<h2>ACTIVIDAD #5</h2>
 							</header>
-							
-							<h3>MITRE ATT&CK</h3>
-							<ul>
-							  <li><strong>Descripción breve:</strong> Marco que documenta técnicas reales usadas por atacantes.</li>
-							  <li><strong>Fases de implementación:</strong> Basado en tácticas y técnicas (TTPs), no fases formales.</li>
-							  <li><strong>Objetivo principal:</strong> Mejorar detección y respuesta ante ataques.</li>
-							  <li><strong>Escenarios de uso:</strong> SOC, Blue Team, Red Team, monitoreo de amenazas.</li>
-							  <li><strong>Orientación:</strong> Defensa / Evaluación</li>
-							  <li><strong>Autor / Organismo responsable:</strong> MITRE Corporation</li>
-							  <li><strong>URL de material:</strong> <a href="https://attack.mitre.org" target="_blank">https://attack.mitre.org</a></li>
-							  <li><strong>Certificaciones:</strong> No directa</li>
-							  <li><strong>Versiones vigentes:</strong> Actualizaciones frecuentes</li>
-							</ul>
+
+							<p>
+							Las metodologías y marcos de referencia en ciberseguridad permiten estandarizar procesos 
+							de evaluación, detección y respuesta ante amenazas. Su correcta selección depende del 
+							objetivo del ejercicio (auditoría, pentesting, monitoreo o cumplimiento normativo) y del 
+							contexto organizacional.
+							</p>
+
+							<p>
+							A continuación, se presenta un análisis comparativo con enfoque técnico y aplicado 
+							a escenarios reales de seguridad informática.
+							</p>
+
 							<hr>
 
-							<h3>OWASP WSTG</h3>
+							<h3>MITRE ATT&amp;CK</h3>
+
 							<ul>
-							  <li><strong>Descripción breve:</strong> Guía para evaluar vulnerabilidades en aplicaciones web.</li>
-							  <li><strong>Fases de implementación:</strong> Revisión, análisis, pruebas manuales, explotación y reporte.</li>
-							  <li><strong>Objetivo principal:</strong> Detectar fallas en aplicaciones web.</li>
-							  <li><strong>Escenarios de uso:</strong> Bancos, fintech, e-commerce.</li>
-							  <li><strong>Orientación:</strong> Evaluación / Ataque ético</li>
-							  <li><strong>Autor / Organismo responsable:</strong> OWASP Foundation</li>
-							  <li><strong>URL de material:</strong> <a href="https://owasp.org/www-project-web-security-testing-guide/" target="_blank">https://owasp.org/www-project-web-security-testing-guide/</a></li>
-							  <li><strong>Certificaciones:</strong> Base para eWPT, OSCP</li>
-							  <li><strong>Versiones vigentes:</strong> Versión 4.x activa</li>
+							  <li><strong>Definición general:</strong> Marco de conocimiento que documenta tácticas, técnicas y procedimientos (TTPs) utilizados por atacantes reales en distintos entornos (Enterprise, Mobile y Cloud).</li>
+							  
+							  <li><strong>Estructura metodológica:</strong> Se organiza en tácticas (objetivos del atacante) y técnicas/subtécnicas, no en fases secuenciales tradicionales.</li>
+							  
+							  <li><strong>Propósito central:</strong> Mejorar la detección, la respuesta y el análisis de amenazas mediante mapeo de comportamientos adversarios.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Centros de Operaciones de Seguridad (SOC), equipos Blue Team, Red Team y análisis de inteligencia de amenazas.</li>
+							  
+							  <li><strong>Enfoque:</strong> Defensa estratégica y evaluación técnica.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> MITRE Corporation.</li>
+							  
+							  <li><strong>Certificaciones asociadas:</strong> No posee certificación oficial propia, pero es ampliamente usado en programas de formación avanzada.</li>
+							  
+							  <li><strong>Actualización:</strong> Versiones con mejoras continuas y ampliación de técnicas.</li>
 							</ul>
+
+							<hr>
+
+							<h3>OWASP WSTG (Web Security Testing Guide)</h3>
+
+							<ul>
+							  <li><strong>Definición general:</strong> Guía metodológica para la evaluación de vulnerabilidades en aplicaciones web.</li>
+							  
+							  <li><strong>Fases de trabajo:</strong> Recolección de información, análisis de configuración, pruebas de autenticación, autorización, validación de entradas, explotación controlada y reporte.</li>
+							  
+							  <li><strong>Propósito central:</strong> Identificar fallas como inyección SQL, XSS, fallas de autenticación o mala configuración.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Bancos, fintech, plataformas de comercio electrónico y cualquier sistema web expuesto a Internet.</li>
+							  
+							  <li><strong>Enfoque:</strong> Evaluación técnica y hacking ético.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> OWASP Foundation.</li>
+							  
+							  <li><strong>Certificaciones relacionadas:</strong> Base de conocimiento para certificaciones como eWPT y preparación para OSCP.</li>
+							  
+							  <li><strong>Versión vigente:</strong> Serie 4.x en uso activo.</li>
+							</ul>
+
 							<hr>
 
 							<h3>NIST SP 800-115</h3>
+
 							<ul>
-							  <li><strong>Descripción breve:</strong> Norma formal para auditorías de seguridad.</li>
-							  <li><strong>Fases de implementación:</strong> Planeación, descubrimiento, pruebas, reporte.</li>
-							  <li><strong>Objetivo principal:</strong> Cumplimiento y control de riesgos.</li>
-							  <li><strong>Escenarios de uso:</strong> Gobierno, corporativos, compliance.</li>
-							  <li><strong>Orientación:</strong> Evaluación / Defensa</li>
-							  <li><strong>Autor / Organismo responsable:</strong> National Institute of Standards and Technology</li>
-							  <li><strong>URL de material:</strong> <a href="https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-115.pdf" target="_blank">https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-115.pdf</a></li>
-							  <li><strong>Certificaciones:</strong> Base para CISSP, CISA</li>
-							  <li><strong>Versiones vigentes:</strong> Vigente como referencia</li>
+							  <li><strong>Definición general:</strong> Guía técnica para pruebas y evaluación de seguridad en sistemas de información.</li>
+							  
+							  <li><strong>Etapas metodológicas:</strong> Planeación, descubrimiento, pruebas técnicas (escaneo y explotación controlada) y elaboración de informe.</li>
+							  
+							  <li><strong>Propósito central:</strong> Gestionar riesgos y asegurar cumplimiento en entornos gubernamentales y corporativos.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Dependencias gubernamentales, empresas con requisitos regulatorios y auditorías formales.</li>
+							  
+							  <li><strong>Enfoque:</strong> Evaluación estructurada orientada a cumplimiento.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> National Institute of Standards and Technology (NIST).</li>
+							  
+							  <li><strong>Certificaciones relacionadas:</strong> Marco de referencia conceptual para CISSP y CISA.</li>
+							  
+							  <li><strong>Estado:</strong> Documento vigente como referencia técnica.</li>
 							</ul>
+
 							<hr>
 
 							<h3>OSSTMM</h3>
+
 							<ul>
-							  <li><strong>Descripción breve:</strong> Metodología integral para redes, procesos y seguridad física.</li>
-							  <li><strong>Fases de implementación:</strong> Análisis de vectores, métricas, validación y reporte.</li>
-							  <li><strong>Objetivo principal:</strong> Medir nivel real de seguridad operativa.</li>
-							  <li><strong>Escenarios de uso:</strong> Auditorías completas empresariales.</li>
-							  <li><strong>Orientación:</strong> Evaluación / Auditoría</li>
-							  <li><strong>Autor / Organismo responsable:</strong> Institute for Security and Open Methodologies</li>
-							  <li><strong>URL de material:</strong> <a href="https://www.isecom.org/OSSTMM.3.pdf" target="_blank">https://www.isecom.org/OSSTMM.3.pdf</a></li>
-							  <li><strong>Certificaciones:</strong> N/A (oficialmente)</li>
-							  <li><strong>Versiones vigentes:</strong> Versión 3.x</li>
+							  <li><strong>Definición general:</strong> Metodología integral que evalúa seguridad en redes, telecomunicaciones, procesos humanos y seguridad física.</li>
+							  
+							  <li><strong>Componentes metodológicos:</strong> Análisis de vectores operativos, medición mediante métricas cuantitativas (RAV), validación técnica y reporte.</li>
+							  
+							  <li><strong>Propósito central:</strong> Medir el nivel real de exposición y seguridad operativa.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Auditorías empresariales completas y evaluaciones de infraestructura crítica.</li>
+							  
+							  <li><strong>Enfoque:</strong> Auditoría técnica cuantificable.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> ISECOM (Institute for Security and Open Methodologies).</li>
+							  
+							  <li><strong>Certificaciones:</strong> No cuenta con certificación oficial ampliamente adoptada.</li>
+							  
+							  <li><strong>Versión vigente:</strong> Serie 3.x.</li>
 							</ul>
+
 							<hr>
 
-							<h3>PTES</h3>
+							<h3>PTES (Penetration Testing Execution Standard)</h3>
+
 							<ul>
-							  <li><strong>Descripción breve:</strong> Estándar práctico para pruebas de intrusión profesionales.</li>
-							  <li><strong>Fases de implementación:</strong> Acuerdos, reconocimiento, explotación, post-explotación, informe.</li>
-							  <li><strong>Objetivo principal:</strong> Ejecutar pentesting profesional.</li>
-							  <li><strong>Escenarios de uso:</strong> Consultoras, ethical hacking.</li>
-							  <li><strong>Orientación:</strong> Ataque / Evaluación</li>
-							  <li><strong>Autor / Organismo responsable:</strong> Comunidad PTES</li>
-							  <li><strong>URL de material:</strong> <a href="http://www.pentest-standard.org/" target="_blank">http://www.pentest-standard.org/</a></li>
-							  <li><strong>Certificaciones:</strong> Base para OSCP, CEH</li>
-							  <li><strong>Versiones vigentes:</strong> Estándar activo</li>
+							  <li><strong>Definición general:</strong> Estándar práctico que estructura pruebas de penetración profesionales.</li>
+							  
+							  <li><strong>Fases:</strong> Pre-engagement, recopilación de información, modelado de amenazas, explotación, post-explotación y reporte.</li>
+							  
+							  <li><strong>Propósito central:</strong> Ejecutar pruebas de intrusión completas y documentadas.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Consultoras de ciberseguridad y servicios de ethical hacking.</li>
+							  
+							  <li><strong>Enfoque:</strong> Ataque controlado y evaluación técnica.</li>
+							  
+							  <li><strong>Responsable:</strong> Comunidad abierta PTES.</li>
+							  
+							  <li><strong>Certificaciones relacionadas:</strong> Referencia conceptual para OSCP y CEH.</li>
+							  
+							  <li><strong>Estado:</strong> Estándar activo mantenido por comunidad.</li>
 							</ul>
+
 							<hr>
 
-							<h3>ISSAF</h3>
+							<h3>ISSAF (Information Systems Security Assessment Framework)</h3>
+
 							<ul>
-							  <li><strong>Descripción breve:</strong> Marco antiguo para evaluaciones técnicas y organizacionales.</li>
-							  <li><strong>Fases de implementación:</strong> Recopilación, mapeo, explotación, análisis.</li>
-							  <li><strong>Objetivo principal:</strong> Evaluar infraestructura y procesos.</li>
-							  <li><strong>Escenarios de uso:</strong> Auditorías tradicionales.</li>
-							  <li><strong>Orientación:</strong> Evaluación</li>
-							  <li><strong>Autor / Organismo responsable:</strong> Open Information Systems Security Group</li>
-							  <li><strong>URL de material:</strong> <a href="https://bibdigital.epn.edu.ec/bitstream/15000/16740/1/CD-7336.pdf" target="_blank">https://bibdigital.epn.edu.ec/bitstream/15000/16740/1/CD-7336.pdf</a></li>
-							  <li><strong>Certificaciones:</strong> N/A</li>
-							  <li><strong>Versiones vigentes:</strong> Poca actualización</li>
+							  <li><strong>Definición general:</strong> Marco metodológico para evaluación técnica y organizacional de seguridad.</li>
+							  
+							  <li><strong>Fases:</strong> Recopilación de información, mapeo de infraestructura, explotación controlada y análisis de resultados.</li>
+							  
+							  <li><strong>Propósito central:</strong> Evaluar infraestructura tecnológica y controles administrativos.</li>
+							  
+							  <li><strong>Ámbitos de aplicación:</strong> Auditorías tradicionales de seguridad.</li>
+							  
+							  <li><strong>Enfoque:</strong> Evaluación técnica estructurada.</li>
+							  
+							  <li><strong>Organismo responsable:</strong> Open Information Systems Security Group (OISSG).</li>
+							  
+							  <li><strong>Actualización:</strong> Marco con menor mantenimiento en la actualidad.</li>
 							</ul>
+
+							<hr>
+
+							<h3>Conclusión</h3>
+
+							<p>
+							Cada metodología analizada responde a necesidades distintas dentro del ecosistema 
+							de la seguridad informática. Mientras que MITRE ATT&amp;CK fortalece la detección 
+							basada en comportamiento adversario, OWASP WSTG y PTES se enfocan en pruebas 
+							técnicas ofensivas, y NIST SP 800-115 proporciona una estructura formal alineada 
+							a gestión de riesgos y cumplimiento normativo.
+							</p>
+
+							<p>
+							En el contexto profesional en México y Latinoamérica, la selección adecuada 
+							de una metodología depende del nivel de madurez de la organización. Empresas 
+							con procesos formales suelen adoptar marcos como NIST, mientras que equipos 
+							técnicos de pentesting se apoyan en PTES u OWASP. Por su parte, los SOC modernos 
+							integran MITRE ATT&amp;CK para mapear eventos detectados y mejorar su capacidad 
+							de respuesta.
+							</p>
+
+							<p>
+							Comprender las diferencias conceptuales y operativas entre estos marcos permite 
+							aplicar el enfoque correcto según el objetivo: auditoría, evaluación ofensiva, 
+							cumplimiento o fortalecimiento de capacidades defensivas.
+							</p>
+
+							<hr>
+
+							<h3>Referencias</h3>
+
+							<ul>
+							  <li>MITRE ATT&amp;CK – Sitio oficial: https://attack.mitre.org</li>
+							  <li>OWASP Web Security Testing Guide: https://owasp.org/www-project-web-security-testing-guide/</li>
+							  <li>NIST SP 800-115 (Guía técnica): https://csrc.nist.gov/publications/detail/sp/800-115/final</li>
+							  <li>OSSTMM – ISECOM: https://www.isecom.org/OSSTMM.3.pdf</li>
+							  <li>PTES – Penetration Testing Execution Standard: http://www.pentest-standard.org/</li>
+							  <li>ISSAF – Documentación académica: https://bibdigital.epn.edu.ec/handle/15000/16740</li>
+							</ul>
+
 
 							<ul class="actions">
 								<li>
