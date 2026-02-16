@@ -32,73 +32,186 @@
 							<header>
 								<h2>ACTIVIDAD #4</h2>
 							</header>
-							
-							<h3>Reglas de Firewall (iptables)</h3>
 
-							<a class="image featured"><img src="images/act4_t1.PNG" alt="Diagrama de reglas de firewall" /></a>
+							<p>
+							En esta actividad se analiza un conjunto de reglas aplicadas bajo un enfoque 
+							de política restrictiva por defecto (default deny), alineado con buenas prácticas 
+							recomendadas en guías de hardening de servidores Linux.
+							</p>
 
 							<hr>
 
-							<h4>Regla 1</h4>
-							<p><strong>Comando:</strong> iptables -P INPUT DROP && iptables -P OUTPUT DROP && iptables -P FORWARD DROP</p>
+							<h3>Escenario de red aplicado</h3>
+
+							<a class="image featured">
+							  <img src="images/act4_t1.PNG" alt="Diagrama de reglas de firewall" />
+							</a>
+
+							<p>
+							Topología lógica representativa:
+							</p>
+
+							<pre>
+											Internet
+												|
+											[Firewall Linux]
+												|
+									----------------------------
+									|                          |
+							 [192.1.2.10] SMTP         [192.1.2.11] Web
+									|
+							   Red interna 192.1.2.0/24
+							</pre>
+
+							<p>
+							El firewall controla el tráfico hacia servidores específicos dentro de la red 192.1.2.0/24.
+							</p>
+
+							<hr>
+
+							<h3>Análisis detallado de reglas</h3>
+
+							<h4>Regla 1 – Política restrictiva global</h4>
+
+							<p><strong>Comando:</strong></p>
+
+							<pre>
+							iptables -P INPUT DROP && iptables -P OUTPUT DROP && iptables -P FORWARD DROP
+							</pre>
+
 							<ul>
-							  <li>Establece política por defecto DROP para INPUT, OUTPUT y FORWARD.</li>
-							  <li>Bloquea todo el tráfico que no esté explícitamente permitido.</li>
+							  <li>Define política por defecto en <strong>DROP</strong> para todas las cadenas principales.</li>
+							  <li>Implementa el principio de <em>denegación por defecto</em>.</li>
+							  <li>Todo tráfico debe ser explícitamente autorizado.</li>
+							</ul>
+
+							<p>
+							Este enfoque es recomendado en manuales de administración segura de servidores Linux.
+							</p>
+
+							<hr>
+
+							<h4>Regla 2 – Permitir tráfico establecido</h4>
+
+							<pre>
+							iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+							</pre>
+
+							<ul>
+							  <li>Permite paquetes pertenecientes a conexiones ya establecidas.</li>
+							  <li>Evita bloquear respuestas legítimas del servidor.</li>
+							</ul>
+
+							<p>
+							El uso de <strong>state</strong> (o conntrack) implementa inspección con seguimiento de estado (stateful firewall).
+							</p>
+
+							<hr>
+
+							<h4>Regla 3 – Salida TCP autorizada para la subred</h4>
+
+							<pre>
+							iptables -A OUTPUT -p tcp -s 192.1.2.0/24 -j ACCEPT
+							</pre>
+
+							<ul>
+							  <li>Permite tráfico TCP saliente desde la red interna.</li>
+							  <li>Facilita comunicación hacia servicios externos.</li>
 							</ul>
 
 							<hr>
 
-							<h4>Regla 2</h4>
-							<p><strong>Comando:</strong> iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</p>
+							<h4>Regla 4 – Publicación del servidor SMTP</h4>
+
+							<pre>
+							iptables -A INPUT -p tcp -d 192.1.2.10 --dport 25 -m state --state NEW -j ACCEPT
+							</pre>
+
 							<ul>
-							  <li>Permite tráfico entrante de conexiones ya establecidas o relacionadas.</li>
-							  <li>Evita bloquear respuestas a conexiones legítimas.</li>
+							  <li>Permite nuevas conexiones TCP hacia el puerto 25 (SMTP).</li>
+							  <li>Restringe el acceso únicamente al servidor de correo.</li>
+							</ul>
+
+							<p>
+							Esto reduce la exposición de otros equipos de la red.
+							</p>
+
+							<hr>
+
+							<h4>Regla 5 – Respuesta del servicio de correo</h4>
+
+							<pre>
+							iptables -A OUTPUT -p tcp -s 192.1.2.10 --sport 25 -j ACCEPT
+							</pre>
+
+							<ul>
+							  <li>Permite tráfico saliente originado desde el puerto 25.</li>
+							  <li>Autoriza respuestas del servidor SMTP.</li>
 							</ul>
 
 							<hr>
 
-							<h4>Regla 3</h4>
-							<p><strong>Comando:</strong> iptables -A OUTPUT -p tcp -s 192.1.2.0/24 -j ACCEPT</p>
+							<h4>Regla 6 – Publicación del servidor web</h4>
+
+							<pre>
+							iptables -A INPUT -p tcp -d 192.1.2.11 --dport 80 -m state --state NEW -j ACCEPT
+							</pre>
+
 							<ul>
-							  <li>Permite tráfico TCP saliente desde la red 192.1.2.0/24.</li>
-							  <li>Habilita comunicación externa para esa subred.</li>
+							  <li>Permite nuevas conexiones HTTP hacia el servidor web.</li>
+							  <li>Limita el acceso exclusivamente al equipo 192.1.2.11.</li>
 							</ul>
 
 							<hr>
 
-							<h4>Regla 4</h4>
-							<p><strong>Comando:</strong> iptables -A INPUT -p tcp -d 192.1.2.10 --dport 25 -m state --state NEW -j ACCEPT</p>
-							<ul>
-							  <li>Permite nuevas conexiones TCP entrantes al puerto 25 (SMTP).</li>
-							  <li>Destino específico: 192.1.2.10 (servidor de correo).</li>
-							</ul>
+							<h4>Regla 7 – Navegación web desde la red interna</h4>
 
-							<hr>
+							<pre>
+							iptables -A OUTPUT -p tcp -s 192.1.2.0/24 --dport 80 -j ACCEPT
+							</pre>
 
-							<h4>Regla 5</h4>
-							<p><strong>Comando:</strong> iptables -A OUTPUT -p tcp -s 192.1.2.10 --sport 25 -j ACCEPT</p>
-							<ul>
-							  <li>Permite tráfico saliente desde el puerto 25 del servidor 192.1.2.10.</li>
-							  <li>Autoriza respuestas del servicio SMTP.</li>
-							</ul>
-
-							<hr>
-
-							<h4>Regla 6</h4>
-							<p><strong>Comando:</strong> iptables -A INPUT -p tcp -d 192.1.2.11 --dport 80 -m state --state NEW -j ACCEPT</p>
-							<ul>
-							  <li>Permite nuevas conexiones TCP entrantes al puerto 80 (HTTP).</li>
-							  <li>Destino específico: 192.1.2.11 (servidor web).</li>
-							</ul>
-
-							<hr>
-
-							<h4>Regla 7</h4>
-							<p><strong>Comando:</strong> iptables -A OUTPUT -p tcp -s 192.1.2.0/24 --dport 80 -j ACCEPT</p>
 							<ul>
 							  <li>Permite tráfico TCP saliente hacia el puerto 80.</li>
-							  <li>Habilita navegación web desde la red 192.1.2.0/24.</li>
+							  <li>Habilita navegación HTTP desde la subred interna.</li>
 							</ul>
+
+							<hr>
+
+							<h3>Conclusión</h3>
+
+							<p>
+							El conjunto de reglas analizado demuestra una configuración estructurada 
+							basada en el principio de mínimo privilegio y segmentación lógica de servicios. 
+							Al establecer políticas DROP por defecto y permitir únicamente tráfico necesario 
+							para servicios específicos (SMTP y HTTP), se reduce considerablemente el riesgo 
+							de accesos no autorizados.
+							</p>
+
+							<p>
+							En escenarios reales, especialmente en pequeñas y medianas empresas en México, 
+							es común encontrar configuraciones permisivas que exponen múltiples puertos 
+							innecesariamente. Implementar reglas específicas por servicio, utilizar 
+							seguimiento de estado y documentar adecuadamente la política de firewall 
+							fortalece la postura de seguridad organizacional.
+							</p>
+
+							<p>
+							Además, la correcta administración de iptables debe complementarse con monitoreo 
+							de logs, actualización constante del sistema y pruebas periódicas de seguridad, 
+							ya que el firewall es solo una capa dentro de una estrategia integral de defensa.
+							</p>
+
+							<hr>
+
+							<h3>Referencias técnicas</h3>
+
+							<ul>
+							  <li>Guía de administración de iptables en GNU/Linux – Red Hat (Español): https://access.redhat.com/documentation/es-es/</li>
+							  <li>Documentación oficial de Ubuntu Server – Configuración de firewall: https://ubuntu.com/server/docs/security-firewall</li>
+							  <li>Instituto Nacional de Ciberseguridad (INCIBE) – Buenas prácticas en ciberseguridad: https://www.incibe.es</li>
+							  <li>Manual Netfilter / iptables (documentación comunitaria en español): https://www.netfilter.org/documentation/</li>
+							</ul>
+
 
 							<ul class="actions">
 								<li>
