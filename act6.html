@@ -36,163 +36,183 @@
 							<p>
 							Las redes privadas virtuales (VPN) Site-to-Site permiten interconectar dos redes 
 							geográficamente separadas a través de un medio no confiable como Internet, 
-							garantizando confidencialidad, integridad y autenticación mediante protocolos 
-							criptográficos como IPSec.
+							garantizando confidencialidad, integridad y autenticación mediante el uso del 
+							protocolo IPSec.
 							</p>
 
 							<p>
-							En esta práctica se configuró un túnel IPSec entre dos routers, simulando un 
-							escenario empresarial donde dos sucursales requieren comunicación segura 
-							sobre infraestructura pública.
+							En esta práctica se configuró un túnel IPSec entre los routers R1 y R3, 
+							simulando un entorno empresarial donde dos sucursales requieren comunicación 
+							segura a través de infraestructura pública (ISP).
 							</p>
 
 							<hr>
 
-							<h3>Propósito de la práctica</h3>
-
-							<ul>
-							  <li>Configurar un túnel VPN Site-to-Site utilizando IPSec.</li>
-							  <li>Permitir comunicación segura entre dos redes remotas.</li>
-							  <li>Proteger la información mediante cifrado y autenticación.</li>
-							</ul>
-
-							<hr>
-
-							<h3>Arquitectura de red implementada</h3>
-
-							<ul>
-							  <li>Dispositivos involucrados: R1 – ISP – R3.</li>
-							  <li>El router ISP simula la red pública (Internet).</li>
-							  <li>Red LAN 1: 192.168.1.0/24.</li>
-							  <li>Red LAN 2: 192.168.3.0/24.</li>
-							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t1.PNG" alt="Topología VPN Site-to-Site"/>
-							</a>
+							<h3>1. Configuración inicial</h3>
 
 							<p>
-							Representación lógica simplificada:
+							En esta etapa se estableció la conectividad básica antes de implementar el túnel VPN.
 							</p>
+
+							<ul>
+							  <li>Configuración de hostname en R1, ISP y R3.</li>
+							  <li>Asignación de direcciones IP en interfaces LAN y WAN.</li>
+							  <li>Activación de interfaces con <strong>no shutdown</strong>.</li>
+							  <li>Configuración de rutas estáticas por defecto hacia el ISP.</li>
+							  <li>Verificación de conectividad entre interfaces WAN.</li>
+							</ul>
+
+							<p><strong>Arquitectura implementada:</strong></p>
+
+							<ul>
+							  <li>Dispositivos: R1 – ISP – R3.</li>
+							  <li>LAN 1: 192.168.1.0/24.</li>
+							  <li>LAN 2: 192.168.3.0/24.</li>
+							  <li>El ISP simula Internet.</li>
+							</ul>
 
 							<pre>
-							  LAN 1 (192.168.1.0/24)
-									  |
-									[R1]
-									  |
-									(ISP)
-									  |
-									[R3]
-									  |
-							  LAN 2 (192.168.3.0/24)
+							LAN 1 (192.168.1.0/24)
+									|
+								  [R1]
+									|
+								  (ISP)
+									|
+								  [R3]
+									|
+							LAN 2 (192.168.3.0/24)
 							</pre>
 
 							<p>
-							El tráfico entre ambas LAN viaja cifrado a través del túnel IPSec.
+							Antes de configurar IPSec es indispensable validar conectividad entre las direcciones WAN.
 							</p>
 
 							<hr>
 
-							<h3>Activación de capacidades criptográficas</h3>
-
-							<ul>
-							  <li>Se habilitó el paquete <strong>securityk9</strong>.</li>
-							  <li>Se activaron funciones criptográficas necesarias.</li>
-							  <li>Se reinició el equipo para aplicar cambios.</li>
-							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t2.PNG" alt="Habilitación de módulo de seguridad"/>
-							</a>
+							<h3>2. Licencia de seguridad habilitada</h3>
 
 							<p>
-							Este paso es indispensable en routers Cisco que requieren licencia para 
-							funciones de cifrado.
+							Para habilitar funciones criptográficas en los routers Cisco, se activó el paquete 
+							<strong>securityk9</strong> y posteriormente se reinició el equipo para aplicar los cambios.
 							</p>
 
-							<hr>
-
-							<h3>Configuración inicial de conectividad</h3>
-
 							<ul>
-							  <li>Configuración de interfaces LAN y WAN.</li>
-							  <li>Asignación de direcciones IP.</li>
-							  <li>Definición de rutas estáticas.</li>
-							</ul>
-
-							<a class="image featured"><img src="images/act6_t3.PNG" alt="Configuración interfaz"/></a>
-							<a class="image featured"><img src="images/act6_t4.PNG" alt="Configuración rutas"/></a>
-							<a class="image featured"><img src="images/act6_t5.PNG" alt="Prueba de conectividad"/></a>
-							<a class="image featured"><img src="images/act6_t6.PNG" alt="Verificación red"/></a>
-
-							<p>
-							Antes de implementar IPSec, es obligatorio confirmar conectividad entre extremos WAN.
-							</p>
-
-							<hr>
-
-							<h3>Configuración criptográfica en R1</h3>
-
-							<ul>
-							  <li>Creación de política ISAKMP (Fase 1).</li>
-							  <li>Definición de clave precompartida.</li>
-							  <li>Configuración de transform-set (Fase 2).</li>
-							  <li>Creación y aplicación de crypto map.</li>
-							  <li>Definición de ACL para tráfico interesante.</li>
-							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t7.PNG" alt="Configuración IPSec R1"/>
-							</a>
-
-							<p>
-							La Fase 1 establece el canal seguro de negociación y la Fase 2 protege el tráfico de datos.
-							</p>
-
-							<hr>
-
-							<h3>Configuración espejo en R3</h3>
-
-							<ul>
-							  <li>Replicación de parámetros criptográficos.</li>
-							  <li>Ajuste de direcciones IP remotas.</li>
-							  <li>Validación de coincidencia de políticas.</li>
-							  <li>Aplicación del crypto map en interfaz WAN.</li>
+							  <li>Activación del paquete securityk9.</li>
+							  <li>Habilitación de funciones criptográficas.</li>
+							  <li>Reinicio del equipo.</li>
 							</ul>
 
 							<p>
-							La correcta coincidencia de parámetros es crítica para el establecimiento del túnel.
+							Este paso es obligatorio en equipos que requieren licencia para habilitar cifrado y 
+							funciones avanzadas de seguridad.
 							</p>
 
 							<hr>
 
-							<h3>Validación del túnel IPSec</h3>
+							<h3>3. Implementación de ACL (Tráfico interesante)</h3>
+
+							<p>
+							Se configuró una lista de acceso extendida para definir el tráfico que debe viajar 
+							cifrado por el túnel.
+							</p>
 
 							<ul>
-							  <li>Comando: <strong>show crypto isakmp sa</strong></li>
-							  <li>Comando: <strong>show crypto ipsec sa</strong></li>
-							  <li>Verificación de estado <strong>QM_IDLE</strong>.</li>
-							  <li>Pruebas de conectividad entre LANs.</li>
+							  <li>Red origen: 192.168.1.0/24.</li>
+							  <li>Red destino: 192.168.3.0/24.</li>
 							</ul>
 
 							<p>
-							El estado QM_IDLE indica que la negociación fue exitosa y el túnel está activo.
+							La ACL identifica el “tráfico interesante”, es decir, el tráfico que activará el túnel IPSec.
+							Una configuración incorrecta en esta etapa puede impedir el establecimiento del túnel.
 							</p>
 
 							<hr>
 
-							<h3>Resultados observados</h3>
+							<h3>4. Fase 1: ISAKMP Policy</h3>
+
+							<p>
+							En esta fase se establece el canal seguro de negociación entre ambos routers.
+							</p>
+
+							<ul>
+							  <li>Encriptación: AES 256.</li>
+							  <li>Autenticación: Pre-Shared Key.</li>
+							  <li>Grupo Diffie-Hellman: Grupo 5.</li>
+							  <li>Configuración de clave compartida.</li>
+							</ul>
+
+							<p>
+							La Fase 1 permite negociar los parámetros de seguridad y crear el canal seguro 
+							para el intercambio de claves. Ambos extremos deben coincidir exactamente en la configuración.
+							</p>
+
+							<hr>
+
+							<h3>5. Fase 2: IPsec Transform-Set</h3>
+
+							<p>
+							En la Fase 2 se define cómo se protegerán los datos que cruzan el túnel.
+							</p>
+
+							<ul>
+							  <li>ESP con AES 256 (cifrado).</li>
+							  <li>ESP con SHA-HMAC (integridad).</li>
+							</ul>
+
+							<p>
+							Mientras la Fase 1 protege la negociación, la Fase 2 protege el tráfico real de las LAN.
+							</p>
+
+							<hr>
+
+							<h3>6. Crear mapa criptográfico</h3>
+
+							<p>
+							El crypto map integra todos los elementos previamente configurados:
+							</p>
+
+							<ul>
+							  <li>Dirección IP del peer remoto.</li>
+							  <li>Transform-set definido.</li>
+							  <li>Perfect Forward Secrecy (PFS grupo 5).</li>
+							  <li>Tiempo de vida de la asociación de seguridad.</li>
+							  <li>Referencia a la ACL de tráfico interesante.</li>
+							</ul>
+
+							<p>
+							Este mapa funciona como la plantilla que indica cuándo y cómo se aplicará la protección IPSec.
+							</p>
+
+							<hr>
+
+							<h3>7. Aplicar mapa criptográfico</h3>
+
+							<p>
+							Finalmente, el crypto map se aplicó a la interfaz WAN (g0/0) de cada router.
+							</p>
+
+							<ul>
+							  <li>Aplicación del crypto map en la interfaz externa.</li>
+							  <li>Generación de tráfico entre LANs para activar el túnel.</li>
+							  <li>Verificación con comandos show crypto.</li>
+							  <li>Confirmación del estado <strong>QM_IDLE</strong>.</li>
+							</ul>
+
+							<p>
+							Sin aplicar el crypto map en la interfaz WAN, el túnel no entra en operación 
+							aunque la configuración sea correcta.
+							</p>
+
+							<hr>
+
+							<h3>Resultados obtenidos</h3>
 
 							<ul>
 							  <li>Comunicación bidireccional establecida.</li>
 							  <li>Tráfico cifrado correctamente.</li>
-							  <li>Túnel IPSec operativo.</li>
+							  <li>Túnel IPSec activo y estable.</li>
 							  <li>Sin pérdida de paquetes en pruebas realizadas.</li>
 							</ul>
-
-							<a class="image featured">
-							  <img src="images/act6_t8.PNG" alt="Verificación túnel activo"/>
-							</a>
 
 							<hr>
 
@@ -201,41 +221,21 @@
 							<p>
 							La implementación del túnel VPN Site-to-Site permitió comprender de forma práctica 
 							el funcionamiento de IPSec, incluyendo la negociación ISAKMP (Fase 1) y la protección 
-							de datos en Fase 2. Este tipo de configuración es ampliamente utilizado en empresas 
-							para conectar sucursales de manera segura sin depender de enlaces dedicados.
+							de datos en Fase 2.
 							</p>
 
 							<p>
-							En entornos reales, una mala configuración de parámetros criptográficos o ACL puede 
-							impedir el establecimiento del túnel o dejar expuesto tráfico sensible. Por ello, 
-							es fundamental validar cada etapa, documentar configuraciones y aplicar buenas 
-							prácticas como el uso de algoritmos robustos y autenticación fuerte.
+							Este tipo de configuración es ampliamente utilizada en entornos empresariales 
+							para conectar sucursales de manera segura sin depender de enlaces dedicados. 
+							Validar cada etapa y documentar correctamente la configuración es fundamental 
+							para evitar fallas o vulnerabilidades.
 							</p>
-
-							<a class="image featured">
-							  <img src="images/act6_t9.PNG" alt="Conclusión práctica"/>
-							</a>
-
-							<hr>
-
-							<h3>Buenas prácticas adicionales</h3>
-
-							<ul>
-							  <li>Utilizar contraseñas robustas o certificados digitales.</li>
-							  <li>Respaldar configuraciones periódicamente.</li>
-							  <li>Documentar cambios en bitácora técnica.</li>
-							  <li>Realizar pruebas de continuidad operativa.</li>
-							  <li>Actualizar firmware y parches de seguridad.</li>
-							</ul>
-
-							<hr>
 
 							<h3>Referencias</h3>
 
 							<ul>
 							  <li>Cómo configurar VPN IPsec Site-to-Site en Packet Tracer | Guía Paso a Paso: https://www.youtube.com/watch?v=RZ4RreDjhhk</li>
 							</ul>
-
 
 							<ul class="actions">
 								<li>
