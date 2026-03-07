@@ -53,7 +53,334 @@
 								
 								<hr>
 								
+								<h3>Introducción</h3>
+
+								<p>
+								En estos tiempos actuales, el phishing se ha consolidado como uno de los vectores
+								de ataque más utilizados dentro de los incidentes de ciberseguridad. Este tipo
+								de ataque pertenece a la categoría de ingeniería social, en la cual el atacante
+								busca manipular al usuario para obtener acceso a información sensible,
+								credenciales o recursos del sistema. Debido a que estos ataques se dirigen
+								directamente al comportamiento humano, las medidas técnicas tradicionales
+								(firewalls, antivirus o filtros de correo) resultan insuficientes por sí solas.
+								</p>
+
+								<p>
+								La seguridad de la información se ha convertido en un elemento estratégico
+								para las organizaciones modernas, especialmente en un entorno donde las
+								amenazas digitales evolucionan constantemente. En dicho panorama, los
+								ataques dirigidos a los usuarios finales representan un riesgo significativo,
+								ya que muchas intrusiones no dependen únicamente de fallas técnicas, sino
+								de la interacción humana con contenidos maliciosos que aparentan ser
+								legítimos.
+								</p>
+
+								<h3>Marco teórico y fundamentación técnica</h3>
+
+								<p>
+								Desde una perspectiva técnica, estas plataformas funcionan mediante el envío
+								de correos electrónicos diseñados para imitar ataques reales. Dichos correos
+								pueden incluir enlaces falsos, páginas de autenticación simuladas o archivos
+								adjuntos ficticios. El objetivo no es comprometer los sistemas, sino registrar
+								las acciones del usuario y generar métricas que permitan evaluar el nivel
+								de riesgo humano dentro de la organización.
+								</p>
+
+								<p>
+								Entre las métricas más relevantes utilizadas en estas plataformas se encuentran:
+								</p>
+
+								<ul>
+								<li>
+								<strong>Click Rate (tasa de clics)</strong>: Representa el porcentaje de usuarios
+								que interactúan con enlaces o archivos presentes en un correo de phishing
+								simulado. Esta métrica permite identificar qué tan susceptible es una
+								organización a este tipo de ataques.
+								</li>
+
+								<li>
+								<strong>Reporting Rate (tasa de reporte)</strong>: Indica el porcentaje de
+								usuarios que identifican correctamente el correo como sospechoso y lo
+								reportan a través de herramientas integradas en el cliente de correo.
+								Un alto porcentaje en esta métrica refleja mayor conciencia de seguridad.
+								</li>
+
+								<li>
+								<strong>Risk Score (puntaje de riesgo)</strong>: Algunas plataformas generan
+								un indicador compuesto que mide el nivel de riesgo de cada usuario o del
+								conjunto de la organización. Este valor se calcula considerando múltiples
+								variables como clics, reportes, historial de interacción y progreso en
+								programas de capacitación.
+								</li>
+								</ul>
+
+								<p>
+								Además de las métricas, muchas plataformas integran modelos de aprendizaje
+								adaptativo, donde el sistema ajusta automáticamente la dificultad de las
+								campañas en función del comportamiento previo del usuario. De esta forma,
+								los empleados que presentan mayor vulnerabilidad reciben entrenamientos
+								más frecuentes o contenidos personalizados.
+								</p>
+
+								<p>
+								Finalmente, desde una perspectiva ética, la simulación de phishing debe
+								implementarse como una herramienta educativa y no como un mecanismo
+								punitivo. Las buenas prácticas recomiendan que las organizaciones comuniquen
+								la existencia del programa, protejan la privacidad de los usuarios y utilicen
+								los resultados principalmente para mejorar la capacitación y la postura
+								de seguridad organizacional.
+								</p>	
+
+								<h3>Comparación entre plataformas</h3>
 								
+								<hr>
+								<table class="default">
+									<thead>
+									<tr>
+										<th>Plataforma</th>
+										<th>Enfoque principal</th>
+										<th>Métricas disponibles</th>
+										<th>Integración</th>
+										<th>Características distintivas</th>
+										<th>Limitaciones</th>
+									</tr>
+									</thead>
+
+									<tbody>
+									<tr>
+										<td>Hoxhunt</td>
+										<td>Entrenamiento adaptativo con IA</td>
+										<td>Click rate, reporting rate, risk score</td>
+										<td>Microsoft 365, Google Workspace</td>
+										<td>Uso intensivo de IA y gamificación para aprendizaje continuo</td>
+										<td>Alto costo y enfoque en empresas grandes</td>
+									</tr>
+
+									<tr>
+										<td>Proofpoint</td>
+										<td>Plataforma empresarial de seguridad y awareness</td>
+										<td>Click rate, reporting rate, riesgo organizacional</td>
+										<td>Integración fuerte con sistemas de seguridad de correo</td>
+										<td>Amplio ecosistema de seguridad y análisis de amenazas</td>
+										<td>Implementación compleja</td>
+									</tr>
+
+									<tr>
+										<td>KnowBe4</td>
+										<td>Plataforma integral de concientización</td>
+										<td>Click rate, reporting rate, Phish-prone percentage</td>
+										<td>Amplia compatibilidad con sistemas de correo</td>
+										<td>Gran biblioteca de contenidos y simulaciones</td>
+										<td>Enfoque más general que especializado</td>
+									</tr>
+
+									<tr>
+										<td>Cofense</td>
+										<td>Respuesta colaborativa ante phishing</td>
+										<td>Click rate, reporting rate</td>
+										<td>Integración con herramientas SOC y SIEM</td>
+										<td>Fuerte enfoque en reporte de usuarios y respuesta a incidentes</td>
+										<td>Menor enfoque en gamificación</td>
+									</tr>
+
+									<tr>
+										<td>Phished</td>
+										<td>Entrenamiento basado en comportamiento</td>
+										<td>Risk score, click rate</td>
+										<td>Integración con plataformas de correo empresarial</td>
+										<td>Uso de algoritmos de aprendizaje automático</td>
+										<td>Menor presencia en el mercado global</td>
+									</tr>
+
+									<tr>
+										<td>Ninjio</td>
+										<td>Capacitación mediante contenido audiovisual</td>
+										<td>Métricas de progreso de entrenamiento</td>
+										<td>Integración básica con plataformas de correo</td>
+										<td>Videos educativos estilo narrativa</td>
+										<td>Simulación de phishing limitada</td>
+									</tr>
+
+									<tr>
+										<td>Mimecast</td>
+										<td>Seguridad de correo con módulo de awareness</td>
+										<td>Click rate, reporting rate</td>
+										<td>Integración directa con su plataforma de seguridad</td>
+										<td>Integración nativa con protección de correo</td>
+										<td>Menor enfoque en entrenamiento personalizado</td>
+									</tr>
+
+									<tr>
+									<td>Infosec IQ</td>
+										<td>Plataforma educativa de seguridad</td>
+										<td>Click rate, reporting rate</td>
+										<td>Integración con sistemas empresariales</td>
+										<td>Amplia biblioteca de cursos y evaluaciones</td>
+										<td>Interfaz y automatización menos avanzadas</td>
+									</tr>
+									</tbody>
+								</table>
+								
+								<h3>Análisis crítico y conclusiones</h3>
+
+								<p>
+								El análisis comparativo muestra que las plataformas de simulación de phishing
+								pueden clasificarse en tres enfoques principales: plataformas centradas en
+								automatización y métricas, plataformas orientadas a entrenamiento adaptativo
+								con inteligencia artificial, y plataformas enfocadas en capacitación educativa
+								mediante contenidos formativos.
+								</p>
+
+								<p>
+								Las soluciones como Hoxhunt y Phished destacan por utilizar modelos de
+								aprendizaje adaptativo que ajustan las campañas según el comportamiento
+								del usuario. Este enfoque permite mejorar el proceso de aprendizaje al
+								ofrecer entrenamientos personalizados y simulaciones más realistas.
+								</p>
+
+								<p>
+								Por otro lado, plataformas como Proofpoint, Mimecast y Cofense están
+								fuertemente integradas con sistemas empresariales de seguridad del correo
+								electrónico. Estas herramientas ofrecen una ventaja importante en entornos
+								corporativos donde se requiere integración con sistemas de monitoreo,
+								SOC o plataformas SIEM.
+								</p>
+
+								<p>
+								En el caso de KnowBe4 e Infosec IQ, el enfoque se centra principalmente en
+								la capacitación y concientización mediante bibliotecas extensas de contenido
+								educativo, lo cual facilita la implementación de programas completos de
+								formación en seguridad.
+								</p>
+
+								<p>
+								Finalmente, Ninjio adopta un enfoque más educativo mediante narrativas
+								audiovisuales que buscan mejorar la retención de conocimientos. Sin embargo,
+								su capacidad de simulación de phishing es más limitada en comparación con
+								otras plataformas.
+								</p>
+
+								<p>
+								En términos generales, la elección de una plataforma depende del contexto
+								organizacional. Las empresas con infraestructuras complejas suelen priorizar
+								la integración con sistemas de seguridad existentes, mientras que organizaciones
+								con menor madurez en ciberseguridad pueden beneficiarse más de plataformas
+								enfocadas en capacitación y concientización.
+								</p>
+
+
+								<h3>Análisis individual</h3>
+
+								<ul>
+								<li>
+								<strong>Hoxhunt</strong><br>
+								Se especializa en entrenamiento adaptativo mediante inteligencia artificial.
+								La plataforma analiza el comportamiento de los usuarios y genera campañas
+								personalizadas para mejorar su capacidad de detección de phishing. Su
+								enfoque se basa en la gamificación y en la mejora continua del aprendizaje.
+								</li>
+
+								<li>
+								<strong>Proofpoint</strong><br>
+								Forma parte de un ecosistema empresarial de seguridad de correo electrónico.
+								Su módulo de concientización permite realizar simulaciones de phishing y
+								medir la respuesta de los usuarios, integrándose con otras herramientas de
+								protección y análisis de amenazas.
+								</li>
+
+								<li>
+								<strong>KnowBe4</strong><br>
+								Es una de las plataformas más populares en el ámbito de concientización en
+								ciberseguridad. Ofrece simulaciones de phishing junto con una amplia
+								biblioteca de cursos, videos y materiales educativos para programas de
+								entrenamiento corporativo.
+								</li>
+
+								<li>
+								<strong>Cofense</strong><br>
+								Su enfoque se centra en la colaboración entre usuarios y equipos de
+								seguridad para identificar y responder a amenazas de phishing. Destaca
+								por su capacidad de integrar reportes de usuarios con procesos de
+								respuesta a incidentes.
+								</li>
+
+								<li>
+								<strong>Phished</strong><br>
+								Utiliza algoritmos de aprendizaje automático para analizar el comportamiento
+								del usuario y calcular un puntaje de riesgo. Con base en estos datos, la
+								plataforma adapta las campañas de simulación para fortalecer las áreas
+								más vulnerables.
+								</li>
+
+								<li>
+								<strong>Ninjio</strong><br>
+								Se enfoca en la capacitación mediante contenido audiovisual con narrativa
+								tipo serie. Su objetivo principal es mejorar la concientización de los
+								usuarios a través de historias que muestran escenarios reales de
+								ciberataques.
+								</li>
+
+								<li>
+								<strong>Mimecast</strong><br>
+								Integra funciones de simulación de phishing dentro de su plataforma de
+								seguridad de correo electrónico. Esto permite combinar la protección
+								técnica con programas de entrenamiento dirigidos a los usuarios.
+								</li>
+
+								<li>
+								<strong>Infosec IQ</strong><br>
+								Proporciona una plataforma de capacitación en seguridad con herramientas
+								de simulación de phishing. Destaca por su catálogo de cursos y evaluaciones
+								que complementan los programas de concientización organizacional.
+								</li>
+								</ul>
+
+
+								<h3>Bibliografía</h3>
+
+								<ul>
+								<li>
+								<em>Proofpoint.</em> (2024). Simulaciones de phishing: características y ventajas.
+								Recuperado el 6 de marzo de 2026 de
+								https://www.proofpoint.com/es/products/security-awareness-training/phishing-simulations/features
+								</li>
+
+								<li>
+								<em>Mimecast.</em> (2024). ¿Qué es la simulación de phishing?
+								Recuperado el 6 de marzo de 2026 de
+								https://www.mimecast.com/es/content/phishing-simulation/
+								</li>
+
+								<li>
+								<em>KnowBe4.</em> (2024). Prueba de seguridad contra el phishing
+								(Phishing Security Test). Recuperado el 6 de marzo de 2026 de
+								https://www.knowbe4.com/es/free-cybersecurity-tools/phishing-security-test
+								</li>
+
+								<li>
+								<em>Infosec Institute.</em> (2025). Infosec IQ: plataforma de capacitación
+								y simulación de phishing. Recuperado el 6 de marzo de 2026 de
+								https://www.infosecinstitute.com/iq/
+								</li>
+
+								<li>
+								<em>NINJIO.</em> (2025). Security Awareness Training Toolkit.
+								Recuperado el 6 de marzo de 2026 de
+								https://get.ninjio.com/core-four-toolkit-homepage
+								</li>
+
+								<li>
+								<em>Mimecast.</em> (2024). Capacitación de concienciación sobre
+								seguridad y phishing. Recuperado el 6 de marzo de 2026 de
+								https://www.mimecast.com/es/content/phishing-training/
+								</li>
+
+								<li>
+								<em>Global Growth Insights.</em> (2024). Mercado de simulación de
+								phishing: tendencias y análisis. Recuperado el 6 de marzo de 2026 de
+								https://www.globalgrowthinsights.com/es/market-reports/phishing-simulation-market-118063
+								</li>
+								</ul>
 								
 								<ul class="actions">
 									<li>
@@ -76,7 +403,7 @@
 								
 								<ul class="actions">
 									<li>
-										<a href="docs/PR02_1.pdf" class="button" download>
+										<a class="button" download>
 											Descargar PDF
 										</a>
 									</li>
@@ -95,7 +422,7 @@
 								
 								<ul class="actions">
 									<li>
-										<a href="docs/PR02_1.pdf" class="button" download>
+										<a class="button" download>
 											Descargar PDF
 										</a>
 									</li>
