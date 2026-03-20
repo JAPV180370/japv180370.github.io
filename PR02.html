@@ -47,7 +47,7 @@
 							
 							<hr>
 							
-							<h3><strong>Parte #1:</strong> Investigación comparativa de plataformas</h3>
+							<h3><strong>Investigación comparativa de plataformas</strong></h3>
 							<details class="lab">
 								<summary>Mostrar más</summary>
 								
@@ -384,44 +384,130 @@
 							</details>
 							
 							<hr>
+							<br>
 							
-							<h3><strong>Parte #2:</strong> Diseño e implementación del Phishing Quiz</h3>
-							<details class="lab">
-								<summary>Mostrar más</summary>
-								
-								<hr>
-								
-								
-								
-								<ul class="actions">
-									<li>
-										<a class="button" download>
-											Descargar PDF
-										</a>
-									</li>
-								</ul>
+							<h3><strong>Pishing Quiz</strong></h3>
+							<section class="section-content">
+									<div class="quiz-card">
+										
+										<div id="quiz-intro" style="padding: 20px;">
+											<center>
+												<i class="fas fa-fish" style="font-size: 3.5rem; color: #f35858; margin-bottom: 20px;"></i>
+												<h2>¿Será fácil o difícil morder el anzuelo?</h2>
+												<p style="text-align: center; margin-bottom: 25px; color: #555; line-height: 1.6;">
+													En este Quiz, se presentan 10 escenarios dónde los mensajes o botones pueden ser o no maliciosos. ¿Puedes adivinar cuál es real y cuál no?
+												</p>
+												
+												<input type="text" id="user-alias" placeholder="Introduce un nombre o alias." style="padding: 12px; width: 30%; border-radius: 8px; border: 2px solid #eee; font-size: 1rem; margin-bottom: 20px; outline: none;">
+
+												<div style="margin-top: 15px;">
+													<button onclick="startQuiz()" class="btn-quiz" style="background: #f35858; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+														Iniciar Quiz
+													</button>
+												</div>
+
+												<div style="margin-top: 15px;">
+													<button onclick="jumpToRanking()" style="background: transparent; border: none; color: #f35858; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+														Ver clasificatoria
+													</button>
+												</div>
+											</center>
+											
+											<br>
+											
+											<h3>Aviso de Privacidad</h3>
+											<p style="text-align: justify;">La información proporcionada en este simulador educativo será utilizada exclusivamente con fines académicos y de evaluación en la detección de phishing.
+											El alias ingresado no permite la identificación personal y los resultados (puntaje y tiempo) se almacenan únicamente de forma local en el navegador, sin ser enviados a servidores externos.
+											No se solicita ni recopila credenciales reales ni datos sensibles.</p>
+										</div> 
+
+										<div id="quiz-engine" style="display: none;">
+											<div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f4f4f4; padding-bottom: 15px; margin-bottom: 20px;">
+												<h3 id="step-title" style="margin: 0; color: #f35858; font-size: 2rem; font-weight: bold;"></h3>
+												<span id="live-points" style="font-weight: bold; background: #f35858; color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.9rem;">Aciertos: 0</span>
+											</div>
+
+											<p style="margin-bottom: 15px;"><strong>Descripción:</strong></p>
+											
+											<div id="scenario-text" class="scenario-box"></div>
+
+											<div id="quiz-buttons" class="btn-container" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
+												<button onclick="checkAnswer(true)" class="btn-quiz btn-danger" style="background: #f35858; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; flex: 1;">
+													<i class="fas fa-bug"></i> No es real (Phising)
+												</button>
+												<button onclick="checkAnswer(false)" class="btn-quiz btn-success" style="background: #f35858; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; flex: 1;">
+													<i class="fas fa-check"></i> Es real
+												</button>
+											</div>									
+											
+											<div id="feedback-message" class="feedback" 
+												 style="
+													display: none; 
+													margin-top: 20px; 
+													font-size: 1rem; 
+													border-radius: 8px; 
+													padding: 10px 15px; 
+													background-color: #f8d7da;
+													color: #721c24;
+													max-width: 100%; 
+													word-wrap: break-word;
+													box-sizing: border-box;
+												 ">
+											</div>
+											
+											<br>
+											
+										</div>
+
+										<div id="final-score" style="display: none; text-align: center; padding: 20px;">
+											<h2 style="color: #f35858; margin-bottom: 5px;">Tabla de clasificación</h2>
+											
+											<div style="display: flex; justify-content: center; align-items: center; margin: 25px 0;">
+												<div style="width: 120px; height: 120px; border: 8px solid #f35858; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 800; color: #f35858; background: #fdfbff;">
+													<i class="fas fa-chart-line" style="font-size: 3.5rem; color: #f35858;"></i>
+												</div>
+											</div>
+
+											<p>Aquí se recopilan los resultados de todos los usuarios que han participado.</p>
+											
+											<div id="stats-summary"></div>
+
+											<hr>
+
+											<div style="overflow-x: auto;">
+												<table class="ranking-table" style="width: 100%; border-collapse: collapse;">
+													<thead style="background: #f8f9fa;">
+														<tr>
+															<th style="padding: 12px;">#</th>
+															<th style="padding: 12px; text-align: left;">Nombre</th>
+															<th style="padding: 12px;">Puntos</th>
+															<th style="padding: 12px;">Tiempo</th>
+														</tr>
+													</thead>
+													<tbody id="ranking-list">
+														</tbody>
+												</table>
+											</div>
+											
+											<div id="btn-volver-consulta" style="margin-top: 30px; display: none;">
+												<button onclick="goBackToIntro()" class="btn-quiz" style="background: #f35858; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+													Regresar
+												</button>
+											</div>
+
+											<div id="btn-post-quiz" class="btn-container" style="margin-top: 35px; display: none; gap: 15px; justify-content: center; flex-wrap: wrap;">
+												<button onclick="restartQuiz()" style="background: #f1f1f1; border: 1px solid #ccc; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; color: #444;">
+													Reintentar
+												</button>
+												<a href="PR02.html" style="background: #f35858; color: white; text-decoration: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; display: inline-block;">
+													Continuar
+												</a>
+											</div>
+										</div>
+										<hr>
+									</div>
+								</section>
 							</details>
-							
-							<hr>
-							
-							<h3><strong>Parte #3:</strong> Score Global y análisis de desempeño</h3>
-							<details class="lab">
-								<summary>Mostrar más</summary>
-								
-								<hr>
-								
-								
-								
-								<ul class="actions">
-									<li>
-										<a class="button" download>
-											Descargar PDF
-										</a>
-									</li>
-								</ul>
-							</details>
-							
-							<hr>
 							
 							<ul class="actions">
 								<li>
@@ -446,14 +532,13 @@
 		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/escenarios.js"></script>
+		<script src="assets/js/quiz.js"></script>
 	</body>
 </html>
-
-
