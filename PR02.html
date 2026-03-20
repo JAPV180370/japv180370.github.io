@@ -387,18 +387,26 @@
 							<br>
 							
 							<h3><strong>Pishing Quiz</strong></h3>
+							
+							<br>
+							
 							<section class="section-content">
 									<div class="quiz-card">
 										
 										<div id="quiz-intro" style="padding: 20px;">
 											<center>
-												<i class="fas fa-fish" style="font-size: 3.5rem; color: #f35858; margin-bottom: 20px;"></i>
-												<h2>¿Será fácil o difícil morder el anzuelo?</h2>
+												<div style="display: flex; justify-content: center; align-items: center; margin: 25px 0;">
+													<div style="width: 120px; height: 120px; border: 8px solid #f35858; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 800; color: #f35858; background: #fdfbff;">
+														<i class="fas fa-fish" style="font-size: 3.5rem; color: #f35858;"></i>
+													</div>
+												</div>
+												
+												<h2 style="color: #f35858; margin-bottom: 5px;">¿Será fácil o difícil morder el anzuelo?</h2>
 												<p style="text-align: center; margin-bottom: 25px; color: #555; line-height: 1.6;">
 													En este Quiz, se presentan 10 escenarios dónde los mensajes o botones pueden ser o no maliciosos. ¿Puedes adivinar cuál es real y cuál no?
 												</p>
 												
-												<input type="text" id="user-alias" placeholder="Introduce un nombre o alias." style="padding: 12px; width: 30%; border-radius: 8px; border: 2px solid #eee; font-size: 1rem; margin-bottom: 20px; outline: none;">
+												<input type="text" id="user-alias" placeholder="Introduce un nombre, alias o matrícula..." style="padding: 12px; width: 30%; border-radius: 8px; border: 2px solid #eee; font-size: 1rem; margin-bottom: 20px; outline: none;">
 
 												<div style="margin-top: 15px;">
 													<button onclick="startQuiz()" class="btn-quiz" style="background: #f35858; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold;">
@@ -416,9 +424,8 @@
 											<br>
 											
 											<h3>Aviso de Privacidad</h3>
-											<p style="text-align: justify;">La información proporcionada en este simulador educativo será utilizada exclusivamente con fines académicos y de evaluación en la detección de phishing.
-											El alias ingresado no permite la identificación personal y los resultados (puntaje y tiempo) se almacenan únicamente de forma local en el navegador, sin ser enviados a servidores externos.
-											No se solicita ni recopila credenciales reales ni datos sensibles.</p>
+											<p style="text-align: justify;">La información proporcionada en este Quiz será utilizada exclusivamente con fines académicos y de evaluación en la detección de phishing.
+											No se recopila ningún otro tipo de información sensible al usuario.</p>
 										</div> 
 
 										<div id="quiz-engine" style="display: none;">
@@ -433,9 +440,9 @@
 
 											<div id="quiz-buttons" class="btn-container" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
 												<button onclick="checkAnswer(true)" class="btn-quiz btn-danger" style="background: #f35858; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; flex: 1;">
-													<i class="fas fa-bug"></i> No es real (Phising)
+													<i class="fas fa-bug"></i> No es real (Phishing)
 												</button>
-												<button onclick="checkAnswer(false)" class="btn-quiz btn-success" style="background: #f35858; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; flex: 1;">
+												<button onclick="checkAnswer(false)" class="btn-quiz btn-success" style="background: #f35858; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; flex: 1;">
 													<i class="fas fa-check"></i> Es real
 												</button>
 											</div>									
@@ -457,6 +464,16 @@
 											
 											<br>
 											
+											<p><strong>ADVERTENCIA:</strong> A partir de aquí, si se recarga o se cierra la ventana, se perderá <strong>TODO</strong> el progreso.</p>
+											
+											<div style="text-align: center; margin-top: 20px;">
+												<button id="btnSiguiente" style="display: none; background: #f35858; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+													Siguiente
+												</button>
+											</div>
+											
+											<br>
+											
 										</div>
 
 										<div id="final-score" style="display: none; text-align: center; padding: 20px;">
@@ -467,14 +484,11 @@
 													<i class="fas fa-chart-line" style="font-size: 3.5rem; color: #f35858;"></i>
 												</div>
 											</div>
-
-											<p>Aquí se recopilan los resultados de todos los usuarios que han participado.</p>
 											
-											<div id="stats-summary"></div>
-
-											<hr>
-
-											<div style="overflow-x: auto;">
+											<p>Aquí se muestran a los participantes que han tenido un mejor rendimiento.</p>
+											
+											<!-- Tabla de clasificación -->
+											<div style="overflow-x: auto; margin-bottom: 25px;">
 												<table class="ranking-table" style="width: 100%; border-collapse: collapse;">
 													<thead style="background: #f8f9fa;">
 														<tr>
@@ -484,24 +498,24 @@
 															<th style="padding: 12px;">Tiempo</th>
 														</tr>
 													</thead>
-													<tbody id="ranking-list">
-														</tbody>
+													<tbody id="ranking-list"></tbody>
 												</table>
 											</div>
-											
+
+											<!-- Analítica -->
+											<div id="evaluation-text" style="margin-top: 25px;"></div>
+
+											<!-- Botones -->
 											<div id="btn-volver-consulta" style="margin-top: 30px; display: none;">
 												<button onclick="goBackToIntro()" class="btn-quiz" style="background: #f35858; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold;">
-													Regresar
+													Inicio
 												</button>
 											</div>
 
 											<div id="btn-post-quiz" class="btn-container" style="margin-top: 35px; display: none; gap: 15px; justify-content: center; flex-wrap: wrap;">
-												<button onclick="restartQuiz()" style="background: #f35858; border: 1px solid #ccc; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; color: #444;">
-													Reintentar
+												<button onclick="goBackToIntro()" class="btn-quiz" style="background: #f35858; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+													Inicio
 												</button>
-												<a href="" style="background: #f35858; color: white; text-decoration: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; display: inline-block;">
-													Continuar
-												</a>
 											</div>
 										</div>
 										<hr>
