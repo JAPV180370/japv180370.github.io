@@ -407,18 +407,20 @@
 												En este Quiz, se presentan 10 escenarios dónde los mensajes o botones pueden ser o no maliciosos. ¿Puedes adivinar cuál es real y cuál no?
 											</p>
 											
-											<input type="text" id="user-alias" style="padding: 12px; width: auto; border-radius: 8px; border: 2px solid #eee; font-size: 1rem; margin-bottom: 20px; outline: none;" placeholder="Introduce un nombre, alias o matrícula...">
-
-											<div style="margin-top: 15px;">
-												<a class="button" onclick="startQuiz()">
-													Iniciar Quiz
-												</a>
-											</div>
-											<div style="margin-top: 15px;">
-												<a class="button" onclick="jumpToRanking()">
-													Ver clasificatoria
-												</a>
-											</div>
+											<form method="post" action="#">
+												<div class="col-6 col-12-mobile">
+													<input type="text" id="user-alias" placeholder="Introduce un nombre, alias o matrícula..." style="width: 500px">
+												</div>
+												<div style="margin-top: 15px;">
+													<a class="button" onclick="startQuiz()">
+														Iniciar Quiz
+													</a>
+													<a class="button" onclick="jumpToRanking()">
+														Ver clasificatoria
+													</a>
+												</div>
+											</form>
+											
 										</center>
 										
 										<br>
@@ -446,10 +448,10 @@
 										<div id="scenario-text" class="scenario-box"></div>
 
 										<div id="quiz-buttons" class="btn-container" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
-											<a class="button" onclick="checkAnswer(true)" text-align: center;">
+											<a class="button" onclick="checkAnswer(true)" style="text-align: center;">
 												<i class="fas fa-bug"></i> No es real (Phishing)
 											</a>
-											<a class="button" onclick="checkAnswer(false)" text-align: center;">
+											<a class="button" onclick="checkAnswer(false)" style="text-align: center;">
 												<i class="fas fa-check"></i> Es real
 											</a>
 										</div>									
