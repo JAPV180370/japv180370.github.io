@@ -407,12 +407,13 @@
 												En este Quiz, se presentan 10 escenarios dónde los mensajes, correos y/o botones pueden ser o no maliciosos. ¿Puedes adivinar cuál es real y cuál no?
 											</p>
 											
-											<form method="post" action="#">
+											<form onsubmit="startQuiz(); return false;">
 												<div class="col-6 col-12-mobile">
-													<input type="text" id="user-alias" placeholder="Ingresa un nombre..." style="width: auto">
+													<input type="text" id="user-alias" placeholder="Ingresa un nombre...">
 												</div>
+
 												<div style="margin-top: 15px;">
-													<a class="button" onclick="startQuiz()" style="margin-bottom: 5px">
+													<a type="submit" class="button" style="margin-bottom: 5px">
 														Iniciar Quiz
 													</a>
 													<a class="button" onclick="jumpToRanking()" style="margin-bottom: 5px">
