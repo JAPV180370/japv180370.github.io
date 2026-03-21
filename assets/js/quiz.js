@@ -194,6 +194,7 @@ function showFinalResults() {
 				<p>• <b>Punto débil:</b> <span style="margin-left: 5px;">${stats.trendText}</span></p>
 				<p>• <b>Peor escenario:</b> <span style="margin-left: 5px;">#${stats.worstId}</span></p>
 				<p>• <b>Tiempo promedio:</b> <span style="margin-left: 5px;">${stats.avgTime}s</span></p>
+				<p>• <b>Duración total:</b> <span style="margin-left: 5px;">${stats.totalTime}s</span></p>
 			</div>
         `;
     }
