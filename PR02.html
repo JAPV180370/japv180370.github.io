@@ -407,7 +407,7 @@
 												En este Quiz, se presentan 10 escenarios dónde los mensajes o botones pueden ser o no maliciosos. ¿Puedes adivinar cuál es real y cuál no?
 											</p>
 											
-											<input type="text" id="user-alias" placeholder="Introduce un nombre, alias o matrícula..." style="padding: 12px; width: 50%; border-radius: 8px; border: 2px solid #eee; font-size: 1rem; margin-bottom: 20px; outline: none;">
+											<input type="text" id="user-alias" placeholder="Introduce un nombre, alias o matrícula...">
 
 											<div style="margin-top: 15px;">
 												<a class="button" onclick="startQuiz()">
@@ -446,10 +446,10 @@
 										<div id="scenario-text" class="scenario-box"></div>
 
 										<div id="quiz-buttons" class="btn-container" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
-											<a class="button" onclick="checkAnswer(true)" style="width: 50%; text-align: center;">
+											<a class="button" onclick="checkAnswer(true)" text-align: center;">
 												<i class="fas fa-bug"></i> No es real (Phishing)
 											</a>
-											<a class="button" onclick="checkAnswer(false)" style="width: 50%; text-align: center;">
+											<a class="button" onclick="checkAnswer(false)" text-align: center;">
 												<i class="fas fa-check"></i> Es real
 											</a>
 										</div>									
@@ -513,7 +513,7 @@
 										<div id="evaluation-text" style="margin-top: 25px;"></div>
 
 										<div id="btn-back-to-intro" style="margin-top: 30px; display: none; text-align: center;">
-											<a class="button" onclick="goBackToIntro()" style="width: 20%;">Inicio</a>
+											<a class="button" onclick="goBackToIntro()">Inicio</a>
 										</div>
 									</div>
 									<hr>
