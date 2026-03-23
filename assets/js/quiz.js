@@ -20,9 +20,15 @@ function secondsToMinutes(segundos) {
 }
 
 // --- CALCULAR TIEMPO TOTAL Y PROMEDIO ---
-function getQuizTimes(startTime, endTime, totalQuestions) {
+function getQuizTimes(startTime, endTime) {
     const totalTime = Math.round((endTime - startTime) / 1000);
-    const avgTime = totalQuestions > 0 ? (totalTime / totalQuestions).toFixed(1) : 0;
+
+    const times = sessionAnalytics.timesPerQuestion;
+
+    const avgTime = times.length > 0
+        ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1)
+        : 0;
+
     return { totalTime, avgTime };
 }
 
@@ -176,7 +182,7 @@ function checkAnswer(choice) {
 function showFinalResults() {
     quizFinished = true;
 
-    const { totalTime, avgTime } = getQuizTimes(startTime, Date.now(), scenarios.length);
+    const { totalTime, avgTime } = getQuizTimes(startTime, Date.now());
     saveUserResult(userAlias, score, totalTime);
 
     // Mostrar secciones
@@ -193,8 +199,8 @@ function showFinalResults() {
             <div style="margin: 15px 0; padding: 15px; border-radius: 10px; text-align: left;">
 				<p>• <b>Punto débil:</b> <span style="margin-left: 5px;">${stats.trendText}</span></p>
 				<p>• <b>Peor escenario:</b> <span style="margin-left: 5px;">#${stats.worstId}</span></p>
-				<p>• <b>Tiempo promedio:</b> <span style="margin-left: 5px;">${stats.avgTime}s</span></p>
-				<p>• <b>Duración total:</b> <span style="margin-left: 5px;">${stats.totalTime}s</span></p>
+				<p>• <b>Tiempo promedio:</b> <span style="margin-left: 5px;">${avgTime}s</span></p>
+				<p>• <b>Duración total:</b> <span style="margin-left: 5px;">${totalTime}s</span></p>
 			</div>
         `;
     }
