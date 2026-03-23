@@ -5,7 +5,7 @@ const scenarios = [
 		image: "images/bbva.jpg",
 		text: "Recibes un correo supuestamente de BBVA México informándote que se detectó un acceso sospechoso a tu cuenta desde otro dispositivo. El mensaje indica que debes verificar tu identidad de inmediato haciendo clic en el siguiente enlace: http://bbva-seguridad-login.com para evitar el bloqueo permanente de tu cuenta.",
 		isPhishing: true,
-		vector: "Suplantación bancaria / URL falsa",
+		vector: "Link falso de banco",
 		desc: `<b>Razón:</b> Es un intento de phishing bancario.<br><br>
 			<b>Es Phishing porque:</b>
 			<ul>
@@ -20,7 +20,7 @@ const scenarios = [
 		image: "images/dhl.jpg",
 		text: "Recibes un SMS supuestamente de DHL indicando que tu paquete está retenido en aduanas y que debes pagar un cargo para liberarlo. El mensaje incluye un enlace para realizar el pago.",
 		isPhishing: true,
-		vector: "Smishing / Pago fraudulento",
+		vector: "SMS con pago falso",
 		desc: `<b>Razón:</b> Es un fraude por mensaje SMS.<br><br>
 			<b>Es Phishing porque:</b>
 			<ul>
@@ -35,7 +35,7 @@ const scenarios = [
 		image: "images/upslp.jpg",
 		text: "Recibes un correo en tu cuenta institucional con una notificación de Blackboard sobre una actividad reciente registrada en la plataforma.",
 		isPhishing: false,
-		vector: "Comunicación institucional legítima",
+		vector: "Mensaje real",
 		desc: `<b>Razón:</b> Es una notificación legítima de Blackboard.<br><br>
 			<b>Es real porque:</b>
 			<ul>
@@ -50,7 +50,7 @@ const scenarios = [
 		image: "images/sat.jpg",
 		text: "Recibes un correo supuestamente del SAT informándote que tienes un saldo a favor. Para obtener tu devolución, debes descargar un archivo adjunto en formato .zip que contiene los documentos necesarios.",
 		isPhishing: true,
-		vector: "Malware / Ingeniería fiscal",
+		vector: "Archivo con virus",
 		desc: `<b>Razón:</b> Intento de distribución de malware.<br><br>
 			<b>Es Phishing porque:</b>
 			<ul>
@@ -65,7 +65,7 @@ const scenarios = [
 		image: "images/netflix.jpg",
 		text: "Recibes un correo de Netflix indicando que hubo un problema con tu método de pago y que tu cuenta será suspendida en breve. El mensaje te pide actualizar tu información de pago mediante un enlace para evitar la cancelación.",
 		isPhishing: true,
-		vector: "Phishing de suscripción",
+		vector: "Link para robar datos",
 		desc: `<b>Razón:</b> Busca robar credenciales y datos bancarios.<br><br>
 			<b>Es Phishing porque:</b>
 			<ul>
@@ -80,7 +80,7 @@ const scenarios = [
 		image: "images/rappi.jpg",
 		text: "Recibes un SMS indicando que has ganado 45 RappiCréditos e incluye un enlace para reclamarlos. El mensaje genera urgencia para que accedas rápidamente al beneficio.",
 		isPhishing: true,
-		vector: "Suplantación de servicio",
+		vector: "Premio falso",
 		desc: `<b>Razón:</b> Mensaje fraudulento que busca engañar al usuario.<br><br>
 			<b>Es Phishing porque:</b>
 			<ul>
@@ -95,7 +95,7 @@ const scenarios = [
 		image: "images/amazon.jpg",
 		text: "Recibes un correo de Amazon confirmando la compra de un libro digital para Kindle. El mensaje incluye el título del libro, la fecha de entrega y un enlace para ver los detalles de tu pedido en tu cuenta de Amazon.",
 		isPhishing: false,
-		vector: "Compra legítima",
+		vector: "Compra real",
 		desc: `<b>Razón:</b> Este correo es legítimo y proviene de 'amazon.com.mx'<br><br>
 			<b>Es real porque:</b>
 			<ul>
@@ -110,7 +110,7 @@ const scenarios = [
 		image: "images/cfe.jpg",
 		text: "Recibes un correo supuestamente de la CFE con tu estado de cuenta adjunto en formato Word y PDF. El mensaje te invita a revisar los archivos para verificar un adeudo pendiente.",
 		isPhishing: true,
-		vector: "Malware / Archivo adjunto",
+		vector: "Archivo sospechoso",
 		desc: `<b>Razón:</b> Posible intento de infección o robo de información.<br><br>
 			<b>Es Phishing porque:</b>
 			<ul>
@@ -125,7 +125,7 @@ const scenarios = [
 		image: "images/facebook.jpg",
 		text: "Recibes un correo de Facebook con un código de recuperación para acceder a tu cuenta.",
 		isPhishing: false,
-		vector: "Notificación de seguridad legítima",
+		vector: "Código real",
 		desc: `<b>Razón:</b> Es un mensaje auténtico del sistema de seguridad.<br><br>
 			<b>Es real porque:</b>
 			<ul>
@@ -140,7 +140,7 @@ const scenarios = [
 		image: "images/banamex.jpg",
 		text: "Recibes un SMS supuestamente de Banamex indicando que tienes 9966 puntos disponibles para canjear. El mensaje incluye un enlace para realizar el canje y menciona que los puntos caducan el 31 de diciembre.",
 		isPhishing: true,
-		vector: "Smishing (SMS fraudulento)",
+		vector: "SMS con enlace falso",
 		desc: `<b>Razón:</b> Es un intento de fraude mediante SMS.<br><br>
 			<b>Es Phishing porque:</b>
 			<ul>
