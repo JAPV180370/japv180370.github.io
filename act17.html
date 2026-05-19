@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #17 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+                        <article id="content">
+                            <header>
+                                <h2>ACTIVIDAD #17</h2>
+                            </header>
+
+                            <p>
+                            La gestión moderna de amenazas informáticas exige la adopción de metodologías objetivas que dejen de lado las evaluaciones subjetivas. A continuación, se expone el procedimiento técnico para la catalogación y cálculo del impacto latente en activos de software.
+                            </p>
+
+                            <hr>
+
+                            <h3>1. Marco Teórico y Propósito del Estándar</h3>
+                            <p>El Sistema de Puntuación de Vulnerabilidades Comunes (<strong>CVSS v3.1</strong>) opera como un marco abierto de carácter global diseñado para traducir las especificaciones intrínsecas de un fallo de seguridad en un índice numérico escalar. Esta actividad práctica se centró en descomponer un vector de explotación web real, aislando sus componentes de acceso y afectación con el fin de obtener un reflejo matemático fidedigno de su peligrosidad en entornos de producción.</p>
+
+                            <hr>
+
+                            <h3>2. Desglose del Grupo de Métricas Base</h3>
+                            <p>Tras someter el escenario de vulnerabilidad web al proceso de inspección, se determinaron los valores correspondientes al subgrupo de explotabilidad de la especificación técnica:</p>
+                            
+                            <ul>
+                                <li><strong>Vector de Ataque (AV - Attack Vector):</strong> Red Externa (N) — La explotación puede consolidarse de manera remota a nivel de capa de transporte, sin requerir proximidad física ni lógica al segmento afectado.</li>
+                                <li><strong>Complejidad del Ataque (AC - Attack Complexity):</strong> Baja (L) — No existen condiciones especiales ni barreras de aleatorización que el atacante deba sortear; la ejecución del exploit es altamente reproducible.</li>
+                                <li><strong>Privilegios Requeridos (PR - Privileges Required):</strong> Ninguno (N) — El actor de la amenaza no necesita disponer de cuentas de usuario previas ni roles de administración dentro del aplicativo para iniciar la agresión.</li>
+                                <li><strong>Interacción del Usuario (UI - User Interaction):</strong> Requerida (R) — El éxito de la intrusión depende críticamente de una acción dirigida por parte de la víctima (e.g., hacer clic en un enlace manipulado o ejecutar un script local).</li>
+                                <li><strong>Alcance (S - Scope):</strong> Cambiado (C) — El impacto del exploit desborda los límites del entorno de software que contiene la vulnerabilidad, logrando comprometer recursos o privilegios en una autoridad de seguridad diferente.</li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>3. Algoritmo de Cálculo y Cadena Vectorial</h3>
+                            <p>La síntesis de los parámetros anteriores se procesó mediante el motor matemático oficial provisto por el foro <strong>FIRST (Forum of Incident Response and Security Teams)</strong>. Evaluando de forma conjunta la tríada de impacto —afectaciones directas sobre la Confidencialidad, la Integridad y la Disponibilidad de la información— se estructuró la cadena vectorial estándar (<em>Vector String</em>).</p> 
+                            
+                            <p>Este bloque alfanumérico condensa la firma técnica del fallo de forma compacta y normalizada, sirviendo como la entrada base para deducir la puntuación final ponderada (Base Score) que define el umbral de peligrosidad.</p>
+
+                            <hr>
+
+                            <h3>4. Triaje del Riesgo y Estrategia de Mitigación</h3>
+                            <p>El valor numérico derivado de una ecuación CVSS trasciende la mera asignación de una etiqueta cualitativa de severidad (Baja, Media, Alta o Crítica). Su verdadero valor estratégico radica en dotar a los departamentos de ingeniería de software y operaciones de TI de un criterio cuantitativo para el triaje de riesgos.</p> 
+                            
+                            <p>En lugar de aplicar parches de forma reactiva, la organización puede orquestar flujos de trabajo eficientes, priorizando las ventanas de mantenimiento e inyección de contramedidas basándose en las brechas que representan una amenaza inminente para la continuidad de los servicios y el resguardo de los activos de datos críticos del negocio.</p>
+
+                            <hr>
+
+                            <h3>Referencias</h3>
+                            <ul>
+                              <li>FIRST - Common Vulnerability Scoring System v3.1 Specification Document: https://www.first.org/cvss/v3.1/specification-document</li>
+                              <li>NIST - National Vulnerability Database Calculator: https://nvd.nist.gov/vuln-metrics/cvss</li>
+                            </ul>
+
+                            <ul class="actions">
+                                <li>
+                                    <a href="docs/180370-act17.pdf" class="button" download>
+                                        Descargar actividad
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

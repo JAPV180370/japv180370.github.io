@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #11 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+                        <article id="content">
+                            <header>
+                                <h2>ACTIVIDAD #11</h2>
+                            </header>
+
+                            <p>
+                            El análisis de brechas en sistemas objetivo requiere un desglose meticuloso de las acciones tácticas ejecutadas. A continuación, se presenta la documentación correspondiente a la intrusión controlada sobre el entorno de pruebas, estructurada bajo un enfoque de auditoría defensiva.
+                            </p>
+
+                            <hr>
+
+                            <h3>Auditoría Ofensiva: Explotación y Análisis de Napping 101</h3>
+                            <p><em>Documento de trazabilidad técnica y vulnerabilidades detectadas en el activo perimetral.</em></p>
+
+                            <br>
+
+                            <h3>1. Diagnóstico Inicial y Objetivos</h3>
+                            <p>Esta sección documenta el análisis de intrusión ofensiva implementado sobre el nodo <strong>192.168.56.104</strong> (identificado operativamente como Napping 101). La meta del despliegue consistió en mapear de manera exhaustiva el perímetro digital, validar las debilidades mediante pruebas de concepto dinámicas y reconstruir la ruta del compromiso para robustecer las defensas del host.</p>
+
+                            <hr>
+
+                            <h3>2. Fase de Inspección Exterior y Mapeo</h3>
+                            <p>El proceso comenzó con una inspección de puertos y firmas de software para delimitar el vector de ataque utilizable. Para el rastreo general de la superficie expuesta, se configuró el siguiente comando de auditoría:</p>
+
+                            <pre>nmap -sS -sV -O -p- 192.168.56.104</pre>
+
+                            <h4>Catálogo de Servicios Detectados y Nivel de Riesgo</h4>
+                            <p>A partir de la telemetría recolectada, se clasificaron los puntos de entrada según el peligro potencial de explotación:</p>
+
+                            <table border="1" style="width:100%; border-collapse: collapse; text-align: left; margin-top: 15px; margin-bottom: 15px;">
+                                <thead>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <th style="padding: 10px; border: 1px solid #ddd;">Punto de Acceso</th>
+                                        <th style="padding: 10px; border: 1px solid #ddd;">Protocolo / Software</th>
+                                        <th style="padding: 10px; border: 1px solid #ddd;">Compilación Detectada</th>
+                                        <th style="padding: 10px; border: 1px solid #ddd;">Severidad Estratégica</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;"><strong>Puerto 80</strong></td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">HTTP / Apache httpd</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">2.4.6</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">Crítica</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;"><strong>Puerto 22</strong></td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">SSH / OpenSSH</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">7.4</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd; color: #f0ad4e; font-weight: bold;">Alta</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;"><strong>Puerto 445</strong></td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">SMB / Samba</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">3.X-4.X</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd; color: #f0ad4e; font-weight: bold;">Alta</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;"><strong>Puerto 21</strong></td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">FTP / vsftpd</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">3.0.2</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd; color: #5bc0de; font-weight: bold;">Media</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;"><strong>Puerto 111</strong></td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">RPC</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">2-4</td>
+                                        <td style="padding: 10px; border: 1px solid #ddd; color: #5bc0de; font-weight: bold;">Media</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <hr>
+
+                            <h3>3. Línea de Infiltración de Datos</h3>
+                            <p>La vulnerabilidad más severa se concentró en la raíz del servicio web (HTTP, puerto 80). La falta de directivas de autenticación en este segmento permitió una fuga de información crítica al dejar al descubierto ficheros corporativos residuales (como el caso específico de <code>readme.txt</code>), lo que proveyó de manera inmediata los datos de acceso necesarios para anular los controles de seguridad perimetrales.</p>
+
+                            <hr>
+
+                            <h3>4. Cronología de la Intrusión</h3>
+                            <p>El ciclo de vida del compromiso de seguridad se rigió por las siguientes etapas operativas:</p>
+
+                            <blockquote>
+                                <strong>[Fase I: Rastreo Perimetral]</strong> → Escaneo con Nmap y detección de tecnologías (FTP, HTTP, SMB). <br>
+                                <strong>[Fase II: Extracción Indexada]</strong> → Auditoría sobre el servidor Apache 80 e inspección de directorios públicos. <br>
+                                <strong>[Fase III: Descubrimiento Extensivo]</strong> → Hallazgo de documentación técnica descuidada y credenciales expuestas. <br>
+                                <strong>[Fase IV: Ejecución y Brecha]</strong> → Penetración controlada y control interactivo sobre el activo.
+                            </blockquote>
+                            <p style="text-align: center; font-size: 0.9em; color: #666;"><em>Gráfico 11.1: Flujo cronológico de la intrusión basada en la fuga de configuraciones.</em></p>
+
+                            <hr>
+
+                            <h3>5. Dictamen de Seguridad</h3>
+                            <p>La auditoría efectuada sobre el entorno Napping 101 evidenció un escenario de riesgo sistémico recurrente: la combinación de recursos compartidos sin un control estricto de accesos y el abandono de archivos con información interna en el servidor web facilitan la caída de toda la infraestructura ante un atacante.</p> 
+
+                            <p>La ejecución rigurosa del estándar PTES (Penetration Testing Execution Standard) durante este ejercicio valida la consistencia legal y técnica del procedimiento, otorgando la visibilidad indispensable para estructurar las futuras tareas de remediación y endurecimiento de la plataforma.</p>
+
+                            <hr>
+
+                            <h3>Referencias</h3>
+                            <ul>
+                              <li>PTES Framework - Guidelines for Technical Enumeration: http://www.pentest-standard.org/</li>
+                              <li>NVD National Vulnerability Database - Apache Security Configuration: https://nvd.nist.gov/</li>
+                            </ul>
+
+                            <ul class="actions">
+                                <li>
+                                    <a href="docs/180370-act11.pdf" class="button" download>
+                                        Descargar actividad
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

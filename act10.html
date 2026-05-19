@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #10 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+                        <article id="content">
+                            <header>
+                                <h2>ACTIVIDAD #10</h2>
+                            </header>
+
+                            <p>
+                            La ciberseguridad moderna en entornos corporativos exige una comprensión profunda y estructurada tanto de las debilidades del sistema como de las metodologías empleadas por los actores de amenazas. En esta práctica se diseñó e implementó una infografía interactiva de alto impacto visual orientada al análisis estratégico de riesgos y mitigaciones esenciales bajo el estándar de Cisco Networking Academy. A través de este componente dinámico, se desglosan los conceptos fundamentales que rigen la seguridad de la información, la secuencia cronológica de un ataque informático ("Kill Chain" adaptada) y las contramedidas críticas de defensa en profundidad necesarias para blindar la infraestructura digital del negocio.
+                            </p>
+
+                            <br><hr><br>
+
+                            <div class="bg-slate-200 text-slate-800 font-sans flex justify-center p-4 rounded-2xl border border-slate-300">
+                                <div id="root-infografia" class="w-full"></div>
+                            </div>
+
+                            <script src="https://cdn.tailwindcss.com"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+                            <script type="importmap">
+                              {
+                                "imports": {
+                                  "react": "https://esm.sh/react@18.2.0",
+                                  "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+                                  "lucide-react": "https://esm.sh/lucide-react@0.263.1"
+                                }
+                              }
+                            </script>
+                            <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+                            <script type="text/babel" data-type="module">
+                                import React, { useRef } from 'react';
+                                import { createRoot } from 'react-dom/client';
+                                import {
+                                    Shield, KeyRound, Crosshair, Target, Zap, Activity, Users, 
+                                    AlertTriangle, AlertOctagon, Database, ShieldCheck, ServerCrash, 
+                                    Cpu, TrendingDown, Lock, EyeOff, CheckCircle2, Download
+                                } from 'lucide-react';
+
+                                const StepCard = ({ icon, title, text, iconBox }) => (
+                                    <div className="flex flex-col items-center text-center p-3 bg-slate-900/40 rounded-xl border border-slate-800/60">
+                                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center border mb-2 ${iconBox}`}>
+                                            {icon}
+                                        </div>
+                                        <h4 className="text-white font-bold text-[12px] uppercase tracking-wide">{title}</h4>
+                                        <p className="text-slate-400 text-[11px] mt-1 leading-snug">{text}</p>
+                                    </div>
+                                );
+
+                                const Arrow = () => (
+                                    <div className="hidden md:flex justify-center items-center text-slate-600 font-bold text-lg">→</div>
+                                );
+
+                                const TechniqueCard = ({ bar, iconBg, title, icon, desc, risk, mitigation }) => (
+                                    <div className={`bg-white p-4 rounded-xl shadow-sm border border-slate-200 relative overflow-hidden pt-5`}>
+                                        <div className={`absolute top-0 left-0 right-0 h-[4px] ${bar}`} />
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <div className={`p-1.5 rounded-lg ${iconBg}`}>{icon}</div>
+                                            <h4 className="font-bold text-slate-900 text-[14px]">{title}</h4>
+                                        </div>
+                                        <p className="text-[12px] text-slate-600 mb-2 leading-relaxed">{desc}</p>
+                                        <div className="text-[11px] space-y-1 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                            <div><span className="font-bold text-red-600 uppercase text-[9px]">Riesgo:</span> <span className="text-slate-700 font-medium">{risk}</span></div>
+                                            <div><span className="font-bold text-emerald-600 uppercase text-[9px]">Mitigación:</span> <span className="text-slate-700 font-medium">{mitigation}</span></div>
+                                        </div>
+                                    </div>
+                                );
+
+                                const App = () => {
+                                    const componentRef = useRef();
+
+                                    const handleDownloadPdf = () => {
+                                        const element = componentRef.current;
+                                        const opt = {
+                                            margin: 0,
+                                            filename: 'Actividad10_Infografia_Ciberseguridad.pdf',
+                                            image: { type: 'jpeg', quality: 0.98 },
+                                            html2canvas: { scale: 2, useCORS: true, logging: false, scrollY: 0 },
+                                            pagebreak: { mode: 'avoid-all' },
+                                            jsPDF: { unit: 'in', format: 'a3', orientation: 'portrait' },
+                                        };
+                                        if (window.html2pdf) {
+                                            window.html2pdf().set(opt).from(element).save();
+                                        } else {
+                                            alert('La librería para generar PDF no ha cargado aún.');
+                                        }
+                                    };
+
+                                    return (
+                                        <div className="w-full relative">
+
+                                            <div ref={componentRef} className="w-full bg-slate-50 rounded-xl overflow-hidden flex flex-col p-4 md:p-6 space-y-5">
+                                                
+                                                {/* HEADER */}
+                                                <header className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white p-5 rounded-xl relative overflow-hidden shrink-0 border border-slate-800">
+                                                    <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle, #60A5FA 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
+                                                    <div className="relative z-10">
+                                                        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-300 text-[9px] font-bold uppercase border border-blue-400/20 mb-2">
+                                                            <Shield size={10} /> Cisco Networking Academy • Actividad 10
+                                                        </div>
+                                                        <h1 className="text-[24px] md:text-[32px] font-black tracking-tight leading-tight">Ataques, Conceptos y Técnicas</h1>
+                                                        <p className="text-slate-400 text-[12px] max-w-2xl mt-1">Análisis de amenazas cibernéticas, sus riesgos principales y las medidas clave para su mitigación en entornos corporativos.</p>
+                                                    </div>
+                                                </header>
+
+                                                {/* 1. CONCEPTOS */}
+                                                <section>
+                                                    <div className="flex items-center gap-2 mb-3 pb-1 border-b border-slate-200">
+                                                        <div className="bg-blue-600 text-white p-1 rounded-md"><KeyRound size={14} /></div>
+                                                        <h2 className="text-[16px] font-bold text-slate-900">1. Conceptos Fundamentales</h2>
+                                                    </div>
+                                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                                        <div className="bg-white p-3 rounded-xl border border-slate-200 border-l-[4px] border-l-blue-500 shadow-sm">
+                                                            <h3 className="text-blue-700 font-bold mb-1 flex items-center gap-1.5 text-[13px]"><Crosshair size={14} /> Amenaza</h3>
+                                                            <p className="text-[12px] text-slate-600 font-medium">Peligro potencial capaz de comprometer la seguridad de un sistema, red o la información de la organización.</p>
+                                                        </div>
+                                                        <div className="bg-white p-3 rounded-xl border border-slate-200 border-l-[4px] border-l-amber-500 shadow-sm">
+                                                            <h3 className="text-amber-600 font-bold mb-1 flex items-center gap-1.5 text-[13px]"><Target size={14} /> Vulnerabilidad</h3>
+                                                            <p className="text-[12px] text-slate-600 font-medium">Debilidad inherente en el diseño, configuración, implementación o conducta humana susceptible a ser explotada.</p>
+                                                        </div>
+                                                        <div className="bg-white p-3 rounded-xl border border-slate-200 border-l-[4px] border-l-red-500 shadow-sm">
+                                                            <h3 className="text-red-600 font-bold mb-1 flex items-center gap-1.5 text-[13px]"><Zap size={14} /> Exploit</h3>
+                                                            <p className="text-[12px] text-slate-600 font-medium">Técnica, herramienta o fragmento de código diseñado para aprovechar vulnerabilidades y ejecutar acciones hostiles.</p>
+                                                        </div>
+                                                    </div>
+                                                </section>
+
+                                                {/* 2. ANATOMÍA */}
+                                                <section>
+                                                    <div className="flex items-center gap-2 mb-3 pb-1 border-b border-slate-200">
+                                                        <div className="bg-indigo-600 text-white p-1 rounded-md"><Activity size={14} /></div>
+                                                        <h2 className="text-[16px] font-bold text-slate-900">2. Anatomía de un Ciberataque</h2>
+                                                    </div>
+                                                    <div className="bg-slate-950 rounded-xl p-4 shadow-sm border border-slate-800 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-center">
+                                                        <StepCard icon={<Users size={16} />} title="Actor de Amenaza" text="Identifica objetivos y oportunidades." iconBox="bg-red-500/10 text-red-400 border-red-500/30" />
+                                                        <Arrow />
+                                                        <StepCard icon={<AlertTriangle size={16} />} title="Vulnerabilidad" text="Brecha estructural o humana." iconBox="bg-amber-500/10 text-amber-400 border-amber-500/30" />
+                                                        <Arrow />
+                                                        <div className="flex flex-col items-center text-center">
+                                                            <div className="w-10 h-10 bg-orange-500/10 text-orange-400 rounded-lg flex items-center justify-center border border-orange-500/30 mb-2"><AlertOctagon size={16} /></div>
+                                                            <h4 className="text-white font-bold text-[12px] uppercase tracking-wide">Explotación</h4>
+                                                            <p className="text-slate-400 text-[11px] mt-1 leading-snug">Ejecución del vector infiltrador.</p>
+                                                            <div className="mt-1.5 inline-flex items-center gap-1 bg-emerald-500/15 border border-emerald-500/25 text-emerald-300 text-[8px] font-bold px-2 py-0.5 rounded-full uppercase"><ShieldCheck size={8} /> Intervención</div>
+                                                        </div>
+                                                        <Arrow />
+                                                        <StepCard icon={<Database size={16} />} title="Impacto Crítico" text="Robo, cifrado o interrupción." iconBox="bg-purple-500/10 text-purple-400 border-purple-500/30" />
+                                                    </div>
+                                                </section>
+
+                                                {/* 3. TÉCNICAS */}
+                                                <section>
+                                                    <div className="flex items-center gap-2 mb-3 pb-1 border-b border-slate-200">
+                                                        <div className="bg-purple-600 text-white p-1 rounded-md"><ServerCrash size={14} /></div>
+                                                        <h2 className="text-[16px] font-bold text-slate-900">3. Técnicas de Ataque y Mitigación</h2>
+                                                    </div>
+                                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                                        <TechniqueCard bar="bg-blue-500" iconBg="bg-blue-100 text-blue-700" title="Ingeniería Social" icon={<Users size={14} />} desc="Manipulación del usuario para engañarlo y obtener accesos o credenciales del sistema." risk="Robo de identidad y accesos." mitigation="Cultura Zero-Trust y uso de MFA." />
+                                                        <TechniqueCard bar="bg-purple-500" iconBg="bg-purple-100 text-purple-700" title="Malware Avanzado" icon={<Cpu size={14} />} desc="Código hostil que infiltra, altera o secuestra los recursos y bases de datos corporativas." risk="Cifrado destructivo (Ransomware)." mitigation="Implementación de EDR y respaldos." />
+                                                        <TechniqueCard bar="bg-orange-500" iconBg="bg-orange-100 text-orange-700" title="Ataques DDoS" icon={<TrendingDown size={14} />} desc="Saturación intencional de la infraestructura mediante el envío masivo y distribuido de tráfico." risk="Denegación técnica de servicios." mitigation="Filtrado perimetral dinámico." />
+                                                    </div>
+                                                </section>
+
+                                                {/* 4. DEFENSAS */}
+                                                <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                                                        <h3 className="font-bold text-slate-900 text-[14px] mb-3 flex items-center gap-2 text-blue-700"><Lock size={16} /> Triángulo de Seguridad CIA</h3>
+                                                        <div className="space-y-2 text-[12px]">
+                                                            <div><strong className="text-slate-800">Confidencialidad:</strong> Garantizar que solo el personal autorizado acceda a datos sensibles implementando cifrado robusto.</div>
+                                                            <div><strong className="text-slate-800">Integridad:</strong> Proteger la veracidad de los datos evitando alteraciones maliciosas mediante firmas digitales y hashes.</div>
+                                                            <div><strong className="text-slate-800">Disponibilidad:</strong> Asegurar el acceso ininterrumpido a los servicios mediante redundancia y planes ante desastres.</div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                                                        <h3 className="font-bold text-slate-900 text-[14px] mb-3 flex items-center gap-2 text-emerald-700"><ShieldCheck size={16} /> Buenas Prácticas de Defensa</h3>
+                                                        <ul className="space-y-1.5 text-[12px] font-medium text-slate-700">
+                                                            <li className="flex items-start gap-1.5"><CheckCircle2 size={12} className="text-emerald-600 mt-0.5 shrink-0" /> Aplicar actualizaciones automáticas de parches en el Kernel.</li>
+                                                            <li className="flex items-start gap-1.5"><CheckCircle2 size={12} className="text-emerald-600 mt-0.5 shrink-0" /> Restringir privilegios de usuarios al mínimo necesario (PoLP).</li>
+                                                            <li className="flex items-start gap-1.5"><CheckCircle2 size={12} className="text-emerald-600 mt-0.5 shrink-0" /> Monitoreo y centralización de logs en soluciones SIEM.</li>
+                                                            <li className="flex items-start gap-1.5"><CheckCircle2 size={12} className="text-emerald-600 mt-0.5 shrink-0" /> Auditorías periódicas de configuraciones expuestas en red.</li>
+                                                        </ul>
+                                                    </div>
+                                                </section>
+
+                                            </div>
+                                        </div>
+                                    );
+                                };
+
+                                const rootEl = document.getElementById('root-infografia');
+                                if (rootEl) {
+                                    const root = createRoot(rootEl);
+                                    root.render(<App />);
+                                }
+                            </script>
+                            <br><hr><br>
+
+                            <h3>Resultados de Aprendizaje</h3>
+                            <ul>
+                              <li>Asimilación e interconexión práctica de los conceptos de amenaza, vulnerabilidad y explotación.</li>
+                              <li>Mapeo secuencial del flujo de impacto de un ciberataque sobre los activos tangibles de una empresa.</li>
+                              <li>Identificación y propuesta de mitigaciones técnicas reales frente a vectores críticos como ransomware y denegación de servicios.</li>
+                              <li>Comprensión analítica de la tríada CIA aplicada como métrica de resiliencia organizativa.</li>
+                            </ul>
+
+                            <br><hr><br>
+
+                            <h3>Conclusión</h3>
+                            <p>
+                            El desarrollo de este recurso visual interactivo consolida el marco teórico necesario para actuar no solo como un administrador de sistemas, sino como un estratega defensivo. Queda claro que la contención de amenazas modernas no depende de una sola herramienta mágica, sino de una cultura operativa estructurada en capas ("Defensa en Profundidad") donde el eslabón más crítico —el factor humano— debe ser reforzado continuamente junto con las políticas de actualización tecnológica.
+                            </p>
+
+                            <h3>Referencias</h3>
+                            <ul>
+                              <li>Cisco Networking Academy - Cybersecurity Essentials Framework: https://www.netacad.com</li>
+                              <li>NIST Cybersecurity Framework (CSF) v2.0 - Core Functions: https://www.nist.gov/cyberframework</li>
+                            </ul>
+
+                            <ul class="actions">
+                                <li>
+                                    <a href="docs/180370-act10.pdf" class="button" download>
+                                        Descargar actividad
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

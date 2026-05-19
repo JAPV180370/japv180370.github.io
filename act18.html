@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Actividad #18 - 180370</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">REGRESAR</a></h1>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+                        <article id="content">
+                            <header>
+                                <h2>ACTIVIDAD #18</h2>
+                            </header>
+
+                            <p>
+                            La contención efectiva de un incidente de seguridad no concluye con la erradicación del software malicioso; exige una comprensión profunda del trasfondo estratégico del atacante. Este apartado desarrolla la disección de una intrusión mediante metodologías de correlación estructural y perfilado de amenazas.
+                            </p>
+
+                            <hr>
+
+                            <h3>1. Marco Conceptual del Modelo Diamante</h3>
+                            <p>El <strong>Modelo Diamante de Análisis de Intrusiones</strong> (<em>Diamond Model</em>) es un estándar analítico diseñado para establecer la trazabilidad y las dependencias lógicas dentro de cualquier evento cibernético malicioso. Este marco de trabajo postula que todo incidente de seguridad se articula en torno a la interconexión dinámica de cuatro nodos axiales fundamentales: el <strong>Adversario</strong> (el actor o grupo que ejecuta la agresión), la <strong>Infraestructura</strong> (los recursos físicos o lógicos empleados), la <strong>Capacidad</strong> (las herramientas, tácticas y malware utilizados) y la <strong>Víctima</strong> (el activo, red u organización objetivo).</p>
+
+                            <hr>
+
+                            <h3>2. Análisis Forense y Cronología de la Intrusión</h3>
+                            <p>A continuación, se documenta la secuencia de eventos identificados durante la fase de contención y triaje del incidente, desglosando los hallazgos técnicos en cada hito operativo:</p>
+
+                            <h4>Evento I: Alerta y Descubrimiento del Implante Local</h4>
+                            <p>Los sistemas de monitorización perimetral (EDR/SIEM) registraron una anomalía de ejecución en una estación de trabajo corporativa. El análisis estático de la memoria confirmó la persistencia de un artefacto malicioso activo, determinando la <strong>Capacidad</strong> técnica inicial desplegada por el atacante sobre el entorno de la <strong>Víctima</strong>.</p>
+
+                            <h4>Evento II: Ingeniería Inversa y Extracción de Indicadores Lógicos</h4>
+                            <p>Al someter la muestra extraída de malware a un análisis en entornos de sandbox, se aislaron cadenas alfanuméricas correspondientes a los servidores de Comando y Control (C2). Este hallazgo desveló las direcciones lógicas incrustadas que el código malicioso utiliza para recibir instrucciones externas.</p>
+
+                            <h4>Evento III: Trazabilidad de Red y Mapeo de Activos Externos</h4>
+                            <p>Se auditaron las peticiones de resolución DNS emitidas desde la red interna hacia el exterior. El rastreo de estas solicitudes confirmó el direccionamiento de los dominios de C2 hacia un conjunto de direcciones IP públicas específicas, logrando perfilar los componentes de la <strong>Infraestructura</strong> controlada por el atacante.</p>
+
+                            <h4>Evento IV: Identificación de Movimiento Lateral y Propagación</h4>
+                            <p>El análisis correlativo de los logs de tráfico de red reveló que el vector no se limitaba a un único host. Múltiples estaciones de trabajo internas presentaban un patrón de comunicación persistente hacia las IPs del servidor C2, lo que evidenció una fase avanzada de compromiso dentro del segmento corporativo.</p>
+
+                            <h4>Evento V: Atribución Estratégica e Inteligencia del Adversario</h4>
+                            <p>Mediante consultas en bases de datos WHOIS, registros de Sistemas Autónomos (ASN) y telemetría de geolocalización IP, se estructuró un perfil geográfico e institucional del origen del ataque. Este proceso de inteligencia permitió asociar los recursos técnicos con un origen específico, orientando los esfuerzos hacia el perfilado del <strong>Adversario</strong>.</p>
+
+                            <hr>
+
+                            <h3>3. Intersección con el Marco Cyber Kill Chain</h3>
+                            <p>La máxima utilidad del Modelo Diamante se alcanza al integrarlo bidireccionalmente con la metodología <strong>Cyber Kill Chain</strong> de Lockheed Martin. Mientras que la Kill Chain proporciona una visión lineal y cronológica del ataque (dividida en fases como Reconocimiento, Armamento, Entrega, Explotación, Instalación, C2 y Acciones sobre Objetivos), el Modelo Diamante aporta un análisis transversal en cada una de esas etapas.</p>
+
+                            <p>De este modo, cada eslabón de la cadena de destrucción se convierte en un "diamante individual" analizable. Esta fusión metodológica enriquece la recolección de inteligencia de amenazas (<em>Threat Intelligence</em>), permitiendo a los analistas predecir el siguiente movimiento del atacante: si un adversario ve bloqueada su <em>Capacidad</em> en la fase de entrega, la organización puede anticipar qué variaciones de su <em>Infraestructura</em> intentará utilizar para reanudar el compromiso.</p>
+
+                            <hr>
+
+                            <h3>4. Conclusiones Operativas</h3>
+                            <p>Limitar la estrategia de ciberdefensa a la recolección pasiva de Indicadores de Compromiso (IoCs) aislados —como hashes de archivos o direcciones IP— resulta insuficiente frente a amenazas persistentes avanzadas. Los atacantes pueden mutar su infraestructura digital en cuestión de minutos.</p>
+
+                            <p>La adopción del Modelo Diamante eleva la madurez de los centros de operaciones de seguridad (SOC) hacia un enfoque de <strong>Threat Hunting</strong> proactivo. Comprender el ecosistema global del atacante, sus patrones conductuales y los lazos que unen sus herramientas con sus recursos de red es el único mecanismo viable para anticipar las intrusiones, robustecer el perímetro defensivo y garantizar la resiliencia a largo plazo de los activos de la organización.</p>
+
+                            <hr>
+
+                            <h3>Referencias</h3>
+                            <ul>
+                              <li>Center for Cyber Intelligence Analysis and Threat Hunting - The Diamond Model of Intrusion Analysis: https://www.threatintel.org/</li>
+                              <li>Lockheed Martin - The Cyber Kill Chain Framework: https://www.lockheedmartin.com/cyber-kill-chain</li>
+                            </ul>
+
+                            <ul class="actions">
+                                <li>
+                                    <a href="docs/180370-act18.pdf" class="button" download>
+                                        Descargar actividad
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </article>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
