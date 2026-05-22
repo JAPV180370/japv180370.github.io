@@ -1,482 +1,160 @@
 <!DOCTYPE HTML>
-<!--
-    Adoptado y optimizado con criterios avanzados de Gobernanza de TI
-    Paleta de colores personalizada de precisión.
--->
 <html>
 <head>
     <title>PR03 - 180370 - SGSI Gobernanza de TI</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <style>
-        /* ==========================================================================
-           CSS PAGED MEDIA: Optimización exclusiva para exportación a PDF (A4)
-           ========================================================================== */
-        @page {
-            size: A4;
-            margin: 20mm 15mm 20mm 15mm;
-            background-color: #f5f7fa; /* Fondo Principal */
-            @bottom-right {
-                content: "Página " counter(page) " de " counter(pages);
-                font-family: 'Segoe UI', Arial, sans-serif;
-                font-size: 8pt;
-                color: #52575c; /* Texto Estándar */
-            }
-            @bottom-left {
-                content: "UPSLP - Gobernanza de TI | SGSI ISO/IEC 27001";
-                font-family: 'Segoe UI', Arial, sans-serif;
-                font-size: 8pt;
-                color: #52575c; /* Texto Estándar */
-            }
-        }
-
-        /* ==========================================================================
-           ESTILOS BASE Y MAQUETACIÓN WEB CON NUEVA PALETA DE COLORES
-           ========================================================================== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f5f7fa; /* Fondo Principal */
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #52575c; /* Texto Estándar */
-            line-height: 1.6;
-            font-size: 11pt;
-            -webkit-print-color-adjust: exact;
-        }
-
-        /* Enlaces globales */
-        a {
-            color: #52575c;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #f35858; /* Color de Acento / Enlaces Activos */
-        }
-
-        /* Encabezados y Títulos principales */
-        h1, h2, h3, h4, h5, h6 {
-            color: #52575c; /* Texto Estándar */
-            margin-top: 0;
-            font-weight: 700;
-        }
-
-        /* Texto Resaltado / Negritas */
-        strong, b {
-            color: #42474c; /* Texto Resaltado / Negritas */
-            font-weight: 700;
-        }
-
-        /* Líneas separadoras generales */
-        hr {
-            border: 0;
-            border-top: 1px solid #c2c7cc; /* Bordes y Líneas Divisorias */
-            margin: 25px 0;
-        }
-
-        /* Bloques de citas */
-        blockquote {
-            margin: 20px 0;
-            padding: 10px 20px;
-            border-left: 5px solid #c2c7cc; /* Bordes y Líneas Divisorias */
-            background-color: #f9fbfe; /* Fondo Secundario */
-            color: #52575c;
-        }
-
-        /* Banner de Cabecera Corporativa */
-        .header-banner {
-            background-color: #f9fbfe; /* Fondo Secundario */
-            border-bottom: 2px solid #d2d7dc; /* Bordes y Líneas Divisorias */
-            padding: 40px 30px;
-            border-radius: 0 0 12px 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-
-        .header-banner h1 {
-            font-size: 22pt;
-            margin: 0 0 10px 0;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-        }
-
-        .header-banner p {
-            font-size: 12pt;
-            margin: 0;
-            color: #f35858; /* Color de Acento para subtítulos de encabezados */
-            max-width: 800px;
-        }
-
-        .nav-back {
-            display: inline-block;
-            background-color: #61666b; /* Fondo de Íconos como base neutra para botón secundario */
-            color: #f9fbfe; 
-            text-decoration: none;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 9pt;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        
-        .nav-back:hover {
-            background-color: #f35858; /* Color de Acento al pasar cursor */
-            color: #f9fbfe;
-        }
-
-        .main-container {
-            max-width: 100%;
-            padding: 0 10px;
-        }
-
-        /* Bloques de sección */
-        section {
-            background: #f9fbfe; /* Fondo Secundario para destacar contenedores */
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
-            border: 1px solid #d2d7dc; /* Bordes y Líneas Divisorias */
-            border-left: 5px solid #61666b; /* Acento técnico pizarra */
-            page-break-inside: avoid;
-        }
-
-        h3 {
-            font-size: 14pt;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #d2d7dc; /* Bordes y Líneas Divisorias */
-            padding-bottom: 8px;
-        }
-
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        /* Elementos en grilla / bloques de diseño secundario */
-        .visual-grid {
-            display: table;
-            width: 100%;
-            margin: 20px 0;
-            border-spacing: 15px;
-        }
-
-        .visual-card {
-            display: table-cell;
-            background: #f5f7fa; /* Fondo Principal invertido para contraste de tarjetas */
-            border: 1px solid #d2d7dc; 
-            border-radius: 6px;
-            padding: 15px;
-            width: 50%;
-            vertical-align: top;
-        }
-
-        .visual-card h4 {
-            margin: 0 0 10px 0;
-            font-size: 11pt;
-        }
-
-        /* Tablas con formato default e intercalado */
-        .data-table-container {
-            margin: 20px 0;
-        }
-
-        table.default {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 9.5pt;
-            border: 1px solid #d2d7dc; 
-        }
-
-        table.default th {
-            background-color: #61666b; /* Gris pizarra institucional */
-            color: #f9fbfe; 
-            text-align: left;
-            padding: 10px;
-            font-weight: 600;
-            border: 1px solid #d2d7dc;
-        }
-
-        table.default td {
-            padding: 9px 10px;
-            border: 1px solid #d2d7dc; /* Líneas de las tablas con #d2d7dc */
-            color: #52575c;
-        }
-
-        /* Sombreado intercalado en las filas impares de las tablas (1, 3, 5...) */
-        table.default tbody tr:nth-child(2n+1) td {
-            background-color: #f9fbfe; /* Fondo Secundario para filas impares */
-        }
-        
-        table.default tbody tr:nth-child(2n) td {
-            background-color: #ffffff; 
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 8pt;
-            font-weight: bold;
-            border: 1px solid #d2d7dc;
-        }
-
-        .badge-high { background-color: #f35858; color: #f9fbfe; }
-        .badge-medium { background-color: #61666b; color: #f9fbfe; }
-        .badge-low { background-color: #f5f7fa; color: #52575c; }
-
-        /* Contenedor Multimedia / SVG */
-        .chart-container {
-            text-align: center;
-            margin: 25px 0;
-            padding: 15px;
-            background: #ffffff;
-            border: 1px solid #d2d7dc;
-            border-radius: 6px;
-        }
-
-        .chart-title {
-            font-size: 10pt;
-            font-weight: bold;
-            color: #42474c; /* Texto Resaltado */
-            margin-bottom: 10px;
-        }
-
-        /* Botón de Acción Principal */
-        .action-container {
-            text-align: center;
-            margin: 35px 0;
-            page-break-inside: avoid;
-        }
-
-        .btn-download {
-            display: inline-block;
-            background-color: #f35858; /* Color de Acento */
-            color: #f9fbfe; 
-            font-weight: 600;
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 6px;
-            box-shadow: 0 4px 10px rgba(243, 88, 88, 0.2);
-            font-size: 11pt;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-download:hover {
-            background-color: #42474c; 
-        }
-
-        /* Listas divididas (ul.divided li) */
-        ul.divided {
-            list-style: none;
-            padding-left: 0;
-            margin: 0 0 20px 0;
-        }
-
-        ul.divided li {
-            padding: 10px 0;
-            border-bottom: 1px solid #d2d7dc; /* Líneas de listas divididas con #d2d7dc */
-            font-size: 10pt;
-        }
-        
-        ul.divided li:last-child {
-            border-bottom: none;
-        }
-
-        /* Listas de íconos estilizadas (ul.icons li:before) */
-        ul.icons {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        ul.icons li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 12px;
-        }
-
-        ul.icons li:before {
-            content: "✓"; 
-            position: absolute;
-            left: 0;
-            top: 2px;
-            width: 20px;
-            height: 20px;
-            background-color: #61666b; /* Fondo de Íconos */
-            color: #f9fbfe; 
-            border-radius: 4px;
-            text-align: center;
-            line-height: 20px;
-            font-size: 8pt;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #f9fbfe; /* Fondo Secundario */
-            border-top: 1px solid #d2d7dc; 
-            color: #52575c; /* Texto Estándar */
-            padding: 25px;
-            text-align: center;
-            font-size: 9pt;
-            border-radius: 8px 8px 0 0;
-            margin-top: 40px;
-            page-break-inside: avoid;
-        }
-    </style>
 </head>
 <body>
+
     <div id="page-wrapper">
-        <div class="header-banner">
-            <a href="index.html" class="nav-back">← Regresar</a>
+
+        <!-- Cabecera / Identificación de Proyecto -->
+        <header>
+            <p><a href="index.html">← Regresar</a></p>
             <h1>Gobernanza de TI: Arquitectura y Despliegue Normativo de un SGSI</h1>
             <p>Planificación estratégica, matriz de criticidad de activos y directrices de control bajo el estándar internacional ISO/IEC 27001.</p>
-        </div>
+        </header>
 
-        <div class="main-container">
+        <hr />
+
+        <!-- Contenedor de la Información Técnica -->
+        <main>
+
+            <!-- Bloque 1 -->
             <section id="alcance-conceptual">
-                <h3>1. Alcance Conceptual del Proyecto</h3>
+                <h2>1. Alcance Conceptual del Proyecto</h2>
                 <p>El desarrollo del <strong>Proyecto 3</strong> se estructuró en torno al diseño integral de un Sistema de Gestión de Seguridad de la Información (SGSI) adaptado a las necesidades de la comunidad universitaria[cite: 1, 2]. El propósito central de este marco normativo consistió en delimitar los pilares regulatorios, los términos de cumplimiento y las referencias legales necesarias para blindar el flujo de datos institucionales, mitigando riesgos operativos y garantizando la confidencialidad, integridad y disponibilidad de la información frente a amenazas contemporáneas[cite: 1, 2].</p>
+                
                 <blockquote>
-                    <b>Directriz de Gobierno:</b> La protección de la información debe ser un habilitador estratégico de la infraestructura académica y de investigación de la universidad.
+                    <strong>Directriz de Gobierno:</strong> La protección de la información debe ser un habilitador estratégico de la infraestructura académica y de investigación de la universidad.
                 </blockquote>
             </section>
 
+            <!-- Bloque 2: Matriz Técnica Aplicada -->
             <section id="diagnostico-entorno">
-                <h3>2. Diagnóstico del Entorno y Clasificación de Recursos</h3>
+                <h2>2. Diagnóstico del Entorno y Clasificación de Recursos</h2>
                 <p>La piedra angular para la edificación del SGSI en la UPSLP radicó en el análisis situacional de las partes interesadas y el contexto operativo de la institución[cite: 1, 2]. Como parte fundamental de la auditoría de activos, se estructuró una matriz de inventario exhaustiva que catalogó con precisión un total de <strong>40 activos de información esenciales</strong>[cite: 1, 2].</p>
+                <p>Cada uno de estos recursos (comprendiendo bases de datos de control escolar, servidores de autenticación, infraestructura de red y expedientes digitales) fue sometido a un proceso de evaluación cualitativa y cuantitativa para determinar su nivel de criticidad[cite: 1, 2]. A continuación, se presenta un extracto de la tabla utilizando el formato estándar:</p>
                 
-                <div class="data-table-container">
-                    <table class="default">
-                        <thead>
-                            <tr>
-                                <th>ID Activo</th>
-                                <th>Nombre del Activo de Información</th>
-                                <th>Tipo de Recurso</th>
-                                <th>Confidencialidad</th>
-                                <th>Integridad</th>
-                                <th>Disponibilidad</th>
-                                <th>Criticidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>ACT-01</td>
-                                <td>Base de Datos de Control Escolar (Calificaciones)</td>
-                                <td>Digital / Lógico</td>
-                                <td>Alta</td>
-                                <td>Alta</td>
-                                <td>Alta</td>
-                                <td><span class="badge badge-high">CRÍTICO</span></td>
-                            </tr>
-                            <tr>
-                                <td>ACT-02</td>
-                                <td>Servidor de Autenticación Central (Active Directory)</td>
-                                <td>Infraestructura</td>
-                                <td>Alta</td>
-                                <td>Alta</td>
-                                <td>Alta</td>
-                                <td><span class="badge badge-high">CRÍTICO</span></td>
-                            </tr>
-                            <tr>
-                                <td>ACT-15</td>
-                                <td>Expedientes Digitales de Personal Docente</td>
-                                <td>Digital / Lógico</td>
-                                <td>Alta</td>
-                                <td>Media</td>
-                                <td>Media</td>
-                                <td><span class="badge badge-medium">ALTA</span></td>
-                            </tr>
-                            <tr>
-                                <td>ACT-28</td>
-                                <td>Plataforma de Aprendizaje Virtual (Moodle)</td>
-                                <td>Software / Servicio</td>
-                                <td>Media</td>
-                                <td>Alta</td>
-                                <td>Alta</td>
-                                <td><span class="badge badge-medium">ALTA</span></td>
-                            </tr>
-                            <tr>
-                                <td>ACT-40</td>
-                                <td>Bitácoras de Acceso Físico a Laboratorios</td>
-                                <td>Físico / Registro</td>
-                                <td>Baja</td>
-                                <td>Media</td>
-                                <td>Baja</td>
-                                <td><span class="badge badge-low">BAJA</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID Activo</th>
+                            <th>Nombre del Activo de Información</th>
+                            <th>Tipo de Recurso</th>
+                            <th>Confidencialidad</th>
+                            <th>Integridad</th>
+                            <th>Disponibilidad</th>
+                            <th>Criticidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACT-01</td>
+                            <td>Base de Datos de Control Escolar (Calificaciones)</td>
+                            <td>Digital / Lógico</td>
+                            <td>Alta</td>
+                            <td>Alta</td>
+                            <td>Alta</td>
+                            <td>CRÍTICO</td>
+                        </tr>
+                        <tr>
+                            <td>ACT-02</td>
+                            <td>Servidor de Autenticación Central (Active Directory)</td>
+                            <td>Infraestructura</td>
+                            <td>Alta</td>
+                            <td>Alta</td>
+                            <td>Alta</td>
+                            <td>CRÍTICO</td>
+                        </tr>
+                        <tr>
+                            <td>ACT-15</td>
+                            <td>Expedientes Digitales de Personal Docente</td>
+                            <td>Digital / Lógico</td>
+                            <td>Alta</td>
+                            <td>Media</td>
+                            <td>Media</td>
+                            <td>ALTA</td>
+                        </tr>
+                        <tr>
+                            <td>ACT-28</td>
+                            <td>Plataforma de Aprendizaje Virtual (Moodle)</td>
+                            <td>Software / Servicio</td>
+                            <td>Media</td>
+                            <td>Alta</td>
+                            <td>Alta</td>
+                            <td>ALTA</td>
+                        </tr>
+                        <tr>
+                            <td>ACT-40</td>
+                            <td>Bitácoras de Acceso Físico a Laboratorios</td>
+                            <td>Físico / Registro</td>
+                            <td>Baja</td>
+                            <td>Media</td>
+                            <td>Baja</td>
+                            <td>BAJA</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
 
+            <!-- Bloque 3: Estructura de Control -->
             <section id="gobierno-seguridad">
-                <h3>3. Gobierno de Seguridad: Directrices y Estructura de Control</h3>
+                <h2>3. Gobierno de Seguridad: Directrices y Estructura de Control</h2>
                 <p>Para asegurar el respaldo operativo y la viabilidad del sistema a largo plazo, la arquitectura institucional se dividió en dos capas de cumplimiento[cite: 1, 2]:</p>
                 
-                <div class="visual-grid">
-                    <div class="visual-card">
-                        <h4>Estatuto General de Seguridad</h4>
-                        <p style="font-size:9.5pt; margin:0;">Consiste en el pronunciamiento formal de la alta dirección, alineando las metas de ciberseguridad con la misión educativa y los objetivos estratégicos de la universidad[cite: 1, 2].</p>
-                    </div>
-                    <div class="visual-card">
-                        <h4>Marcos Regulatorios Específicos</h4>
-                        <p style="font-size:9.5pt; margin:0;">Se modelaron e inyectaron <strong>diez directrices de control focalizadas</strong>[cite: 1, 2]. Estos lineamientos abordan la gestión de accesos, la seguridad física, el cifrado de datos residuales y la respuesta a incidentes[cite: 1, 2].</p>
-                    </div>
-                </div>
+                <ul>
+                    <li>
+                        <strong>Estatuto General de Seguridad:</strong> Consiste en el pronunciamiento formal de la alta dirección, alineando las metas de ciberseguridad con la misión educativa y los objetivos estratégicos de la universidad[cite: 1, 2].
+                    </li>
+                    <li>
+                        <strong>Marcos Regulatorios Específicos:</strong> Se modelaron e inyectaron <strong>diez directrices de control focalizadas</strong>[cite: 1, 2]. Estos lineamientos abordan la gestión de accesos, la seguridad física, el cifrado de datos residuales y la respuesta a incidentes[cite: 1, 2].
+                    </li>
+                </ul>
 
                 <p>Pilares clave de la inyección de control normativo:</p>
-                <ul class="icons">
+                <ul>
                     <li>Seguridad Lógica y Cifrado Simétrico Extensible[cite: 1, 2].</li>
                     <li>Control Perimetral Avanzado e Identidades Robustas[cite: 1, 2].</li>
                     <li>Plan de Continuidad Operativa ante Eventos de Ransomware[cite: 1, 2].</li>
                 </ul>
-
-                <div class="chart-container">
-                    <div class="chart-title">Esquema de Despliegue de los Bloques de Control Normativo</div>
-                    <svg viewBox="0 0 600 120" width="100%" height="120" style="background:#f5f7fa; border-radius:4px;">
-                        <rect x="30" y="25" width="150" height="70" rx="6" fill="#61666b"/>
-                        <text x="105" y="65" fill="#f9fbfe" font-size="11" font-weight="bold" text-anchor="middle">1. Accesos</text>
-                        
-                        <rect x="225" y="25" width="150" height="70" rx="6" fill="#52575c"/>
-                        <text x="300" y="65" fill="#f9fbfe" font-size="11" font-weight="bold" text-anchor="middle">2. Cifrado</text>
-                        
-                        <rect x="420" y="25" width="150" height="70" rx="6" fill="#42474c"/>
-                        <text x="495" y="65" fill="#f9fbfe" font-size="11" font-weight="bold" text-anchor="middle">3. Incidentes</text>
-                    </svg>
-                </div>
             </section>
 
+            <!-- Bloque 4 -->
             <section id="dictamen-estrategico">
-                <h3>4. Dictamen Estratégico</h3>
+                <h2>4. Dictamen Estratégico</h2>
                 <p>La culminación de este proyecto de seguridad de la información reafirma que la protección de datos trasciende la mera configuración de barreras técnicas o firewalls perimetrales[cite: 1, 2]. Una postura de seguridad madura requiere de un Gobierno de TI disciplinado[cite: 1, 2].</p>
+                <p>La estructuración y adopción del SGSI propuesto garantiza que los protocolos de contención y resguardo en la UPSLP dejen de ser reactivos, alineándose firmemente con los estándares internacionales más exigentes, protegiendo la reputación institucional y asegurando la continuidad de los servicios educativos ante cualquier escenario de compromiso lógico[cite: 1, 2].</p>
             </section>
 
+            <!-- Referencias -->
             <section id="referencias">
-                <h3>Referencias</h3>
-                <ul class="divided">
-                    <li><strong>International Organization for Standardization (2022).</strong> <em>ISO/IEC 27001:2022 Information Security Management Systems.</em> link: <a href="https://www.iso.org/">https://www.iso.org/</a>[cite: 1, 2]</li>
-                    <li><strong>ISACA (2019).</strong> <em>COBIT Framework for Information and Related Technology.</em> link: <a href="https://www.isaca.org/">https://www.isaca.org/</a>[cite: 1, 2]</li>
+                <h2>Referencias</h2>
+                <ul>
+                    <li><strong>International Organization for Standardization (2022).</strong> <em>ISO/IEC 27001:2022 Information Security Management Systems.</em> Enlace: <a href="https://www.iso.org/">https://www.iso.org/</a>[cite: 1, 2]</li>
+                    <li><strong>ISACA (2019).</strong> <em>COBIT Framework for Information and Related Technology.</em> Enlace: <a href="https://www.isaca.org/">https://www.isaca.org/</a>[cite: 1, 2]</li>
                 </ul>
             </section>
 
-            <div class="action-container">
-                <a href="docs/PR03-Equipo5.pdf" class="btn-download" download>
-                    💾 Descargar Actividad Completa (PDF)
-                </a>
-            </div>
-        </div>
+            <hr />
 
+            <!-- Acción de descarga del entregable -->
+            <div>
+                <p>
+                    <a href="docs/PR03-Equipo5.pdf" download>
+                        💾 Descargar Actividad Completa (PDF)
+                    </a>
+                </p>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
         <footer>
             <p>&copy; Juan Alejandro Pérez Ventura. Todos los derechos reservados. | Matrícula: 180370[cite: 1, 2]</p>
         </footer>
+
     </div>
 </body>
 </html>
