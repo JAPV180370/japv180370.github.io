@@ -65,8 +65,8 @@
                                      
                                      <h4 style="color: #42474c; margin-bottom: 15px;"><i class="fas fa-tasks" style="color: #52575c; margin-right: 10px;"></i>Desglose Técnico</h4>
                                      <ul style="list-style: none; padding-left: 0; margin: 0; color: #52575c;">
-                                         <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Sintetizar la cadena textual del vector que representa los condicionantes físicos y lógicos del caso de estudio.</li>
-                                         <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Implementar un entorno dinámico programado bajo las especificaciones matemáticas del consorcio FIRST.</li>
+                                         <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Sintetizar la cadena textual del vector que represents los condicionantes físicos y lógicos del caso de estudio.</li>
+                                         <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Analizar y desglosar el vector base estimado bajo las directrices y especificaciones del consorcio FIRST.</li>
                                          <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Argumentar la persistencia del riesgo tecnológico aun cuando el exploit dependa de accesos con privilegios elevados.</li>
                                          <li style="display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Identificar los perfiles de amenazas potenciales capaces de instrumentar este fallo en un escenario real.</li>
                                      </ul>
@@ -86,7 +86,7 @@
                                          <strong style="color:#42474c; font-size:1.1em;">Digital / Red Externa (Network)</strong>
                                      </div>
                                      <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
-                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Dificultad Técnica</span>
+                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Dificultad Técnico</span>
                                          <strong style="color:#42474c; font-size:1.1em;">Inexistente / Básica (Low)</strong>
                                      </div>
                                      <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
@@ -110,117 +110,11 @@
                          
                              <hr style="border-top: 1px solid #c2c7cc;">
                          
-                             <!-- 4. CALCULADORA INTERACTIVA MODULAR CON CONTROLES TIPO WIDGET -->
+                             <!-- 4. TABLA JUSTIFICACIÓN -->
                              <section>
-                                 <h3 style="color: #52575c;">4. Calculadora CVSS v3.1 Oficial (Interactiva)</h3>
-                                 <p style="color: #52575c;">Interactúe con los módulos interactivos independientes para simular el comportamiento métrico del estándar en tiempo real:</p>
+                                 <h3 style="color: #52575c;">4. Sustento Técnico del Vector Base</h3>
+                                 <p style="color: #52575c;">La siguiente tabla asocia las condiciones lógicas del escenario con los valores normalizados y la respectiva nomenclatura del estándar métrico:</p>
                                  
-                                 <!-- Marcador Principal -->
-                                 <div style="display: flex; flex-wrap: wrap; background: #42474c; border-radius: 6px; padding: 20px; align-items: center; justify-content: space-between; margin-bottom: 25px; gap: 15px;">
-                                     <div style="display: flex; align-items: center; gap: 20px;">
-                                         <div id="cvss-badge-container" style="background: #ffb74d; color: #ffffff; padding: 15px 25px; border-radius: 4px; text-align: center; transition: background 0.3s ease;">
-                                             <span style="display: block; font-size: 0.8em; text-transform: uppercase; font-weight: bold; opacity: 0.9;">Score Base</span>
-                                             <strong id="cvss-score" style="font-size: 2.2em; line-height: 1em;">4.7</strong>
-                                         </div>
-                                         <div>
-                                             <span id="cvss-severity" style="background: #ffb74d; color: #ffffff; padding: 3px 12px; border-radius: 20px; font-size: 0.85em; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.3s ease;">Media</span>
-                                             <div id="cvss-vector" style="color: #f9fbfe; font-family: monospace; font-size: 1.1em; margin-top: 8px; letter-spacing: 0.5px;">CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L</div>
-                                         </div>
-                                     </div>
-                                     <button id="btn-reset-cvss" class="button small" style="background: transparent; box-shadow: inset 0 0 0 1px #f9fbfe; color: #f9fbfe; cursor: pointer;">Restablecer Escenario</button>
-                                 </div>
-                         
-                                 <!-- Layout de Módulos Widget (Diferenciados por Tarjetas de Grupo) -->
-                                 <div style="display: flex; flex-direction: column; gap: 20px;">
-                                     
-                                     <!-- Bloque de Explotabilidad -->
-                                     <div style="background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; padding: 20px;">
-                                         <h4 style="color: #52575c; margin-top: 0; margin-bottom: 15px; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #f35858; padding-bottom: 5px; display: inline-block;">
-                                             Métricas de Explotabilidad (Acceso y Ejecución)
-                                         </h4>
-                                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
-                                             <div style="background: #f9fbfe; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Vector de Ataque (AV)</label>
-                                                 <select id="m-av" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="N" selected>Network (N)</option>
-                                                     <option value="A">Adjacent (A)</option>
-                                                     <option value="L">Local (L)</option>
-                                                     <option value="P">Physical (P)</option>
-                                                 </select>
-                                             </div>
-                                             <div style="background: #f9fbfe; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Complejidad (AC)</label>
-                                                 <select id="m-ac" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="L" selected>Low (L)</option>
-                                                     <option value="H">High (H)</option>
-                                                 </select>
-                                             </div>
-                                             <div style="background: #f9fbfe; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Privilegios Requeridos (PR)</label>
-                                                 <select id="m-pr" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="H" selected>High (H)</option>
-                                                     <option value="L">Low (L)</option>
-                                                     <option value="N">None (N)</option>
-                                                 </select>
-                                             </div>
-                                             <div style="background: #f9fbfe; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Interacción de Usuario (UI)</label>
-                                                 <select id="m-ui" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="N" selected>None (N)</option>
-                                                     <option value="R">Required (R)</option>
-                                                 </select>
-                                             </div>
-                                         </div>
-                                     </div>
-                         
-                                     <!-- Bloque de Impacto e Interconexión -->
-                                     <div style="background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; padding: 20px;">
-                                         <h4 style="color: #52575c; margin-top: 0; margin-bottom: 15px; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #52575c; padding-bottom: 5px; display: inline-block;">
-                                             Métricas de Impacto y Cambios de Entorno
-                                         </h4>
-                                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
-                                             <div style="background: #f5f7fa; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Alcance Organizacional (S)</label>
-                                                 <select id="m-s" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="U" selected>Unchanged (U)</option>
-                                                     <option value="C">Changed (C)</option>
-                                                 </select>
-                                             </div>
-                                             <div style="background: #f5f7fa; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Confidencialidad (C)</label>
-                                                 <select id="m-c" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="L" selected>Low (L)</option>
-                                                     <option value="N">None (N)</option>
-                                                     <option value="H">High (H)</option>
-                                                 </select>
-                                             </div>
-                                             <div style="background: #f5f7fa; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Integridad de Datos (I)</label>
-                                                 <select id="m-i" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="L" selected>Low (L)</option>
-                                                     <option value="N">None (N)</option>
-                                                     <option value="H">High (H)</option>
-                                                 </select>
-                                             </div>
-                                             <div style="background: #f5f7fa; border: 1px solid #e2e7ec; padding: 12px; border-radius: 4px;">
-                                                 <label style="display:block; font-size:0.85em; font-weight:bold; color:#42474c; margin-bottom:6px;">Disponibilidad (A)</label>
-                                                 <select id="m-a" style="width:100%; border:1px solid #c2c7cc; padding:6px; border-radius:4px; background:#ffffff; color:#52575c;">
-                                                     <option value="L" selected>Low (L)</option>
-                                                     <option value="N">None (N)</option>
-                                                     <option value="H">High (H)</option>
-                                                 </select>
-                                             </div>
-                                         </div>
-                                     </div>
-                         
-                                 </div>
-                             </section>
-                         
-                             <hr style="border-top: 1px solid #c2c7cc;">
-                         
-                             <!-- 5. TABLA JUSTIFICACIÓN -->
-                             <section>
-                                 <h3 style="color: #52575c;">5. Sustento Técnico del Vector Base</h3>
                                  <div style="overflow-x: auto; border: 1px solid #d2d7dc; border-radius: 6px; margin: 20px 0;">
                                      <table style="width: 100%; border-collapse: collapse; background: #ffffff; text-align: left; margin: 0;">
                                          <thead>
@@ -268,14 +162,14 @@
                          
                              <hr style="border-top: 1px solid #c2c7cc;">
                          
-                             <!-- 6. INTERPRETACIÓN TÉCNICA -->
+                             <!-- 5. INTERPRETACIÓN TÉCNICA -->
                              <section>
-                                 <h3 style="color: #52575c;">6. Desglose Crítico de la Gravedad</h3>
+                                 <h3 style="color: #52575c;">5. Desglose Crítico de la Gravedad</h3>
                                  
-                                 <h4 style="color: #42474c; margin-top: 20px;">6.1. Peligrosidad Latente bajo Credenciales Altas (PR:H)</h4>
+                                 <h4 style="color: #42474c; margin-top: 20px;">5.1. Peligrosidad Latente bajo Credenciales Altas (PR:H)</h4>
                                  <p style="color: #52575c;">Es un error estratégico desestimar este hallazgo argumentando que demanda accesos de nivel superior. Aunque esta condición reduce significativamente la superficie de ataque inicial, el riesgo se reactiva cuando los atacantes avanzados aplican tácticas de escalada horizontal. Mediante técnicas como el robo de cookies de sesión corporativas, ataques dirigidos de ingeniería social a los operadores o el aprovechamiento de contraseñas reutilizadas, un intruso externo puede tomar el control de la cuenta raíz y explotar este fallo técnico para consolidar el control.</p>
                                  
-                                 <h4 style="color: #42474c; margin-top: 25px;">6.2. Categorías de Actores con Capacidad de Explotación</h4>
+                                 <h4 style="color: #42474c; margin-top: 25px;">5.2. Categorías de Actores con Capacidad de Explotación</h4>
                                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin: 20px 0;">
                                      <div style="padding: 15px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; border-top: 3px solid #52575c;">
                                          <h5 style="margin: 0 0 10px 0; color: #42474c;"><i class="fas fa-user-shield" style="margin-right: 8px; color: #f35858;"></i> Personal Interno</h5>
@@ -291,7 +185,7 @@
                                      </div>
                                  </div>
                          
-                                 <h4 style="color: #42474c; margin-top: 25px;">6.3. Implicaciones del Impacto Moderado</h4>
+                                 <h4 style="color: #42474c; margin-top: 25px;">5.3. Implicaciones del Impacto Moderado</h4>
                                  <p style="color: #52575c;">La clasificación de impacto como "Bajo" (Low) de manera simultánea en la tríada fundamental determina que:</p>
                                  <ul style="list-style: none; padding-left: 0; color: #52575c;">
                                      <li style="margin-bottom: 10px; padding: 10px 15px; background: #f9fbfe; border-radius: 4px; border-left: 3px solid #61666b;"><strong style="color: #42474c;">Confidencialidad:</strong> La filtración de datos queda restringida a tablas accesorias, imposibilitando el robo masivo de registros de clientes o secretos industriales.</li>
@@ -300,12 +194,21 @@
                                  </ul>
                              </section>
                          
+                             <!-- 6. VECTOR BASE OBTENIDO -->
+                             <section>
+                                 <h3 style="color: #52575c;">6. Cadena de Vector Base de Severidad</h3>
+                                 <p style="color: #52575c;">Al procesar formalmente el caso mediante el algoritmo matemático estándar del modelo, el índice cuantitativo se consolida en una puntuación final de <strong>4.7</strong>, correspondiente a una clasificación de <strong>Severidad Media</strong>. El vector estandarizado representativo se denota de la siguiente forma:</p>
+                                 <div style="background: #42474c; border-radius: 4px; padding: 15px; margin: 20px 0; text-align: center;">
+                                     <code style="color: #ffb74d; font-family: monospace; font-size: 1.15em; letter-spacing: 0.5px;">CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L</code>
+                                 </div>
+                             </section>
+                         
                              <hr style="border-top: 1px solid #c2c7cc;">
                          
                              <!-- 7. ANÁLISIS DE RIESGO -->
                              <section>
                                  <h3 style="color: #52575c;">7. Gestión del Riesgo Institucional</h3>
-                                 <p style="color: #52575c;">El algoritmo del estándar fija el índice en <strong>4.7 (Severidad Media)</strong>. Dentro del plan maestro de remediación corporativo, este resultado indica que el problema no califica para una intervención de emergencia. Su resolución debe ser programada de forma ordenada en el calendario mensual de mantenimiento de software, evitando interferir con la atención de vulnerabilidades de rango Alto o Crítico.</p>
+                                 <p style="color: #52575c;">Dentro del plan maestro de remediación corporativo, el índice de 4.7 indica que el problema no califica para una intervención inmediata o de emergencia. Su resolución debe ser programada de forma ordenada en el calendario mensual de mantenimiento de software, evitando interferir con la atención de vulnerabilidades de rango Alto o Crítico.</p>
                                  <p style="color: #52575c;">No obstante, el peligro latente podría agravarse si las auditorías de red revelan una ausencia absoluta de autenticación multifactor (MFA) o fallos graves en los esquemas de contraseñas de la organización.</p>
                              </section>
                          
@@ -343,7 +246,7 @@
                              <!-- 9. CONCLUSIÓN -->
                              <section>
                                  <h3 style="color: #52575c;">9. Conclusión General</h3>
-                                 <p style="color: #52575c;">La evaluación paramétrica efectuada determinó una escala métrica de <strong>4.7 Medium</strong>. Esta práctica constata el valor de contar con metodologías normalizadas, impidiendo que el análisis de riesgos se fundamente en meras conjeturas. Aunque la exigencia de credenciales especiales minimiza las probabilidades de explotación abierta por internet, el fallo representa un vector real en la red corporativa que exige corrección programada para impedir que sea integrado en ataques encadenados de mayor escala.</p>
+                                 <p style="color: #52575c;">La evaluación paramétrica efectuada determinó una escala métrica de 4.7 Medium. Esta práctica constata el valor de contar con metodologías normalizadas, impidiendo que el análisis de riesgos se fundamente en meras conjeturas. Aunque la exigencia de credenciales especiales minimiza las probabilidades de explotación abierta por internet, el fallo representa un vector real en la red corporativa que exige corrección programada para impedir que sea integrado en ataques encadenados de mayor escala.</p>
                              </section>
                          
                              <hr style="border-top: 1px solid #c2c7cc;">
@@ -360,140 +263,6 @@
                                      <li><a href="docs/180370-act17.pdf" class="button icon fa-file-pdf-o" download>Descargar actividad</a></li>
                                  </ul>
                              </section> 
-                         
-                             <!-- LOGICA JAVASCRIPT DE LA CALCULADORA -->
-                             <script>
-                                 (function() {
-                                     // Coeficientes y pesos matemáticos oficiales de CVSS v3.1
-                                     const weights = {
-                                         av: { N: 0.85, A: 0.62, L: 0.55, P: 0.20 },
-                                         ac: { L: 0.77, H: 0.44 },
-                                         pr: {
-                                             U: { N: 0.85, L: 0.62, H: 0.27 }, // Si el Scope es Unchanged (U)
-                                             C: { N: 0.85, L: 0.68, H: 0.50 }  // Si el Scope es Changed (C)
-                                         },
-                                         ui: { N: 0.85, R: 0.62 },
-                                         cia: { N: 0, L: 0.22, H: 0.56 }
-                                     };
-                         
-                                     // Elementos selectores del DOM
-                                     const selectors = {
-                                         av: document.getElementById('m-av'),
-                                         ac: document.getElementById('m-ac'),
-                                         pr: document.getElementById('m-pr'),
-                                         ui: document.getElementById('m-ui'),
-                                         s: document.getElementById('m-s'),
-                                         c: document.getElementById('m-c'),
-                                         i: document.getElementById('m-i'),
-                                         a: document.getElementById('m-a')
-                                     };
-                         
-                                     const txtScore = document.getElementById('cvss-score');
-                                     const txtSeverity = document.getElementById('cvss-severity');
-                                     const txtVector = document.getElementById('cvss-vector');
-                                     const badgeContainer = document.getElementById('cvss-badge-container');
-                                     const btnReset = document.getElementById('btn-reset-cvss');
-                         
-                                     // Función de redondeo estándar oficial CVSS v3.1 (Roundup)
-                                     function roundUp1(input) {
-                                         const int_input = Math.round(input * 100000);
-                                         if (int_input % 10000 === 0) {
-                                             return int_input / 100000;
-                                         } else {
-                                             return (Math.floor(int_input / 10000) + 1) / 10;
-                                         }
-                                     }
-                         
-                                     function calculateCVSS() {
-                                         const av = selectors.av.value;
-                                         const ac = selectors.ac.value;
-                                         const pr = selectors.pr.value;
-                                         const ui = selectors.ui.value;
-                                         const s = selectors.s.value;
-                                         const c = selectors.c.value;
-                                         const i = selectors.i.value;
-                                         const a = selectors.a.value;
-                         
-                                         // Actualizar Cadena de Texto del Vector Base
-                                         txtVector.textContent = `CVSS:3.1/AV:${av}/AC:${ac}/PR:${pr}/UI:${ui}/S:${s}/C:${c}/I:${i}/A:${a}`;
-                         
-                                         // Obtener peso de Privilegios condicionado por el Scope
-                                         const wPR = weights.pr[s][pr];
-                                         
-                                         // Explotabilidad = 8.22 * AV * AC * PR * UI
-                                         const exploitability = 8.22 * weights.av[av] * weights.ac[ac] * wPR * weights.ui[ui];
-                         
-                                         // Sub-puntuación de Impacto Base (ISCBase)
-                                         const sCIA = 1 - ((1 - weights.cia[c]) * (1 - weights.cia[i]) * (1 - weights.cia[a]));
-                                         
-                                         let impact;
-                                         if (s === 'U') {
-                                             impact = 6.42 * sCIA;
-                                         } else {
-                                             impact = 7.52 * (sCIA - 0.029) - 3.25 * Math.pow(sCIA - 0.02, 15);
-                                         }
-                         
-                                         // Cálculo Final del Score Base con condiciones del estándar
-                                         let score = 0;
-                                         if (impact > 0) {
-                                             if (s === 'U') {
-                                                 score = roundUp1(Math.min((impact + exploitability), 10));
-                                             } else {
-                                                 score = roundUp1(Math.min(1.08 * (impact + exploitability), 10));
-                                             }
-                                         }
-                         
-                                         txtScore.textContent = score.toFixed(1);
-                         
-                                         // Clasificación Dinámica de Severidad y Ajuste Cromático
-                                         let severity = "Informativa";
-                                         let color = "#74787e"; // Gris
-                         
-                                         if (score >= 0.1 && score <= 3.9) {
-                                             severity = "Baja";
-                                             color = "#24b35f"; // Verde
-                                         } else if (score >= 4.0 && score <= 6.9) {
-                                             severity = "Media";
-                                             color = "#ffb74d"; // Naranja
-                                         } else if (score >= 7.0 && score <= 8.9) {
-                                             severity = "Alta";
-                                             color = "#f35858"; // Rojo corporativo
-                                         } else if (score >= 9.0 && score <= 10.0) {
-                                             severity = "Crítica";
-                                             color = "#b71c1c"; // Rojo oscuro
-                                         }
-                         
-                                         txtSeverity.textContent = severity;
-                                         txtSeverity.style.background = color;
-                                         badgeContainer.style.background = color;
-                                     }
-                         
-                                     function resetToEscenario() {
-                                         selectors.av.value = "N";
-                                         selectors.ac.value = "L";
-                                         selectors.pr.value = "H";
-                                         selectors.ui.value = "N";
-                                         selectors.s.value = "U";
-                                         selectors.c.value = "L";
-                                         selectors.i.value = "L";
-                                         selectors.a.value = "L";
-                                         calculateCVSS();
-                                     }
-                         
-                                     // Registro de Event Listeners para cambios inmediatos
-                                     Object.values(selectors).forEach(select => {
-                                         select.addEventListener('change', calculateCVSS);
-                                     });
-                         
-                                     btnReset.addEventListener('click', function(e) {
-                                         e.preventDefault();
-                                         resetToEscenario();
-                                     });
-                         
-                                     // Inicialización de la calculadora
-                                     calculateCVSS();
-                                 })();
-                             </script>
                          </article>
                     </div> 
                 </div> 
