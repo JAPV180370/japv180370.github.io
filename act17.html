@@ -29,234 +29,254 @@
                          <!-- Content -->
                          <article id="content">
                              <header class="major">
-                                 <h2 style="color: #52575c;">ACTIVIDAD #17</h2>
-                                 <p style="color: #f35858;">
+                                 <h2>ACTIVIDAD #17</h2>
+                                 <p>
                                      Evaluación Avanzada de Amenazas: Cuantificación del Riesgo Tecnológico mediante Métricas CVSS v3.1.
                                  </p>
                              </header>
                          
-                             <p style="color: #52575c;">
+                             <p>
                                  La correcta gobernanza de la seguridad de la información requiere sustituir las percepciones intuitivas por mediciones técnicas reproducibles. Este documento detalla la calibración del riesgo y el impacto real que un fallo de seguridad específico proyecta sobre la infraestructura digital de la organización.
                              </p>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 1. MARCO TEÓRICO -->
                              <section>
-                                 <h3 style="color: #52575c;">1. Fundamentos y Dinámica del Estándar</h3>
-                                 <p style="color: #52575c;">El esquema <strong>CVSS v3.1</strong> se establece como el estándar de la industria global para convertir las vulnerabilidades de software en datos cuantitativos precisos. A través de este laboratorio, se examinaron los componentes de un vector de ataque que afecta a servicios web, separando sus requisitos operativos de sus repercusiones lógicas para modelar con precisión matemática la severidad del vector en entornos operativos reales.</p>
+                                 <h3>1. Fundamentos y Dinámica del Estándar</h3>
+                                 <p>El esquema <strong>CVSS v3.1</strong> se establece como el estándar de la industria global para convertir las vulnerabilidades de software en datos cuantitativos precisos. A través de este laboratorio, se examinaron los componentes de un vector de ataque que afecta a servicios web, separando sus requisitos operativos de sus repercusiones lógicas para modelar con precisión matemática la severidad del vector en entornos operativos reales.</p>
                          
-                                 <div style="margin: 30px 0; padding: 20px; border-left: 6px solid #61666b; background-color: #f9fbfe; border-radius: 4px; border-top: 1px solid #d2d7dc; border-right: 1px solid #d2d7dc; border-bottom: 1px solid #d2d7dc;">
-                                     <strong style="display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; color: #42474c;">
-                                         <i class="fas fa-calculator" style="margin-right: 8px; color: #f35858;"></i>Premisa del Análisis Métrico:
-                                     </strong>
-                                     <p style="margin: 0; font-style: italic; color: #52575c;">"La asignación de valores vectoriales normalizados unifica los criterios de mitigación entre los desarrolladores y los especialistas en respuesta a incidentes, optimizando la asignación de recursos ante crisis de seguridad."</p>
-                                 </div>
+                                 <blockquote>
+                                     <strong>Premisa del Análisis Métrico:</strong><br />
+                                     "La asignación de valores vectoriales normalizados unifica los criterios de mitigación entre los desarrolladores y los especialistas en respuesta a incidentes, optimizando la asignación de recursos ante crisis de seguridad."
+                                 </blockquote>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 2. OBJETIVOS -->
                              <section>
-                                 <h3 style="color: #52575c;">2. Metas de la Evaluación</h3>
-                                 <div style="background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; padding: 25px; margin: 20px 0;">
-                                     <h4 style="color: #42474c; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-bullseye" style="color: #f35858; margin-right: 10px;"></i>Propósito Central</h4>
-                                     <p style="color: #52575c; margin-bottom: 20px;">Diagnosticar la severidad intrínseca de una debilidad de red mediante la formulación de su ecuación base en CVSS v3.1, derivando contramedidas de seguridad alineadas con el impacto calculado.</p>
+                                 <h3>2. Metas de la Evaluación</h3>
+                                 <div class="box">
+                                     <h4>Propósito Central</h4>
+                                     <p>Diagnosticar la severidad intrínseca de una debilidad de red mediante la formulación de su ecuación base en CVSS v3.1, derivando contramedidas de seguridad alineadas con el impacto calculado.</p>
                                      
-                                     <h4 style="color: #42474c; margin-bottom: 15px;"><i class="fas fa-tasks" style="color: #52575c; margin-right: 10px;"></i>Desglose Técnico</h4>
-                                     <ul style="list-style: none; padding-left: 0; margin: 0; color: #52575c;">
-                                         <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Sintetizar la cadena textual del vector que represents los condicionantes físicos y lógicos del caso de estudio.</li>
-                                         <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Analizar y desglosar el vector base estimado bajo las directrices y especificaciones del consorcio FIRST.</li>
-                                         <li style="margin-bottom: 10px; display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Argumentar la persistencia del riesgo tecnológico aun cuando el exploit dependa de accesos con privilegios elevados.</li>
-                                         <li style="display: flex; align-items: baseline;"><i class="fas fa-check" style="color: #f35858; margin-right: 10px; font-size: 0.85em;"></i> Identificar los perfiles de amenazas potenciales capaces de instrumentar este fallo en un escenario real.</li>
+                                     <h4>Desglose Técnico</h4>
+                                     <ul>
+                                         <li>Sintetizar la cadena textual del vector que representa los condicionantes físicos y lógicos del caso de estudio.</li>
+                                         <li>Analizar y desglosar el vector base estimado bajo las directrices y especificaciones del consorcio FIRST.</li>
+                                         <li>Argumentar la persistencia del riesgo tecnológico aun cuando el exploit dependa de accesos con privilegios elevados.</li>
+                                         <li>Identificar los perfiles de amenazas potenciales capaces de instrumentar este fallo en un escenario real.</li>
                                      </ul>
                                  </div>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 3. ESCENARIO DE EVALUACIÓN -->
                              <section>
-                                 <h3 style="color: #52575c;">3. Parámetros del Entorno de Prueba</h3>
-                                 <p style="color: #52575c;">El análisis se ejecuta sobre una vulnerabilidad que exhibe el siguiente perfil técnico de explotación y comportamiento operativo:</p>
+                                 <h3>3. Parámetros del Entorno de Prueba</h3>
+                                 <p>El análisis se ejecuta sobre una vulnerabilidad que exhibe el siguiente perfil técnico de explotación y comportamiento operativo:</p>
                                  
-                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 25px 0;">
-                                     <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
-                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Origen de Explotación</span>
-                                         <strong style="color:#42474c; font-size:1.1em;">Digital / Red Externa (Network)</strong>
+                                 <div class="row">
+                                     <div class="4u 12u$(medium)">
+                                         <div class="box" style="padding: 1em; text-align: center;">
+                                             <h5 style="margin: 0 0 0.5em 0;">Origen de Explotación</h5>
+                                             <strong>Digital / Red Externa (Network)</strong>
+                                         </div>
                                      </div>
-                                     <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
-                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Dificultad Técnico</span>
-                                         <strong style="color:#42474c; font-size:1.1em;">Inexistente / Básica (Low)</strong>
+                                     <div class="4u 12u$(medium)">
+                                         <div class="box" style="padding: 1em; text-align: center;">
+                                             <h5 style="margin: 0 0 0.5em 0;">Dificultad Técnica</h5>
+                                             <strong>Inexistente / Básica (Low)</strong>
+                                         </div>
                                      </div>
-                                     <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
-                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Requisito de Autenticación</span>
-                                         <strong style="color:#42474c; font-size:1.1em;">Roles Administrativos (High)</strong>
+                                     <div class="4u$ 12u$(medium)">
+                                         <div class="box" style="padding: 1em; text-align: center;">
+                                             <h5 style="margin: 0 0 0.5em 0;">Requisito de Autenticación</h5>
+                                             <strong>Roles Administrativos (High)</strong>
+                                         </div>
                                      </div>
-                                     <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
-                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Acción de la Víctima</span>
-                                         <strong style="color:#42474c; font-size:1.1em;">Cero Intervención (None)</strong>
+                                     <div class="4u 12u$(medium)">
+                                         <div class="box" style="padding: 1em; text-align: center;">
+                                             <h5 style="margin: 0 0 0.5em 0;">Acción de la Víctima</h5>
+                                             <strong>Cero Intervención (None)</strong>
+                                         </div>
                                      </div>
-                                     <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
-                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Frontera de Seguridad</span>
-                                         <strong style="color:#42474c; font-size:1.1em;">Aislada / Intacta (Unchanged)</strong>
+                                     <div class="4u 12u$(medium)">
+                                         <div class="box" style="padding: 1em; text-align: center;">
+                                             <h5 style="margin: 0 0 0.5em 0;">Frontera de Seguridad</h5>
+                                             <strong>Aislada / Intacta (Unchanged)</strong>
+                                         </div>
                                      </div>
-                                     <div style="padding: 15px; background: #f9fbfe; border: 1px solid #d2d7dc; border-radius: 6px;">
-                                         <span style="display:block; font-size:0.8em; color:#f35858; font-weight:bold; text-transform:uppercase;">Afectación Tecnológica</span>
-                                         <strong style="color:#42474c; font-size:1.1em;">Marginal (Low / Low / Low)</strong>
+                                     <div class="4u$ 12u$(medium)">
+                                         <div class="box" style="padding: 1em; text-align: center;">
+                                             <h5 style="margin: 0 0 0.5em 0;">Afectación Tecnológica</h5>
+                                             <strong>Marginal (Low / Low / Low)</strong>
+                                         </div>
                                      </div>
                                  </div>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 4. TABLA JUSTIFICACIÓN -->
                              <section>
-                                 <h3 style="color: #52575c;">4. Sustento Técnico del Vector Base</h3>
-                                 <p style="color: #52575c;">La siguiente tabla asocia las condiciones lógicas del escenario con los valores normalizados y la respectiva nomenclatura del estándar métrico:</p>
+                                 <h3>4. Sustento Técnico del Vector Base</h3>
+                                 <p>La siguiente tabla asocia las condiciones lógicas del escenario con los valores normalizados y la respectiva nomenclatura del estándar métrico:</p>
                                  
-                                 <div style="overflow-x: auto; border: 1px solid #d2d7dc; border-radius: 6px; margin: 20px 0;">
-                                     <table style="width: 100%; border-collapse: collapse; background: #ffffff; text-align: left; margin: 0;">
+                                 <div class="table-wrapper">
+                                     <table>
                                          <thead>
-                                             <tr style="background: #f5f7fa; border-bottom: 2px solid #d2d7dc;">
-                                                 <th style="padding: 15px; color: #42474c; font-weight: bold;">Métrica Base</th>
-                                                 <th style="padding: 15px; color: #42474c; font-weight: bold; width: 180px;">Valor Escenario</th>
-                                                 <th style="padding: 15px; color: #42474c; font-weight: bold;">Justificación Técnica y Operativa</th>
+                                             <tr>
+                                                 <th>Métrica Base</th>
+                                                 <th>Valor Escenario</th>
+                                                 <th>Justificación Técnica y Operativa</th>
                                              </tr>
                                          </thead>
-                                         <tbody style="color: #52575c;">
-                                             <tr style="border-bottom: 1px solid #e2e7ec;">
-                                                 <td style="padding: 15px;"><strong>Vector de Ataque (AV)</strong></td>
-                                                 <td style="padding: 15px;"><span style="background: #e9ecef; padding: 4px 8px; border-radius: 4px; font-family: monospace;">Network (N)</span></td>
-                                                 <td style="padding: 15px;">El fallo radica en un puerto lógico abierto al tráfico web. No se requiere cercanía física ni interactuar desde la consola local de la máquina para comprometerlo.</td>
-                                             </tr>
-                                             <tr style="border-bottom: 1px solid #e2e7ec;">
-                                                 <td style="padding: 15px;"><strong>Complejidad del Ataque (AC)</strong></td>
-                                                 <td style="padding: 15px;"><span style="background: #e9ecef; padding: 4px 8px; border-radius: 4px; font-family: monospace;">Low (L)</span></td>
-                                                 <td style="padding: 15px;">La secuencia de comandos maliciosos no está sujeta a factores aleatorios o configuraciones del sistema complejas; el exploit responde de manera consistente ante el llamado.</td>
-                                             </tr>
-                                             <tr style="border-bottom: 1px solid #e2e7ec;">
-                                                 <td style="padding: 15px;"><strong>Privilegios Requeridos (PR)</strong></td>
-                                                 <td style="padding: 15px;"><span style="background: #e9ecef; padding: 4px 8px; border-radius: 4px; font-family: monospace;">High (H)</span></td>
-                                                 <td style="padding: 15px;">El portal bloquea las peticiones anónimas ordinarias, obligando al atacante a estar autenticado en el sistema bajo un rol de administrador del servicio.</td>
-                                             </tr>
-                                             <tr style="border-bottom: 1px solid #e2e7ec;">
-                                                 <td style="padding: 15px;"><strong>Interacción del Usuario (UI)</strong></td>
-                                                 <td style="padding: 15px;"><span style="background: #e9ecef; padding: 4px 8px; border-radius: 4px; font-family: monospace;">None (N)</span></td>
-                                                 <td style="padding: 15px;">La intrusión se consuma de manera automatizada en el backend del servidor, sin necesidad de engañar a un operador para que valide o abra enlaces sospechosos.</td>
-                                             </tr>
-                                             <tr style="border-bottom: 1px solid #e2e7ec;">
-                                                 <td style="padding: 15px;"><strong>Alcance (S)</strong></td>
-                                                 <td style="padding: 15px;"><span style="background: #e9ecef; padding: 4px 8px; border-radius: 4px; font-family: monospace;">Unchanged (U)</span></td>
-                                                 <td style="padding: 15px;">El código vulnerado carece de la propiedad de propagarse hacia hipervisores, sistemas operativos anfitriones o subredes adyacentes regidas por otras políticas.</td>
+                                         <tbody>
+                                             <tr>
+                                                 <td><strong>Vector de Ataque (AV)</strong></td>
+                                                 <td><code>Network (N)</code></td>
+                                                 <td>El fallo radica en un puerto lógico abierto al tráfico web. No se requiere cercanía física ni interactuar desde la consola local de la máquina para comprometerlo.</td>
                                              </tr>
                                              <tr>
-                                                 <td style="padding: 15px;"><strong>Impacto CIA (C, I, A)</strong></td>
-                                                 <td style="padding: 15px;"><span style="background: #e9ecef; padding: 4px 8px; border-radius: 4px; font-family: monospace;">Low/Low/Low</span></td>
-                                                 <td style="padding: 15px;">Las consecuencias lógicas se limitan a la lectura de registros menores, modificaciones no estructurales y una degradación del servicio que no interrumpe el negocio.</td>
+                                                 <td><strong>Complejidad del Ataque (AC)</strong></td>
+                                                 <td><code>Low (L)</code></td>
+                                                 <td>La secuencia de comandos maliciosos no está sujeta a factores aleatorios o configuraciones del sistema complejas; el exploit responde de manera consistente ante el llamado.</td>
+                                             </tr>
+                                             <tr>
+                                                 <td><strong>Privilegios Requeridos (PR)</strong></td>
+                                                 <td><code>High (H)</code></td>
+                                                 <td>El portal bloquea las peticiones anónimas ordinarias, obligando al atacante a estar autenticado en el sistema bajo un rol de administrador del servicio.</td>
+                                             </tr>
+                                             <tr>
+                                                 <td><strong>Interacción del Usuario (UI)</strong></td>
+                                                 <td><code>None (N)</code></td>
+                                                 <td>La intrusión se consuma de manera automatizada en el backend del servidor, sin necesidad de engañar a un operador para que valide o abra enlaces sospechosos.</td>
+                                             </tr>
+                                             <tr>
+                                                 <td><strong>Alcance (S)</strong></td>
+                                                 <td><code>Unchanged (U)</code></td>
+                                                 <td>El código vulnerado carece de la propiedad de propagarse hacia hipervisores, sistemas operativos anfitriones o subredes adyacentes regidas por otras políticas.</td>
+                                             </tr>
+                                             <tr>
+                                                 <td><strong>Impacto CIA (C, I, A)</strong></td>
+                                                 <td><code>Low/Low/Low</code></td>
+                                                 <td>Las consecuencias lógicas se limitan a la lectura de registros menores, modificaciones no estructurales y una degradación del servicio que no interrumpe el negocio.</td>
                                              </tr>
                                          </tbody>
                                      </table>
                                  </div>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 5. INTERPRETACIÓN TÉCNICA -->
                              <section>
-                                 <h3 style="color: #52575c;">5. Desglose Crítico de la Gravedad</h3>
+                                 <h3>5. Desglose Crítico de la Gravedad</h3>
                                  
-                                 <h4 style="color: #42474c; margin-top: 20px;">5.1. Peligrosidad Latente bajo Credenciales Altas (PR:H)</h4>
-                                 <p style="color: #52575c;">Es un error estratégico desestimar este hallazgo argumentando que demanda accesos de nivel superior. Aunque esta condición reduce significativamente la superficie de ataque inicial, el riesgo se reactiva cuando los atacantes avanzados aplican tácticas de escalada horizontal. Mediante técnicas como el robo de cookies de sesión corporativas, ataques dirigidos de ingeniería social a los operadores o el aprovechamiento de contraseñas reutilizadas, un intruso externo puede tomar el control de la cuenta raíz y explotar este fallo técnico para consolidar el control.</p>
+                                 <h4>5.1. Peligrosidad Latente bajo Credenciales Altas (PR:H)</h4>
+                                 <p>Es un error estratégico desestimar este hallazgo argumentando que demanda accesos de nivel superior. Aunque esta condición reduce significativamente la superficie de ataque inicial, el riesgo se reactiva cuando los atacantes avanzados aplican tácticas de escalada horizontal. Mediante técnicas como el robo de cookies de sesión corporativas, ataques dirigidos de ingeniería social a los operadores o el aprovechamiento de contraseñas reutilizadas, un intruso externo puede tomar el control de la cuenta raíz y explotar este fallo técnico para consolidar el control.</p>
                                  
-                                 <h4 style="color: #42474c; margin-top: 25px;">5.2. Categorías de Actores con Capacidad de Explotación</h4>
-                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin: 20px 0;">
-                                     <div style="padding: 15px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; border-top: 3px solid #52575c;">
-                                         <h5 style="margin: 0 0 10px 0; color: #42474c;"><i class="fas fa-user-shield" style="margin-right: 8px; color: #f35858;"></i> Personal Interno</h5>
-                                         <p style="margin: 0; font-size: 0.95em; color: #52575c;">Empleados descontentos de las áreas tecnológicas o analistas que abusan de su nivel legítimo de accesos para sabotear procesos.</p>
+                                 <h4>5.2. Categorías de Actores con Capacidad de Explotación</h4>
+                                 <div class="row">
+                                     <div class="4u 12u$(medium)">
+                                         <div class="box" style="padding: 1em; min-height: 180px;">
+                                             <h5>Personal Interno</h5>
+                                             <p style="font-size: 0.9em; line-height: 1.5em; margin: 0;">Empleados descontentos de las áreas tecnológicas o analistas que abusan de su nivel legítimo de accesos para sabotear procesos.</p>
+                                         </div>
                                      </div>
-                                     <div style="padding: 15px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; border-top: 3px solid #52575c;">
-                                         <h5 style="margin: 0 0 10px 0; color: #42474c;"><i class="fas fa-user-slash" style="margin-right: 8px; color: #f35858;"></i> Cuentas Huérfanas</h5>
-                                         <p style="margin: 0; font-size: 0.95em; color: #52575c;">Antiguos operadores de TI cuyas credenciales maestras no fueron revocadas del sistema central tras su desvinculación laboral.</p>
+                                     <div class="4u 12u$(medium)">
+                                         <div class="box" style="padding: 1em; min-height: 180px;">
+                                             <h5>Cuentas Huérfanas</h5>
+                                             <p style="font-size: 0.9em; line-height: 1.5em; margin: 0;">Antiguos operadores de TI cuyas credenciales maestras no fueron revocadas del sistema central tras su desvinculación laboral.</p>
+                                         </div>
                                      </div>
-                                     <div style="padding: 15px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; border-top: 3px solid #f35858;">
-                                         <h5 style="margin: 0 0 10px 0; color: #42474c;"><i class="fas fa-user-secret" style="margin-right: 8px; color: #f35858;"></i> Atacantes Externos</h5>
-                                         <p style="margin: 0; font-size: 0.95em; color: #52575c;">Entidades maliciosas que comprometieron el perímetro e integraron este fallo como el eslabón final de una intrusión en cadena.</p>
+                                     <div class="4u$ 12u$(medium)">
+                                         <div class="box" style="padding: 1em; min-height: 180px;">
+                                             <h5>Atacantes Externos</h5>
+                                             <p style="font-size: 0.9em; line-height: 1.5em; margin: 0;">Entidades maliciosas que comprometieron el perímetro e integraron este fallo como el eslabón final de una intrusión en cadena.</p>
+                                         </div>
                                      </div>
                                  </div>
                          
-                                 <h4 style="color: #42474c; margin-top: 25px;">5.3. Implicaciones del Impacto Moderado</h4>
-                                 <p style="color: #52575c;">La clasificación de impacto como "Bajo" (Low) de manera simultánea en la tríada fundamental determina que:</p>
-                                 <ul style="list-style: none; padding-left: 0; color: #52575c;">
-                                     <li style="margin-bottom: 10px; padding: 10px 15px; background: #f9fbfe; border-radius: 4px; border-left: 3px solid #61666b;"><strong style="color: #42474c;">Confidencialidad:</strong> La filtración de datos queda restringida a tablas accesorias, imposibilitando el robo masivo de registros de clientes o secretos industriales.</li>
-                                     <li style="margin-bottom: 10px; padding: 10px 15px; background: #f9fbfe; border-radius: 4px; border-left: 3px solid #61666b;"><strong style="color: #42474c;">Integridad:</strong> Las alteraciones de la información son superficiales y reversibles, manteniendo intacta la lógica central de la base de datos distribuida.</li>
-                                     <li style="padding: 10px 15px; background: #f9fbfe; border-radius: 4px; border-left: 3px solid #61666b;"><strong style="color: #42474c;">Disponibilidad:</strong> Los recursos del sistema experimentan picos de consumo aislados, pero el portal web continúa operando para los usuarios legítimos.</li>
+                                 <h4 style="margin-top: 1.5em;">5.3. Implicaciones del Impacto Moderado</h4>
+                                 <p>La clasificación de impacto como "Bajo" (Low) de manera simultánea en la tríada fundamental determina que:</p>
+                                 <ul>
+                                     <li><strong>Confidencialidad:</strong> La filtración de datos queda restringida a tablas accesorias, imposibilitando el robo masivo de registros de clientes o secretos industriales.</li>
+                                     <li><strong>Integridad:</strong> Las alteraciones de la información son superficiales y reversibles, manteniendo intacta la lógica central de la base de datos distribuida.</li>
+                                     <li><strong>Disponibilidad:</strong> Los recursos del sistema experimentan picos de consumo aislados, pero el portal web continúa operando para los usuarios legítimos.</li>
                                  </ul>
                              </section>
                          
                              <!-- 6. VECTOR BASE OBTENIDO -->
                              <section>
-                                 <h3 style="color: #52575c;">6. Cadena de Vector Base de Severidad</h3>
-                                 <p style="color: #52575c;">Al procesar formalmente el caso mediante el algoritmo matemático estándar del modelo, el índice cuantitativo se consolida en una puntuación final de <strong>4.7</strong>, correspondiente a una clasificación de <strong>Severidad Media</strong>. El vector estandarizado representativo se denota de la siguiente forma:</p>
-                                 <div style="background: #42474c; border-radius: 4px; padding: 15px; margin: 20px 0; text-align: center;">
-                                     <code style="color: #ffb74d; font-family: monospace; font-size: 1.15em; letter-spacing: 0.5px;">CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L</code>
+                                 <h3>6. Cadena de Vector Base de Severidad</h3>
+                                 <p>Al procesar formalmente el caso mediante el algoritmo matemático estándar del modelo, el índice cuantitativo se consolida en una puntuación final de <strong>4.7</strong>, correspondiente a una clasificación de <strong>Severidad Media</strong>. El vector estandarizado representativo se denota de la siguiente forma:</p>
+                                 <div style="padding: 1em; text-align: center; margin: 1.5em 0; border-radius: 4px; background-color: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.1);">
+                                     <code style="font-size: 1.2em; letter-spacing: 0.5px;">CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L</code>
                                  </div>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 7. ANÁLISIS DE RIESGO -->
                              <section>
-                                 <h3 style="color: #52575c;">7. Gestión del Riesgo Institucional</h3>
-                                 <p style="color: #52575c;">Dentro del plan maestro de remediación corporativo, el índice de 4.7 indica que el problema no califica para una intervención inmediata o de emergencia. Su resolución debe ser programada de forma ordenada en el calendario mensual de mantenimiento de software, evitando interferir con la atención de vulnerabilidades de rango Alto o Crítico.</p>
-                                 <p style="color: #52575c;">No obstante, el peligro latente podría agravarse si las auditorías de red revelan una ausencia absoluta de autenticación multifactor (MFA) o fallos graves en los esquemas de contraseñas de la organización.</p>
+                                 <h3>7. Gestión del Riesgo Institucional</h3>
+                                 <p>Dentro del plan maestro de remediación corporativo, el índice de 4.7 indica que el problema no califica para una intervención inmediata o de emergencia. Su resolución debe ser programada de forma ordenada en el calendario mensual de mantenimiento de software, evitando interferir con la atención de vulnerabilidades de rango Alto o Crítico.</p>
+                                 <p>No obstante, el peligro latente podría agravarse si las auditorías de red revelan una ausencia absoluta de autenticación multifactor (MFA) o fallos graves en los esquemas de contraseñas de la organización.</p>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 8. RECOMENDACIONES -->
                              <section>
-                                 <h3 style="color: #52575c;">8. Estrategias de Remediación Defensiva</h3>
-                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin: 20px 0;">
-                                     <div style="padding: 20px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                                         <div style="color: #f35858; font-size: 1.3em; margin-bottom: 10px;"><i class="fas fa-key"></i></div>
-                                         <h4 style="margin: 0 0 8px 0; font-size: 1.05em; color: #42474c;">Control de Roles e Identidades</h4>
-                                         <p style="margin: 0; font-size: 0.9em; color: #52575c;">Imponer el principio de privilegios mínimos, garantizando que el acceso administrativo se limite rigurosamente a las funciones operativas críticas.</p>
+                                 <h3>8. Estrategias de Remediación Defensiva</h3>
+                                 <div class="row">
+                                     <div class="6u 12u$(medium)">
+                                         <div class="box" style="padding: 1.2em; min-height: 150px;">
+                                             <h4 style="margin-bottom: 0.5em;">Control de Roles e Identidades</h4>
+                                             <p style="font-size: 0.9em; line-height: 1.5em; margin: 0;">Imponer el principio de privilegios mínimos, garantizando que el acceso administrativo se limite rigurosamente a las funciones operativas críticas.</p>
+                                         </div>
                                      </div>
-                                     <div style="padding: 20px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                                         <div style="color: #f35858; font-size: 1.3em; margin-bottom: 10px;"><i class="fas fa-user-check"></i></div>
-                                         <h4 style="margin: 0 0 8px 0; font-size: 1.05em; color: #42474c;">Depuración de Credenciales Activas</h4>
-                                         <p style="margin: 0; font-size: 0.9em; color: #52575c;">Estructurar revisiones constantes de las cuentas autorizadas para suspender de inmediato cualquier perfil inactivo o desasociado.</p>
+                                     <div class="6u$ 12u$(medium)">
+                                         <div class="box" style="padding: 1.2em; min-height: 150px;">
+                                             <h4 style="margin-bottom: 0.5em;">Depuración de Credenciales Activas</h4>
+                                             <p style="font-size: 0.9em; line-height: 1.5em; margin: 0;">Estructurar revisiones constantes de las cuentas autorizadas para suspender de inmediato cualquier perfil inactivo o desasociado.</p>
+                                         </div>
                                      </div>
-                                     <div style="padding: 20px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                                         <div style="color: #f35858; font-size: 1.3em; margin-bottom: 10px;"><i class="fas fa-shield-alt"></i></div>
-                                         <h4 style="margin: 0 0 8px 0; font-size: 1.05em; color: #42474c;">Segundo Factor de Validación</h4>
-                                         <p style="margin: 0; font-size: 0.9em; color: #52575c;">Obligar al uso de mecanismos MFA en todas las plataformas lógicas de administración para neutralizar el uso de claves robadas.</p>
+                                     <div class="6u 12u$(medium)">
+                                         <div class="box" style="padding: 1.2em; min-height: 150px;">
+                                             <h4 style="margin-bottom: 0.5em;">Segundo Factor de Validación</h4>
+                                             <p style="font-size: 0.9em; line-height: 1.5em; margin: 0;">Obligar al uso de mecanismos MFA en todas las plataformas lógicas de administración para neutralizar el uso de claves robadas.</p>
+                                         </div>
                                      </div>
-                                     <div style="padding: 20px; background: #ffffff; border: 1px solid #d2d7dc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                                         <div style="color: #f35858; font-size: 1.3em; margin-bottom: 10px;"><i class="fas fa-cubes"></i></div>
-                                         <h4 style="margin: 0 0 8px 0; font-size: 1.05em; color: #42474c;">Despliegue de Parches y WAF</h4>
-                                         <p style="margin: 0; font-size: 0.9em; color: #52575c;">Aplicar las actualizaciones oficiales provistas por el desarrollador o, en su defecto, implementar reglas específicas en el firewall web.</p>
+                                     <div class="6u$ 12u$(medium)">
+                                         <div class="box" style="padding: 1.2em; min-height: 150px;">
+                                             <h4 style="margin-bottom: 0.5em;">Despliegue de Parches y WAF</h4>
+                                             <p style="font-size: 0.9em; line-height: 1.5em; margin: 0;">Aplicar las actualizaciones oficiales provistas por el desarrollador o, en su defecto, implementar reglas específicas en el firewall web.</p>
+                                         </div>
                                      </div>
                                  </div>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
                              <!-- 9. CONCLUSIÓN -->
                              <section>
-                                 <h3 style="color: #52575c;">9. Conclusión General</h3>
-                                 <p style="color: #52575c;">La evaluación paramétrica efectuada determinó una escala métrica de 4.7 Medium. Esta práctica constata el valor de contar con metodologías normalizadas, impidiendo que el análisis de riesgos se fundamente en meras conjeturas. Aunque la exigencia de credenciales especiales minimiza las probabilidades de explotación abierta por internet, el fallo representa un vector real en la red corporativa que exige corrección programada para impedir que sea integrado en ataques encadenados de mayor escala.</p>
+                                 <h3>9. Conclusión General</h3>
+                                 <p>La evaluación paramétrica efectuada determinó una escala métrica de 4.7 Medium. Esta práctica constata el valor de contar con metodologías normalizadas, impidiendo que el análisis de riesgos se fundamente en meras conjeturas. Aunque la exigencia de credenciales especiales minimiza las probabilidades de explotación abierta por internet, el fallo representa un vector real en la red corporativa que exige corrección programada para impedir que sea integrado en ataques encadenados de mayor escala.</p>
                              </section>
                          
-                             <hr style="border-top: 1px solid #c2c7cc;">
+                             <hr />
                          
-                             <!-- REFERENCIAS Y BOTONES (RESTAURADO BOTÓN ORIGINAL DE DESCARGA) -->
+                             <!-- REFERENCIAS Y BOTONES -->
                              <section>
-                                 <h3 style="color: #52575c;">Referencias</h3>
-                                 <ul style="color: #52575c;"> 
-                                     <li>FIRST - Common Vulnerability Scoring System v3.1 Specification Document: <a href="https://www.first.org/cvss/v3.1/specification-document" target="_blank" style="color: #52575c; text-decoration: underline;">https://www.first.org/cvss/v3.1/specification-document</a></li> 
-                                     <li>NIST - National Vulnerability Database Calculator: <a href="https://nvd.nist.gov/vuln-metrics/cvss" target="_blank" style="color: #52575c; text-decoration: underline;">https://nvd.nist.gov/vuln-metrics/cvss</a></li> 
+                                 <h3>Referencias</h3>
+                                 <ul> 
+                                     <li>FIRST - Common Vulnerability Scoring System v3.1 Specification Document: <a href="https://www.first.org/cvss/v3.1/specification-document" target="_blank">https://www.first.org/cvss/v3.1/specification-document</a></li> 
+                                     <li>NIST - National Vulnerability Database Calculator: <a href="https://nvd.nist.gov/vuln-metrics/cvss" target="_blank">https://nvd.nist.gov/vuln-metrics/cvss</a></li> 
                                  </ul> 
                          
                                  <ul class="actions">
